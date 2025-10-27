@@ -1,0 +1,15 @@
+{
+  "crons": [
+    {
+      "path": "/api/scraper/daily",
+      "schedule": "0 8 * * *"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "NEXTAUTH_SECRET": "@nextauth_secret",
+    "NEXTAUTH_URL": "@nextauth_url",
+    "NEXT_PUBLIC_MAPBOX_TOKEN": "@mapbox_token",
+    "CRON_SECRET": "@cron_secret"
+  }
+}
