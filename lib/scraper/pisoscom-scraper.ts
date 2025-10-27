@@ -7,10 +7,21 @@ export class PisosComScraper {
   private page: Page | null = null;
 
   async init() {
-    this.browser = await chromium.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-dev-shm-usage'],
-    });
+    // Usar Browserless en producción, Playwright local en desarrollo
+    const browserlessToken = process.env.BROWSERLESS_API_KEY;
+
+    if (browserlessToken) {
+      console.log('🌐 Pisos.com: Conectando a Browserless...');
+      this.browser = await chromium.connect(
+        `wss://chrome.browserless.io?token=${browserlessToken}`
+      );
+    } else {
+      console.log('💻 Pisos.com: Usando Playwright local...');
+      this.browser = await chromium.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-dev-shm-usage'],
+      });
+    }
 
     const context = await this.browser.newContext({
       userAgent:

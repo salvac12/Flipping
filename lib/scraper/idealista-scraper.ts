@@ -36,14 +36,27 @@ export class IdealistaScraper {
    * Inicializa el navegador con configuración anti-detección
    */
   async init() {
-    this.browser = await chromium.launch({
-      headless: true,
-      args: [
-        '--disable-blink-features=AutomationControlled',
-        '--no-sandbox',
-        '--disable-dev-shm-usage',
-      ],
-    });
+    // Usar Browserless en producción, Playwright local en desarrollo
+    const browserlessToken = process.env.BROWSERLESS_API_KEY;
+
+    if (browserlessToken) {
+      // Conectar a Browserless (cloud browser)
+      console.log('🌐 Conectando a Browserless...');
+      this.browser = await chromium.connect(
+        `wss://chrome.browserless.io?token=${browserlessToken}`
+      );
+    } else {
+      // Fallback a Playwright local (solo desarrollo)
+      console.log('💻 Usando Playwright local...');
+      this.browser = await chromium.launch({
+        headless: true,
+        args: [
+          '--disable-blink-features=AutomationControlled',
+          '--no-sandbox',
+          '--disable-dev-shm-usage',
+        ],
+      });
+    }
 
     const context = await this.browser.newContext({
       userAgent:
