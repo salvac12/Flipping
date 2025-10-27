@@ -1,6 +1,7 @@
 import { chromium, Browser, Page } from 'playwright';
 import { MADRID_ZONES } from '../utils/zones';
 import { calculatePropertyScore } from '../scoring/property-scorer';
+import { getBrowserlessUnblockSession } from './browserless-unblock';
 
 export interface ScrapedProperty {
   url: string;
@@ -31,6 +32,7 @@ export interface ScrapedProperty {
 export class IdealistaScraper {
   private browser: Browser | null = null;
   private page: Page | null = null;
+  private usedUnblockAPI: boolean = false;
 
   /**
    * Inicializa el navegador con configuración anti-detección
@@ -40,11 +42,25 @@ export class IdealistaScraper {
     const browserlessToken = process.env.BROWSERLESS_API_KEY;
 
     if (browserlessToken) {
-      // Conectar a Browserless (cloud browser)
-      console.log('🌐 Conectando a Browserless...');
-      this.browser = await chromium.connectOverCDP(
-        `wss://production-sfo.browserless.io?token=${browserlessToken}`
-      );
+      // Usar Unblock API para bypasear Datadome y rate limits
+      try {
+        const searchUrl = this.buildSearchUrl('MADRID');
+        const session = await getBrowserlessUnblockSession(searchUrl, browserlessToken);
+
+        this.browser = session.browser;
+        this.page = session.page;
+        this.usedUnblockAPI = true;
+
+        console.log('✅ Idealista: Sesión Unblock establecida');
+        return; // Ya tenemos página lista
+      } catch (error) {
+        console.error('⚠️ Unblock API falló, intentando conexión estándar:', error);
+
+        // Fallback: Conexión estándar a Browserless
+        this.browser = await chromium.connectOverCDP(
+          `wss://production-sfo.browserless.io?token=${browserlessToken}`
+        );
+      }
     } else {
       // Fallback a Playwright local (solo desarrollo)
       console.log('💻 Usando Playwright local...');
@@ -178,7 +194,14 @@ export class IdealistaScraper {
 
     try {
       console.log(`Scrapeando Idealista - Zona: ${zoneName}`);
-      await this.page!.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
+
+      // Si usamos Unblock API, la página ya está cargada
+      if (!this.usedUnblockAPI) {
+        await this.page!.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
+      } else {
+        console.log('ℹ️ Usando sesión Unblock existente, página ya cargada');
+        this.usedUnblockAPI = false; // Reset para siguientes zonas
+      }
 
       // Esperar a que carguen las propiedades
       await this.page!.waitForSelector('.item-info-container', { timeout: 10000 });

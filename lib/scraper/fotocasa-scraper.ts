@@ -1,20 +1,37 @@
 import { chromium, Browser, Page } from 'playwright';
 import { calculatePropertyScore } from '../scoring/property-scorer';
 import { ScrapedProperty } from './idealista-scraper';
+import { getBrowserlessUnblockSession } from './browserless-unblock';
 
 export class FotocasaScraper {
   private browser: Browser | null = null;
   private page: Page | null = null;
+  private usedUnblockAPI: boolean = false;
 
   async init() {
     // Usar Browserless en producción, Playwright local en desarrollo
     const browserlessToken = process.env.BROWSERLESS_API_KEY;
 
     if (browserlessToken) {
-      console.log('🌐 Fotocasa: Conectando a Browserless...');
-      this.browser = await chromium.connectOverCDP(
-        `wss://production-sfo.browserless.io?token=${browserlessToken}`
-      );
+      // Usar Unblock API para bypasear rate limits
+      try {
+        const searchUrl = this.buildSearchUrl('MADRID');
+        const session = await getBrowserlessUnblockSession(searchUrl, browserlessToken);
+
+        this.browser = session.browser;
+        this.page = session.page;
+        this.usedUnblockAPI = true;
+
+        console.log('✅ Fotocasa: Sesión Unblock establecida');
+        return; // Ya tenemos página lista
+      } catch (error) {
+        console.error('⚠️ Fotocasa Unblock API falló, intentando conexión estándar:', error);
+
+        // Fallback: Conexión estándar a Browserless
+        this.browser = await chromium.connectOverCDP(
+          `wss://production-sfo.browserless.io?token=${browserlessToken}`
+        );
+      }
     } else {
       console.log('💻 Fotocasa: Usando Playwright local...');
       this.browser = await chromium.launch({
@@ -54,7 +71,14 @@ export class FotocasaScraper {
 
     try {
       console.log(`Scrapeando Fotocasa - Zona: ${zoneName}`);
-      await this.page!.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
+
+      // Si usamos Unblock API, la página ya está cargada
+      if (!this.usedUnblockAPI) {
+        await this.page!.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
+      } else {
+        console.log('ℹ️ Usando sesión Unblock existente, página ya cargada');
+        this.usedUnblockAPI = false; // Reset para siguientes zonas
+      }
 
       // Esperar a que carguen las propiedades
       await this.page!.waitForSelector('article.re-CardPackMinimal', { timeout: 10000 }).catch(() => {});

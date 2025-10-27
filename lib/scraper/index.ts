@@ -17,28 +17,29 @@ export async function scrapeAllPortals(maxPagesPerZone: number = 2): Promise<{
   errors: number;
   properties: ScrapedProperty[];
 }> {
-  console.log('🚀 Iniciando scraping de todos los portales...');
-
-  const results = await Promise.allSettled([
-    scrapeIdealista(maxPagesPerZone),
-    scrapeFotocasa(maxPagesPerZone),
-    scrapePisosCom(maxPagesPerZone),
-  ]);
+  console.log('🚀 Iniciando scraping de todos los portales (secuencial)...');
 
   const allProperties: ScrapedProperty[] = [];
   let errors = 0;
 
-  results.forEach((result, index) => {
-    const portalName = ['Idealista', 'Fotocasa', 'Pisos.com'][index];
+  // Ejecutar secuencialmente para reducir consumo de minutos
+  const portals = [
+    { name: 'Pisos.com', fn: scrapePisosCom },
+    { name: 'Fotocasa', fn: scrapeFotocasa },
+    { name: 'Idealista', fn: scrapeIdealista },
+  ];
 
-    if (result.status === 'fulfilled') {
-      console.log(`✅ ${portalName}: ${result.value.length} propiedades`);
-      allProperties.push(...result.value);
-    } else {
-      console.error(`❌ ${portalName}: Error`, result.reason);
+  for (const portal of portals) {
+    try {
+      console.log(`\n📍 Iniciando ${portal.name}...`);
+      const properties = await portal.fn(maxPagesPerZone);
+      console.log(`✅ ${portal.name}: ${properties.length} propiedades`);
+      allProperties.push(...properties);
+    } catch (error) {
+      console.error(`❌ ${portal.name}: Error`, error);
       errors++;
     }
-  });
+  }
 
   // Guardar propiedades en base de datos
   const saved = await savePropertiesToDatabase(allProperties);

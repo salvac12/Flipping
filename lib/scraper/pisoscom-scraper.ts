@@ -1,20 +1,37 @@
 import { chromium, Browser, Page } from 'playwright';
 import { calculatePropertyScore } from '../scoring/property-scorer';
 import { ScrapedProperty } from './idealista-scraper';
+import { getBrowserlessUnblockSession } from './browserless-unblock';
 
 export class PisosComScraper {
   private browser: Browser | null = null;
   private page: Page | null = null;
+  private usedUnblockAPI: boolean = false;
 
   async init() {
     // Usar Browserless en producción, Playwright local en desarrollo
     const browserlessToken = process.env.BROWSERLESS_API_KEY;
 
     if (browserlessToken) {
-      console.log('🌐 Pisos.com: Conectando a Browserless...');
-      this.browser = await chromium.connectOverCDP(
-        `wss://production-sfo.browserless.io?token=${browserlessToken}`
-      );
+      // Usar Unblock API para bypasear rate limits
+      try {
+        const searchUrl = this.buildSearchUrl();
+        const session = await getBrowserlessUnblockSession(searchUrl, browserlessToken);
+
+        this.browser = session.browser;
+        this.page = session.page;
+        this.usedUnblockAPI = true;
+
+        console.log('✅ Pisos.com: Sesión Unblock establecida');
+        return; // Ya tenemos página lista
+      } catch (error) {
+        console.error('⚠️ Pisos.com Unblock API falló, intentando conexión estándar:', error);
+
+        // Fallback: Conexión estándar a Browserless
+        this.browser = await chromium.connectOverCDP(
+          `wss://production-sfo.browserless.io?token=${browserlessToken}`
+        );
+      }
     } else {
       console.log('💻 Pisos.com: Usando Playwright local...');
       this.browser = await chromium.launch({
@@ -52,7 +69,14 @@ export class PisosComScraper {
 
     try {
       console.log(`Scrapeando Pisos.com - Zona: ${zoneName}`);
-      await this.page!.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
+
+      // Si usamos Unblock API, la página ya está cargada
+      if (!this.usedUnblockAPI) {
+        await this.page!.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
+      } else {
+        console.log('ℹ️ Usando sesión Unblock existente, página ya cargada');
+        this.usedUnblockAPI = false; // Reset para siguientes zonas
+      }
 
       await this.page!.waitForSelector('.ad-preview', { timeout: 10000 }).catch(() => {});
 
