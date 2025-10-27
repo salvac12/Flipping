@@ -25,9 +25,12 @@ export const authConfig: NextAuthConfig = {
           throw new Error('Email y contraseña son requeridos');
         }
 
+        const email = credentials.email as string;
+        const password = credentials.password as string;
+
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email,
+            email,
           },
         });
 
@@ -36,7 +39,7 @@ export const authConfig: NextAuthConfig = {
         }
 
         const isPasswordValid = await compare(
-          credentials.password,
+          password,
           user.password
         );
 
