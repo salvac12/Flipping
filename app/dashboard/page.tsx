@@ -92,6 +92,41 @@ export default function DashboardPage() {
     }
   };
 
+  const handleDebug = async () => {
+    try {
+      const response = await fetch('/api/debug/properties');
+      const data = await response.json();
+
+      console.log('🔍 DEBUG INFO:', data);
+
+      const message = `📊 Estadísticas de Base de Datos:\n\n` +
+        `Total propiedades: ${data.stats.total}\n\n` +
+        `Por Estado:\n` +
+        `  ✅ ACTIVE: ${data.stats.byStatus.ACTIVE}\n` +
+        `  ❌ SOLD: ${data.stats.byStatus.SOLD}\n` +
+        `  🚫 REMOVED: ${data.stats.byStatus.REMOVED}\n` +
+        `  📦 ARCHIVED: ${data.stats.byStatus.ARCHIVED}\n\n` +
+        `Por Portal:\n` +
+        `  🟡 Idealista: ${data.stats.byPortal.IDEALISTA}\n` +
+        `  🔵 Fotocasa: ${data.stats.byPortal.FOTOCASA}\n` +
+        `  🟢 Pisos.com: ${data.stats.byPortal.PISOS_COM}\n\n` +
+        `Distribución de Scores:\n` +
+        `  Score 0: ${data.stats.scoreDistribution.score_0}\n` +
+        `  Score 1-20: ${data.stats.scoreDistribution.score_1_20}\n` +
+        `  Score 21-40: ${data.stats.scoreDistribution.score_21_40}\n` +
+        `  Score 41-60: ${data.stats.scoreDistribution.score_41_60}\n` +
+        `  Score 61-80: ${data.stats.scoreDistribution.score_61_80}\n` +
+        `  Score 81-100: ${data.stats.scoreDistribution.score_81_100}\n\n` +
+        `Score Promedio: ${data.stats.avgScore}\n\n` +
+        `Ver detalles en la consola del navegador (F12)`;
+
+      alert(message);
+    } catch (error) {
+      console.error('Error en debug:', error);
+      alert('Error obteniendo datos de debug');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -106,6 +141,14 @@ export default function DashboardPage() {
             </div>
 
             <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleDebug}
+              >
+                🔍 Debug
+              </Button>
+
               <Button
                 variant="outline"
                 size="sm"
