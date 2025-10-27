@@ -36,24 +36,33 @@ export async function GET(req: NextRequest) {
     const searchParams = req.nextUrl.searchParams;
 
     const filters = {
-      minPrice: searchParams.get('minPrice') ? Number(searchParams.get('minPrice')) : undefined,
-      maxPrice: searchParams.get('maxPrice') ? Number(searchParams.get('maxPrice')) : undefined,
-      minM2: searchParams.get('minM2') ? Number(searchParams.get('minM2')) : undefined,
-      maxM2: searchParams.get('maxM2') ? Number(searchParams.get('maxM2')) : undefined,
-      minScore: searchParams.get('minScore') ? Number(searchParams.get('minScore')) : undefined,
+      minPrice: searchParams.get('minPrice') !== null ? Number(searchParams.get('minPrice')) : undefined,
+      maxPrice: searchParams.get('maxPrice') !== null ? Number(searchParams.get('maxPrice')) : undefined,
+      minM2: searchParams.get('minM2') !== null ? Number(searchParams.get('minM2')) : undefined,
+      maxM2: searchParams.get('maxM2') !== null ? Number(searchParams.get('maxM2')) : undefined,
+      minScore: searchParams.get('minScore') !== null ? Number(searchParams.get('minScore')) : undefined,
       zones: searchParams.get('zones') ? searchParams.get('zones')!.split(',') : undefined,
       portal: searchParams.get('portal') as any,
       needsReform: searchParams.get('needsReform') === 'true' ? true : undefined,
       isExterior: searchParams.get('isExterior') === 'true' ? true : undefined,
-      minFloor: searchParams.get('minFloor') ? Number(searchParams.get('minFloor')) : undefined,
+      minFloor: searchParams.get('minFloor') !== null ? Number(searchParams.get('minFloor')) : undefined,
       orderBy: (searchParams.get('orderBy') as any) || 'score',
       order: (searchParams.get('order') as any) || 'desc',
-      limit: searchParams.get('limit') ? Number(searchParams.get('limit')) : 50,
-      offset: searchParams.get('offset') ? Number(searchParams.get('offset')) : 0,
+      limit: searchParams.get('limit') !== null ? Number(searchParams.get('limit')) : 50,
+      offset: searchParams.get('offset') !== null ? Number(searchParams.get('offset')) : 0,
     };
 
-    // Validar filtros
-    const validatedFilters = filtersSchema.parse(filters);
+    // Validar filtros con manejo de errores
+    let validatedFilters;
+    try {
+      validatedFilters = filtersSchema.parse(filters);
+    } catch (error) {
+      console.error('Validation error:', error);
+      return NextResponse.json(
+        { error: 'Parámetros de filtro inválidos', details: error },
+        { status: 400 }
+      );
+    }
 
     // Construir where clause
     const where: any = {
