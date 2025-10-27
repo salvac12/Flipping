@@ -16,7 +16,7 @@ export default function DashboardPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'map' | 'split'>('split');
 
   // Filtros
-  const [minScore, setMinScore] = useState(60);
+  const [minScore, setMinScore] = useState(0);
 
   useEffect(() => {
     fetchProperties();
