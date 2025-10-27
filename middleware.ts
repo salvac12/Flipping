@@ -1,8 +1,18 @@
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth/auth-options';
 
 export default auth((req) => {
-  // El middleware de auth automáticamente protege las rutas
-  // Solo permite acceso si el usuario está autenticado
+  const isLoggedIn = !!req.auth;
+  const { pathname } = req.nextUrl;
+
+  // Si no está autenticado y está en ruta protegida, redirigir al login
+  if (!isLoggedIn) {
+    const loginUrl = new URL('/auth/login', req.url);
+    loginUrl.searchParams.set('callbackUrl', pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  return NextResponse.next();
 });
 
 // Proteger rutas del dashboard
