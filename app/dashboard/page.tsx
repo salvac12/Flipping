@@ -59,7 +59,13 @@ export default function DashboardPage() {
       const data = await response.json();
 
       if (data.success) {
-        alert(`Scraping completado: ${data.results.saved} propiedades nuevas`);
+        const message = `Scraping completado:\n\n` +
+          `✅ Total encontradas: ${data.results.total}\n` +
+          `📝 Nuevas guardadas: ${data.results.saved}\n` +
+          `♻️ Ya existían: ${data.results.total - data.results.saved}\n` +
+          `❌ Errores: ${data.results.errors}`;
+
+        alert(message);
         fetchProperties();
       } else {
         alert('Error en scraping');
