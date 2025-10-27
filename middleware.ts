@@ -17,5 +17,5 @@ export default auth((req) => {
 
 // Proteger rutas del dashboard
 export const config = {
-  matcher: ['/dashboard/:path*', '/api/properties/:path*', '/api/scraper/:path*'],
+  matcher: ['/dashboard/:path*', '/api/properties/:path*', '/api/scraper/:path*', '/api/debug/:path*'],
 };

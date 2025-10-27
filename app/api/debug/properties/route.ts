@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@/lib/auth/auth-options';
 import prisma from '@/lib/db/prisma';
 
 /**
@@ -6,6 +7,26 @@ import prisma from '@/lib/db/prisma';
  */
 export async function GET(req: NextRequest) {
   try {
+    // Verificar autenticación
+    const session = await auth();
+    if (!session) {
+      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
+    }
+
+    console.log('🔍 Debug endpoint: Iniciando consulta a base de datos...');
+
+    // Verificar conexión a Prisma
+    try {
+      await prisma.$connect();
+      console.log('✅ Conexión a base de datos exitosa');
+    } catch (dbError) {
+      console.error('❌ Error conectando a base de datos:', dbError);
+      return NextResponse.json({
+        error: 'Error de conexión a base de datos',
+        details: dbError instanceof Error ? dbError.message : 'Unknown error'
+      }, { status: 500 });
+    }
+
     // Obtener TODAS las propiedades sin filtros
     const allProperties = await prisma.property.findMany({
       select: {
@@ -49,14 +70,28 @@ export async function GET(req: NextRequest) {
         : 0,
     };
 
+    console.log(`✅ Debug endpoint: ${allProperties.length} propiedades encontradas`);
+
     return NextResponse.json({
       stats,
       properties: allProperties,
     });
   } catch (error) {
-    console.error('Error in debug endpoint:', error);
+    console.error('❌ Error in debug endpoint:', error);
+
+    // Detalle completo del error
+    const errorDetails = {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      name: error instanceof Error ? error.name : undefined,
+    };
+
     return NextResponse.json(
-      { error: 'Error obteniendo propiedades', details: (error as Error).message },
+      {
+        error: 'Error obteniendo propiedades',
+        details: errorDetails,
+        timestamp: new Date().toISOString()
+      },
       { status: 500 }
     );
   }
