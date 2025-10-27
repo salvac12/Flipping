@@ -57,7 +57,8 @@ export async function GET(req: NextRequest) {
 
     // Construir where clause
     const where: any = {
-      status: 'ACTIVE',
+      // TEMPORAL: Comentado para debug - descomentar después
+      // status: 'ACTIVE',
     };
 
     if (validatedFilters.minPrice) {
