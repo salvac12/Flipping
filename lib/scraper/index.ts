@@ -21,6 +21,7 @@ export async function scrapeAllPortals(maxPagesPerZone: number = 2): Promise<{
 
   const allProperties: ScrapedProperty[] = [];
   let errors = 0;
+  let saved = 0;
 
   // Ejecutar secuencialmente para reducir consumo de minutos
   const portals = [
@@ -35,14 +36,19 @@ export async function scrapeAllPortals(maxPagesPerZone: number = 2): Promise<{
       const properties = await portal.fn(maxPagesPerZone);
       console.log(`✅ ${portal.name}: ${properties.length} propiedades`);
       allProperties.push(...properties);
+
+      // Guardar inmediatamente después de cada portal para evitar pérdida por timeout
+      if (properties.length > 0) {
+        console.log(`💾 Guardando ${properties.length} propiedades de ${portal.name}...`);
+        const portalSaved = await savePropertiesToDatabase(properties);
+        saved += portalSaved;
+        console.log(`✅ Guardadas ${portalSaved} propiedades de ${portal.name}`);
+      }
     } catch (error) {
       console.error(`❌ ${portal.name}: Error`, error);
       errors++;
     }
   }
-
-  // Guardar propiedades en base de datos
-  const saved = await savePropertiesToDatabase(allProperties);
 
   console.log(`\n📊 Resumen:`);
   console.log(`  Total scrapeadas: ${allProperties.length}`);
