@@ -65,7 +65,10 @@ export async function savePropertiesToDatabase(
 ): Promise<number> {
   let savedCount = 0;
 
-  for (const property of properties) {
+  console.log(`\n💾 Guardando ${properties.length} propiedades en base de datos...`);
+
+  for (let i = 0; i < properties.length; i++) {
+    const property = properties[i];
     try {
       // Verificar si la propiedad ya existe
       const existing = await prisma.property.findUnique({
@@ -73,6 +76,7 @@ export async function savePropertiesToDatabase(
       });
 
       if (existing) {
+        console.log(`  ${i + 1}/${properties.length}: Ya existe (${property.title.substring(0, 30)}...)`);
         // Actualizar si ha cambiado el precio
         if (existing.price !== property.price) {
           await prisma.property.update({
@@ -95,10 +99,11 @@ export async function savePropertiesToDatabase(
               status: existing.status,
             },
           });
+          console.log(`    ✅ Precio actualizado: ${existing.price} → ${property.price}`);
         }
       } else {
         // Crear nueva propiedad
-        await prisma.property.create({
+        const created = await prisma.property.create({
           data: {
             url: property.url,
             portal: property.portal,
@@ -126,12 +131,16 @@ export async function savePropertiesToDatabase(
           },
         });
 
+        console.log(`  ${i + 1}/${properties.length}: ✅ NUEVA - ${property.title.substring(0, 30)}... (ID: ${created.id})`);
         savedCount++;
       }
     } catch (error) {
-      console.error(`Error guardando propiedad ${property.url}:`, error);
+      console.error(`  ${i + 1}/${properties.length}: ❌ Error guardando ${property.url}:`, error);
+      console.error(`    Detalles:`, JSON.stringify(property, null, 2));
     }
   }
+
+  console.log(`\n💾 Guardado completado: ${savedCount} nuevas de ${properties.length} total\n`);
 
   return savedCount;
 }

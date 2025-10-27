@@ -69,23 +69,46 @@ export class PisosComScraper {
       for (let pageNum = 1; pageNum <= maxPages; pageNum++) {
         console.log(`  Página ${pageNum}/${maxPages}`);
 
-        const cards = await this.page!.$$('.ad-preview');
+        // Verificar que la página sigue abierta
+        if (!this.page || this.page.isClosed()) {
+          console.error('❌ Página cerrada prematuramente');
+          break;
+        }
 
-        for (const card of cards) {
+        const cards = await this.page.$$('.ad-preview');
+        console.log(`  Encontradas ${cards.length} cards en página ${pageNum}`);
+
+        for (let i = 0; i < cards.length; i++) {
+          const card = cards[i];
           try {
+            // Verificar que la página sigue abierta antes de cada operación
+            if (!this.page || this.page.isClosed()) {
+              console.error('❌ Página cerrada durante extracción');
+              break;
+            }
+
             const url = await card.$eval('a', (el: any) => el.href).catch(() => '');
-            if (!url) continue;
+            if (!url) {
+              console.log(`  Card ${i + 1}: Sin URL, saltando`);
+              continue;
+            }
 
             const priceText = await card.$eval('.ad-preview__price', (el: any) => el.textContent?.trim() || '').catch(() => '');
             const price = this.parsePrice(priceText);
-            if (!price) continue;
+            if (!price) {
+              console.log(`  Card ${i + 1}: Sin precio válido, saltando`);
+              continue;
+            }
 
             const detailsText = await card.textContent();
             const m2Match = detailsText?.match(/(\d+)\s*m²/);
             const m2 = m2Match ? parseInt(m2Match[1]) : 0;
-            if (m2 < 120) continue;
+            if (m2 < 120) {
+              console.log(`  Card ${i + 1}: ${m2}m² < 120m², saltando`);
+              continue;
+            }
 
-            const title = await card.$eval('.ad-preview__title', (el: any) => el.textContent?.trim() || '').catch(() => '');
+            const title = await card.$eval('.ad-preview__title', (el: any) => el.textContent?.trim() || '').catch(() => 'Sin título');
 
             const property: Partial<ScrapedProperty> = {
               url,
@@ -93,11 +116,12 @@ export class PisosComScraper {
               title,
               price,
               m2,
-              pricePerM2: price / m2,
+              pricePerM2: Math.round(price / m2),
               address: title,
               zone: zoneName,
               city: 'Madrid',
               isExterior: true,
+              hasLift: false,
               needsReform: true,
               images: [],
             };
@@ -110,24 +134,22 @@ export class PisosComScraper {
               scoreDetails: scoring,
             } as ScrapedProperty);
 
-            await this.randomDelay(500, 1000);
+            console.log(`  ✅ Card ${i + 1}: ${title.substring(0, 40)}... - ${price}€ - ${m2}m²`);
+
+            await this.randomDelay(300, 500);
           } catch (error) {
-            console.error('Error procesando card de Pisos.com:', error);
+            console.error(`  ❌ Error procesando card ${i + 1}:`, error);
+            // Continuar con la siguiente card
           }
         }
 
-        const nextButton = await this.page!.$('.pagination__next');
-        if (nextButton && pageNum < maxPages) {
-          await nextButton.click();
-          await this.page!.waitForTimeout(2000);
-        } else {
-          break;
-        }
+        // No intentar navegar a la siguiente página por ahora
+        break; // Solo primera página para evitar timeouts
       }
 
-      console.log(`  Total propiedades: ${properties.length}`);
+      console.log(`  ✅ Total propiedades extraídas: ${properties.length}`);
     } catch (error) {
-      console.error(`Error scrapeando Pisos.com:`, error);
+      console.error(`❌ Error scrapeando Pisos.com:`, error);
     }
 
     return properties;
