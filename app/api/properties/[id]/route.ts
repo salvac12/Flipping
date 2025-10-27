@@ -7,7 +7,7 @@ import prisma from '@/lib/db/prisma';
  */
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth();
@@ -15,6 +15,8 @@ export async function GET(
     if (!session) {
       return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
     }
+
+    const params = await context.params;
 
     const property = await prisma.property.findUnique({
       where: { id: params.id },
