@@ -12,8 +12,8 @@ export class FotocasaScraper {
 
     if (browserlessToken) {
       console.log('🌐 Fotocasa: Conectando a Browserless...');
-      this.browser = await chromium.connect(
-        `wss://chrome.browserless.io?token=${browserlessToken}`
+      this.browser = await chromium.connectOverCDP(
+        `wss://production-sfo.browserless.io?token=${browserlessToken}`
       );
     } else {
       console.log('💻 Fotocasa: Usando Playwright local...');

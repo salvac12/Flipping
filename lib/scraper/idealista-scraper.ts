@@ -42,8 +42,8 @@ export class IdealistaScraper {
     if (browserlessToken) {
       // Conectar a Browserless (cloud browser)
       console.log('🌐 Conectando a Browserless...');
-      this.browser = await chromium.connect(
-        `wss://chrome.browserless.io?token=${browserlessToken}`
+      this.browser = await chromium.connectOverCDP(
+        `wss://production-sfo.browserless.io?token=${browserlessToken}`
       );
     } else {
       // Fallback a Playwright local (solo desarrollo)
