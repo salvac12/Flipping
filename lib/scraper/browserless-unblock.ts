@@ -28,7 +28,7 @@ export async function getBrowserlessUnblockSession(
       url: url,
       browserWSEndpoint: true,
       cookies: true,
-      ttl: 60000, // 60 segundos de sesión
+      ttl: 180000, // 3 minutos de sesión
     }),
   });
 

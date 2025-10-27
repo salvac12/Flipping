@@ -13,25 +13,11 @@ export class PisosComScraper {
     const browserlessToken = process.env.BROWSERLESS_API_KEY;
 
     if (browserlessToken) {
-      // Usar Unblock API para bypasear rate limits
-      try {
-        const searchUrl = this.buildSearchUrl();
-        const session = await getBrowserlessUnblockSession(searchUrl, browserlessToken);
-
-        this.browser = session.browser;
-        this.page = session.page;
-        this.usedUnblockAPI = true;
-
-        console.log('✅ Pisos.com: Sesión Unblock establecida');
-        return; // Ya tenemos página lista
-      } catch (error) {
-        console.error('⚠️ Pisos.com Unblock API falló, intentando conexión estándar:', error);
-
-        // Fallback: Conexión estándar a Browserless
-        this.browser = await chromium.connectOverCDP(
-          `wss://production-sfo.browserless.io?token=${browserlessToken}`
-        );
-      }
+      // Usar conexión estándar (Unblock API desactivado temporalmente)
+      console.log('🌐 Pisos.com: Conectando a Browserless (estándar)...');
+      this.browser = await chromium.connectOverCDP(
+        `wss://production-sfo.browserless.io?token=${browserlessToken}`
+      );
     } else {
       console.log('💻 Pisos.com: Usando Playwright local...');
       this.browser = await chromium.launch({

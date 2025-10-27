@@ -42,25 +42,11 @@ export class IdealistaScraper {
     const browserlessToken = process.env.BROWSERLESS_API_KEY;
 
     if (browserlessToken) {
-      // Usar Unblock API para bypasear Datadome y rate limits
-      try {
-        const searchUrl = this.buildSearchUrl('MADRID');
-        const session = await getBrowserlessUnblockSession(searchUrl, browserlessToken);
-
-        this.browser = session.browser;
-        this.page = session.page;
-        this.usedUnblockAPI = true;
-
-        console.log('✅ Idealista: Sesión Unblock establecida');
-        return; // Ya tenemos página lista
-      } catch (error) {
-        console.error('⚠️ Unblock API falló, intentando conexión estándar:', error);
-
-        // Fallback: Conexión estándar a Browserless
-        this.browser = await chromium.connectOverCDP(
-          `wss://production-sfo.browserless.io?token=${browserlessToken}`
-        );
-      }
+      // Usar conexión estándar (Unblock API desactivado temporalmente)
+      console.log('🌐 Idealista: Conectando a Browserless (estándar)...');
+      this.browser = await chromium.connectOverCDP(
+        `wss://production-sfo.browserless.io?token=${browserlessToken}`
+      );
     } else {
       // Fallback a Playwright local (solo desarrollo)
       console.log('💻 Usando Playwright local...');
