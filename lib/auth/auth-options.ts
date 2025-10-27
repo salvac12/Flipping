@@ -47,9 +47,8 @@ export const authConfig: NextAuthConfig = {
         return {
           id: user.id,
           email: user.email,
-          name: user.name,
-          image: user.image,
-        };
+          name: user.name ?? user.email,
+        } as any;
       },
     }),
   ],
