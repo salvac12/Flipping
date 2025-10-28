@@ -17,7 +17,7 @@ const filtersSchema = z.object({
   minFloor: z.number().optional(),
   orderBy: z.enum(['score', 'price', 'pricePerM2', 'createdAt']).optional(),
   order: z.enum(['asc', 'desc']).optional(),
-  limit: z.number().min(1).max(100).optional(),
+  limit: z.number().min(1).max(1000).optional(),
   offset: z.number().min(0).optional(),
 });
 

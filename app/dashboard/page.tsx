@@ -95,12 +95,23 @@ export default function DashboardPage() {
   const handleDebug = async () => {
     try {
       // Obtener todas las propiedades sin filtros de score
+      // Límite aumentado a 1000 para obtener todas las propiedades
       const response = await fetch('/api/properties?limit=1000&minScore=0');
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API Error:', response.status, errorText);
+        alert(`Error del servidor (${response.status}):\n${errorText.substring(0, 200)}`);
+        return;
+      }
+
       const data = await response.json();
 
       if (!data.properties) {
-        alert('Error: No se pudieron obtener las propiedades');
+        const errorMsg = data.error || 'Formato de respuesta inválido';
+        const details = data.details ? JSON.stringify(data.details, null, 2) : '';
         console.error('Response:', data);
+        alert(`Error: ${errorMsg}\n\nDetalles:\n${details}`);
         return;
       }
 
