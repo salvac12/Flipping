@@ -136,7 +136,8 @@ export class PisosComScraper {
 
             console.log(`  ✅ Card ${i + 1}: ${title.substring(0, 40)}... - ${price}€ - ${m2}m²`);
 
-            await this.randomDelay(300, 500);
+            // Delay reducido para evitar timeout de Vercel (5 min)
+            await this.randomDelay(100, 200);
           } catch (error) {
             console.error(`  ❌ Error procesando card ${i + 1}:`, error);
             // Continuar con la siguiente card
