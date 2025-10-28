@@ -94,36 +94,72 @@ export default function DashboardPage() {
 
   const handleDebug = async () => {
     try {
-      const response = await fetch('/api/debug/properties');
+      // Obtener todas las propiedades sin filtros de score
+      const response = await fetch('/api/properties?limit=1000&minScore=0');
       const data = await response.json();
 
-      console.log('🔍 DEBUG INFO:', data);
+      if (!data.properties) {
+        alert('Error: No se pudieron obtener las propiedades');
+        console.error('Response:', data);
+        return;
+      }
+
+      const allProperties = data.properties;
+
+      // Calcular estadísticas
+      const stats = {
+        total: allProperties.length,
+        byStatus: {
+          ACTIVE: allProperties.filter((p: any) => p.status === 'ACTIVE').length,
+          SOLD: allProperties.filter((p: any) => p.status === 'SOLD').length,
+          REMOVED: allProperties.filter((p: any) => p.status === 'REMOVED').length,
+          ARCHIVED: allProperties.filter((p: any) => p.status === 'ARCHIVED').length,
+        },
+        byPortal: {
+          IDEALISTA: allProperties.filter((p: any) => p.portal === 'IDEALISTA').length,
+          FOTOCASA: allProperties.filter((p: any) => p.portal === 'FOTOCASA').length,
+          PISOS_COM: allProperties.filter((p: any) => p.portal === 'PISOS_COM').length,
+        },
+        scoreDistribution: {
+          score_0: allProperties.filter((p: any) => p.score === 0).length,
+          score_1_20: allProperties.filter((p: any) => p.score > 0 && p.score <= 20).length,
+          score_21_40: allProperties.filter((p: any) => p.score > 20 && p.score <= 40).length,
+          score_41_60: allProperties.filter((p: any) => p.score > 40 && p.score <= 60).length,
+          score_61_80: allProperties.filter((p: any) => p.score > 60 && p.score <= 80).length,
+          score_81_100: allProperties.filter((p: any) => p.score > 80 && p.score <= 100).length,
+        },
+        avgScore: allProperties.length > 0
+          ? (allProperties.reduce((sum: number, p: any) => sum + p.score, 0) / allProperties.length).toFixed(2)
+          : 0,
+      };
+
+      console.log('🔍 DEBUG INFO:', { stats, properties: allProperties.slice(0, 10) });
 
       const message = `📊 Estadísticas de Base de Datos:\n\n` +
-        `Total propiedades: ${data.stats.total}\n\n` +
+        `Total propiedades: ${stats.total}\n\n` +
         `Por Estado:\n` +
-        `  ✅ ACTIVE: ${data.stats.byStatus.ACTIVE}\n` +
-        `  ❌ SOLD: ${data.stats.byStatus.SOLD}\n` +
-        `  🚫 REMOVED: ${data.stats.byStatus.REMOVED}\n` +
-        `  📦 ARCHIVED: ${data.stats.byStatus.ARCHIVED}\n\n` +
+        `  ✅ ACTIVE: ${stats.byStatus.ACTIVE}\n` +
+        `  ❌ SOLD: ${stats.byStatus.SOLD}\n` +
+        `  🚫 REMOVED: ${stats.byStatus.REMOVED}\n` +
+        `  📦 ARCHIVED: ${stats.byStatus.ARCHIVED}\n\n` +
         `Por Portal:\n` +
-        `  🟡 Idealista: ${data.stats.byPortal.IDEALISTA}\n` +
-        `  🔵 Fotocasa: ${data.stats.byPortal.FOTOCASA}\n` +
-        `  🟢 Pisos.com: ${data.stats.byPortal.PISOS_COM}\n\n` +
+        `  🟡 Idealista: ${stats.byPortal.IDEALISTA}\n` +
+        `  🔵 Fotocasa: ${stats.byPortal.FOTOCASA}\n` +
+        `  🟢 Pisos.com: ${stats.byPortal.PISOS_COM}\n\n` +
         `Distribución de Scores:\n` +
-        `  Score 0: ${data.stats.scoreDistribution.score_0}\n` +
-        `  Score 1-20: ${data.stats.scoreDistribution.score_1_20}\n` +
-        `  Score 21-40: ${data.stats.scoreDistribution.score_21_40}\n` +
-        `  Score 41-60: ${data.stats.scoreDistribution.score_41_60}\n` +
-        `  Score 61-80: ${data.stats.scoreDistribution.score_61_80}\n` +
-        `  Score 81-100: ${data.stats.scoreDistribution.score_81_100}\n\n` +
-        `Score Promedio: ${data.stats.avgScore}\n\n` +
+        `  Score 0: ${stats.scoreDistribution.score_0}\n` +
+        `  Score 1-20: ${stats.scoreDistribution.score_1_20}\n` +
+        `  Score 21-40: ${stats.scoreDistribution.score_21_40}\n` +
+        `  Score 41-60: ${stats.scoreDistribution.score_41_60}\n` +
+        `  Score 61-80: ${stats.scoreDistribution.score_61_80}\n` +
+        `  Score 81-100: ${stats.scoreDistribution.score_81_100}\n\n` +
+        `Score Promedio: ${stats.avgScore}\n\n` +
         `Ver detalles en la consola del navegador (F12)`;
 
       alert(message);
     } catch (error) {
       console.error('Error en debug:', error);
-      alert('Error obteniendo datos de debug');
+      alert(`Error obteniendo datos de debug: ${error}`);
     }
   };
 
