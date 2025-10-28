@@ -58,13 +58,13 @@ export class PisosComScraper {
 
       // Si usamos Unblock API, la página ya está cargada
       if (!this.usedUnblockAPI) {
-        await this.page!.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
+        await this.page!.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
       } else {
         console.log('ℹ️ Usando sesión Unblock existente, página ya cargada');
         this.usedUnblockAPI = false; // Reset para siguientes zonas
       }
 
-      await this.page!.waitForSelector('.ad-preview', { timeout: 10000 }).catch(() => {});
+      await this.page!.waitForSelector('.ad-preview', { timeout: 5000 }).catch(() => {});
 
       for (let pageNum = 1; pageNum <= maxPages; pageNum++) {
         console.log(`  Página ${pageNum}/${maxPages}`);
@@ -136,8 +136,7 @@ export class PisosComScraper {
 
             console.log(`  ✅ Card ${i + 1}: ${title.substring(0, 40)}... - ${price}€ - ${m2}m²`);
 
-            // Delay reducido para evitar timeout de Vercel (5 min)
-            await this.randomDelay(100, 200);
+            // Sin delay - estamos scrapeando de una sola página cargada en memoria
           } catch (error) {
             console.error(`  ❌ Error procesando card ${i + 1}:`, error);
             // Continuar con la siguiente card
