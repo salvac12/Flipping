@@ -42,12 +42,12 @@ export async function GET(req: NextRequest) {
       maxM2: searchParams.get('maxM2') !== null ? Number(searchParams.get('maxM2')) : undefined,
       minScore: searchParams.get('minScore') !== null ? Number(searchParams.get('minScore')) : undefined,
       zones: searchParams.get('zones') ? searchParams.get('zones')!.split(',') : undefined,
-      portal: searchParams.get('portal') as any,
+      portal: searchParams.get('portal') || undefined, // Convert null to undefined
       needsReform: searchParams.get('needsReform') === 'true' ? true : undefined,
       isExterior: searchParams.get('isExterior') === 'true' ? true : undefined,
       minFloor: searchParams.get('minFloor') !== null ? Number(searchParams.get('minFloor')) : undefined,
-      orderBy: (searchParams.get('orderBy') as any) || 'score',
-      order: (searchParams.get('order') as any) || 'desc',
+      orderBy: (searchParams.get('orderBy') || 'score') as any,
+      order: (searchParams.get('order') || 'desc') as any,
       limit: searchParams.get('limit') !== null ? Number(searchParams.get('limit')) : 50,
       offset: searchParams.get('offset') !== null ? Number(searchParams.get('offset')) : 0,
     };
