@@ -18,10 +18,11 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  accounts      Account[]
-  sessions      Session[]
-  favorites     UserFavorite[]
-  searchCriteria SearchCriteria[]
+  accounts         Account[]
+  sessions         Session[]
+  favorites        UserFavorite[]
+  searchCriteria   SearchCriteria[]
+  passwordResetTokens PasswordResetToken[]
 }
 
 // Para NextAuth
@@ -58,6 +59,21 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+// Token para recuperación de contraseña
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expires   DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
 }
 
 // Propiedad scrapeada
