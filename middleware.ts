@@ -15,7 +15,15 @@ export default auth((req) => {
   return NextResponse.next();
 });
 
-// Proteger rutas del dashboard
+// Proteger rutas del dashboard y APIs
 export const config = {
-  matcher: ['/dashboard/:path*', '/api/properties/:path*', '/api/scraper/:path*', '/api/debug/:path*'],
+  matcher: [
+    '/dashboard/:path*',
+    '/api/properties',
+    '/api/properties/:path*',
+    '/api/scraper',
+    '/api/scraper/:path*',
+    '/api/debug',
+    '/api/debug/:path*'
+  ],
 };
