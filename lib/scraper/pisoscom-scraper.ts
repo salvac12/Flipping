@@ -78,7 +78,12 @@ export class PisosComScraper {
         const cards = await this.page.$$('.ad-preview');
         console.log(`  Encontradas ${cards.length} cards en página ${pageNum}`);
 
-        for (let i = 0; i < cards.length; i++) {
+        // TEMPORAL: Limitar a 10 propiedades máximo para evitar timeout
+        const maxProperties = 10;
+        const cardsToProcess = Math.min(cards.length, maxProperties - properties.length);
+        console.log(`  Procesando ${cardsToProcess} cards (límite temporal: ${maxProperties})`);
+
+        for (let i = 0; i < cardsToProcess; i++) {
           const card = cards[i];
           try {
             // Verificar que la página sigue abierta antes de cada operación
@@ -143,6 +148,12 @@ export class PisosComScraper {
           }
         }
 
+        // Si alcanzamos el límite, detener
+        if (properties.length >= maxProperties) {
+          console.log(`  ⚠️  Límite de ${maxProperties} propiedades alcanzado`);
+          break;
+        }
+
         // No intentar navegar a la siguiente página por ahora
         break; // Solo primera página para evitar timeouts
       }
@@ -158,11 +169,6 @@ export class PisosComScraper {
   private parsePrice(text: string): number {
     const cleanText = text.replace(/[€.\s]/g, '').replace(',', '.');
     return parseFloat(cleanText) || 0;
-  }
-
-  private async randomDelay(min: number, max: number) {
-    const delay = Math.random() * (max - min) + min;
-    await this.page!.waitForTimeout(delay);
   }
 
   async close() {
