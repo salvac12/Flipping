@@ -92,11 +92,30 @@ export class PisosComScraper {
               break;
             }
 
-            const url = await card.$eval('a', (el: any) => el.href).catch(() => '');
-            if (!url) {
-              console.log(`  Card ${i + 1}: Sin URL, saltando`);
+            // Intentar múltiples selectores para obtener la URL correcta
+            let url = '';
+            try {
+              // Intentar selector principal del título/imagen
+              url = await card.$eval('a.ad-preview__title', (el: any) => el.href).catch(() => '');
+              if (!url) {
+                // Fallback: cualquier enlace que contenga /comprar/ o /venta/
+                const links = await card.$$eval('a', (elements: any[]) =>
+                  elements.map(el => el.href).filter(href =>
+                    href && (href.includes('/comprar/') || href.includes('/venta/')) && !href.endsWith('#')
+                  )
+                );
+                url = links[0] || '';
+              }
+            } catch (e) {
+              console.error(`  Error extrayendo URL: ${e}`);
+            }
+
+            if (!url || url.endsWith('#') || !url.includes('pisos.com')) {
+              console.log(`  Card ${i + 1}: URL inválida (${url}), saltando`);
               continue;
             }
+
+            console.log(`  Card ${i + 1}: URL extraída: ${url.substring(0, 80)}`);
 
             const priceText = await card.$eval('.ad-preview__price', (el: any) => el.textContent?.trim() || '').catch(() => '');
             const price = this.parsePrice(priceText);
