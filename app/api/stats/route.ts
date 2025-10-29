@@ -6,10 +6,16 @@ import prisma from '@/lib/db/prisma';
  */
 export async function GET(req: NextRequest) {
   try {
-    // Count all properties
+    // Count all properties (including all statuses)
     const total = await prisma.property.count();
 
-    // Get all properties with basic info
+    // Count by each status
+    const totalActive = await prisma.property.count({ where: { status: 'ACTIVE' } });
+    const totalSold = await prisma.property.count({ where: { status: 'SOLD' } });
+    const totalRemoved = await prisma.property.count({ where: { status: 'REMOVED' } });
+    const totalArchived = await prisma.property.count({ where: { status: 'ARCHIVED' } });
+
+    // Get ALL properties with basic info (no limit, all statuses)
     const allProps = await prisma.property.findMany({
       select: {
         id: true,
@@ -20,11 +26,14 @@ export async function GET(req: NextRequest) {
         status: true,
         portal: true,
         zone: true,
+        url: true,
         createdAt: true,
+        updatedAt: true,
       },
       orderBy: { createdAt: 'desc' },
-      take: 100,
     });
+
+    console.log(`📊 Total properties in DB: ${total}`);
 
     const stats = {
       total,
@@ -50,7 +59,7 @@ export async function GET(req: NextRequest) {
       avgScore: allProps.length > 0
         ? (allProps.reduce((sum, p) => sum + p.score, 0) / allProps.length).toFixed(2)
         : 0,
-      recentProperties: allProps.slice(0, 10).map(p => ({
+      allProperties: allProps.map(p => ({
         title: p.title?.substring(0, 50),
         price: p.price,
         m2: p.m2,
@@ -58,7 +67,9 @@ export async function GET(req: NextRequest) {
         status: p.status,
         portal: p.portal,
         zone: p.zone,
+        url: p.url?.substring(0, 80),
         createdAt: p.createdAt,
+        updatedAt: p.updatedAt,
       })),
     };
 
