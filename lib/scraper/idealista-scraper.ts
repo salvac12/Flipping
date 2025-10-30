@@ -9,6 +9,31 @@ import { getBrowserlessUnblockSession } from './browserless-unblock';
 // Aplicar plugin stealth para evitar detección de bots
 chromium.use(stealth());
 
+// User-Agents reales de diferentes navegadores y sistemas operativos
+const REAL_USER_AGENTS = [
+  // Chrome Windows
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+  // Chrome macOS
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+  // Firefox Windows
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0',
+  // Safari macOS
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15',
+];
+
+// Función para obtener User-Agent aleatorio
+function getRandomUserAgent(): string {
+  return REAL_USER_AGENTS[Math.floor(Math.random() * REAL_USER_AGENTS.length)];
+}
+
+// Función para delay aleatorio (simular comportamiento humano)
+function randomDelay(minMs: number, maxMs: number): Promise<void> {
+  const delay = Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
+  return new Promise(resolve => setTimeout(resolve, delay));
+}
+
 export interface ScrapedProperty {
   url: string;
   portal: 'IDEALISTA' | 'FOTOCASA' | 'PISOS_COM';
@@ -77,19 +102,37 @@ export class IdealistaScraper {
       }) as unknown as Browser;
     }
 
+    // User-Agent aleatorio para cada sesión
+    const userAgent = getRandomUserAgent();
+    console.log(`  🎭 User-Agent: ${userAgent.substring(0, 50)}...`);
+
     const context = await this.browser.newContext({
-      userAgent:
-        process.env.USER_AGENT ||
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      userAgent,
       viewport: { width: 1920, height: 1080 },
       locale: 'es-ES',
       timezoneId: 'Europe/Madrid',
+      // Headers adicionales más realistas
+      extraHTTPHeaders: {
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'DNT': '1',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-User': '?1',
+        'Cache-Control': 'max-age=0',
+      },
     });
 
-    // Evitar detección de automation
+    // Evitar detección de automation (stealth ya hace esto, pero reforzamos)
     await context.addInitScript(() => {
       // @ts-ignore
       Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+      // @ts-ignore
+      window.navigator.chrome = { runtime: {} };
     });
 
     this.page = await context.newPage();
@@ -195,11 +238,38 @@ export class IdealistaScraper {
 
       // Si usamos Unblock API, la página ya está cargada
       if (!this.usedUnblockAPI) {
-        console.log(`  📡 Navegando a: ${searchUrl}`);
-        await this.page!.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
+        // TÉCNICA 1: Simular venir de Google (Referer realista)
+        console.log(`  🌐 Paso 1: Navegando primero a Google (simular búsqueda real)...`);
+        await this.page!.goto('https://www.google.com', { waitUntil: 'networkidle', timeout: 20000 });
+        await randomDelay(1000, 2000);
 
-        // Dar tiempo extra para JavaScript
-        await this.page!.waitForTimeout(3000);
+        // TÉCNICA 2: Navegar a Idealista con Referer de Google
+        console.log(`  📡 Paso 2: Navegando a Idealista desde Google: ${searchUrl.substring(0, 60)}...`);
+        await this.page!.goto(searchUrl, {
+          waitUntil: 'networkidle',
+          timeout: 30000,
+          referer: 'https://www.google.com/'
+        });
+
+        // TÉCNICA 3: Comportamiento humano - Delays aleatorios
+        console.log(`  ⏱️  Paso 3: Esperando carga completa (simular lectura)...`);
+        await randomDelay(2000, 4000);
+
+        // TÉCNICA 4: Scrolling simulado (humanos hacen scroll antes de interactuar)
+        console.log(`  📜 Paso 4: Simulando scrolling humano...`);
+        await this.page!.evaluate(async () => {
+          // Scroll gradual hacia abajo
+          const distance = 100;
+          const delay = 100;
+          for (let i = 0; i < 5; i++) {
+            window.scrollBy(0, distance);
+            await new Promise(r => setTimeout(r, delay));
+          }
+          // Pequeño scroll hacia arriba (comportamiento natural)
+          window.scrollBy(0, -200);
+        });
+
+        await randomDelay(1000, 2000);
       } else {
         console.log('ℹ️ Usando sesión Unblock existente, página ya cargada');
         this.usedUnblockAPI = false; // Reset para siguientes zonas
@@ -229,6 +299,11 @@ export class IdealistaScraper {
       for (let i = 0; i < cardsToProcess; i++) {
         const card = cards[i];
         try {
+          // TÉCNICA 5: Delay entre cada propiedad (simular lectura humana)
+          if (i > 0) {
+            await randomDelay(500, 1500);
+          }
+
           const property = await this.extractPropertyFromCard(card);
 
           if (property && property.price && property.m2) {
