@@ -94,18 +94,13 @@ export class IdealistaScraper {
   private buildSearchUrl(zone: string): string {
     const baseUrl = 'https://www.idealista.com/venta-viviendas/madrid-madrid';
 
-    // Parámetros de búsqueda específicos
+    // Parámetros simplificados - sin filtros restrictivos que puedan dar 0 resultados
     const params = new URLSearchParams({
       ordenado: 'fecha-publicacion-desc', // Más recientes primero
-      operacion: 'venta',
-      estado: 'reformar', // Para reformar
-      superficieMinima: '120', // Mínimo 120m2
-      'solo-planta-exterior': 'true', // Solo exteriores
     });
 
-    // Agregar zona específica en la URL
-    const zoneUrl = zone.toLowerCase().replace('_', '-').replace(' ', '-');
-    return `${baseUrl}/${zoneUrl}?${params.toString()}`;
+    // Buscar en toda Madrid sin zona específica (más resultados)
+    return `${baseUrl}/?${params.toString()}`;
   }
 
   /**
@@ -193,14 +188,27 @@ export class IdealistaScraper {
 
       // Si usamos Unblock API, la página ya está cargada
       if (!this.usedUnblockAPI) {
-        await this.page!.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
+        console.log(`  📡 Navegando a: ${searchUrl}`);
+        await this.page!.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
+
+        // Dar tiempo extra para JavaScript
+        await this.page!.waitForTimeout(3000);
       } else {
         console.log('ℹ️ Usando sesión Unblock existente, página ya cargada');
         this.usedUnblockAPI = false; // Reset para siguientes zonas
       }
 
+      // DEBUG: Verificar qué recibimos
+      const pageTitle = await this.page!.title();
+      console.log(`  📄 Título de página: ${pageTitle}`);
+
+      const bodyText = await this.page!.$eval('body', (el: any) => el.textContent?.substring(0, 200) || '');
+      console.log(`  📝 Contenido: ${bodyText.substring(0, 100)}...`);
+
       // Esperar a que carguen las propiedades
-      await this.page!.waitForSelector('.item-info-container', { timeout: 10000 }).catch(() => {});
+      await this.page!.waitForSelector('.item-info-container', { timeout: 15000 }).catch(() => {
+        console.log('  ⚠️  Selector .item-info-container no encontrado');
+      });
 
       // OPTIMIZACIÓN: Solo procesar primera página y máximo 10 propiedades
       const maxProperties = 10;
@@ -488,11 +496,18 @@ export class IdealistaScraper {
 
     const allProperties: ScrapedProperty[] = [];
 
-    for (const zoneName of Object.keys(MADRID_ZONES)) {
+    // Solo procesar primera zona (suficiente para obtener 10 propiedades de toda Madrid)
+    const zonesToScrape = Object.keys(MADRID_ZONES).slice(0, 1);
+
+    for (const zoneName of zonesToScrape) {
       const properties = await this.scrapeZone(zoneName, maxPagesPerZone);
       allProperties.push(...properties);
 
-      // Sin delays - procesamos rápido para evitar timeouts
+      // Si alcanzamos suficientes propiedades, detener
+      if (allProperties.length >= 10) {
+        console.log(`  ⚠️  Límite de 10 propiedades alcanzado`);
+        break;
+      }
     }
 
     await this.close();

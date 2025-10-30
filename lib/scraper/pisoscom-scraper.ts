@@ -213,7 +213,8 @@ export class PisosComScraper {
 
   async scrapeAllZones(maxPagesPerZone: number = 2): Promise<ScrapedProperty[]> {
     await this.init();
-    const properties = await this.scrapeZone('MADRID', maxPagesPerZone);
+    // Solo primera página para evitar timeouts
+    const properties = await this.scrapeZone('MADRID', 1);
     await this.close();
     return properties;
   }
