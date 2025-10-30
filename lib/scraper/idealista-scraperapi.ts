@@ -35,16 +35,16 @@ export class IdealistaScraperAPI {
    * Construye la URL de búsqueda de Idealista
    */
   private buildSearchUrl(zone: string): string {
+    // URL simplificada para evitar errores 500 de ScraperAPI
     const baseUrl = 'https://www.idealista.com/venta-viviendas/madrid-madrid';
 
+    // Sin zona específica - buscar en todo Madrid
+    // Solo parámetros básicos que ScraperAPI puede manejar
     const params = new URLSearchParams({
       ordenado: 'fecha-publicacion-desc',
-      operacion: 'venta',
-      superficieMinima: '120',
     });
 
-    const zoneUrl = zone.toLowerCase().replace('_', '-').replace(' ', '-');
-    return `${baseUrl}/${zoneUrl}?${params.toString()}`;
+    return `${baseUrl}/?${params.toString()}`;
   }
 
   /**

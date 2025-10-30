@@ -9,18 +9,35 @@ export class PisosComScraper {
   private usedUnblockAPI: boolean = false;
 
   async init() {
-    // FORZAR Playwright local - Browserless está agotado (429 error)
-    // TODO: Cuando Browserless se renueve, considerar re-habilitar
-    console.log('💻 Pisos.com: Usando Playwright local (Browserless agotado)...');
-    this.browser = await chromium.launch({
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-setuid-sandbox',
-        '--disable-gpu',
-      ],
-    });
+    const isVercel = process.env.VERCEL === '1';
+
+    if (isVercel) {
+      console.log('☁️  Pisos.com: Usando @sparticuz/chromium para Vercel...');
+      const chromiumPkg = await import('@sparticuz/chromium');
+
+      this.browser = await chromium.launch({
+        headless: true,
+        executablePath: await chromiumPkg.default.executablePath(),
+        args: [
+          ...chromiumPkg.default.args,
+          '--no-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-setuid-sandbox',
+          '--disable-gpu',
+        ],
+      });
+    } else {
+      console.log('💻 Pisos.com: Usando Playwright local...');
+      this.browser = await chromium.launch({
+        headless: true,
+        args: [
+          '--no-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-setuid-sandbox',
+          '--disable-gpu',
+        ],
+      });
+    }
 
     const context = await this.browser.newContext({
       userAgent:

@@ -38,19 +38,37 @@ export class IdealistaScraper {
    * Inicializa el navegador con configuración anti-detección
    */
   async init() {
-    // FORZAR Playwright local - Browserless está agotado (429 error)
-    // TODO: Cuando Browserless se renueve, considerar re-habilitar
-    console.log('💻 Idealista: Usando Playwright local (Browserless agotado)...');
-    this.browser = await chromium.launch({
-      headless: true,
-      args: [
-        '--disable-blink-features=AutomationControlled',
-        '--no-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-setuid-sandbox',
-        '--disable-gpu',
-      ],
-    });
+    const isVercel = process.env.VERCEL === '1';
+
+    if (isVercel) {
+      console.log('☁️  Idealista: Usando @sparticuz/chromium para Vercel...');
+      const chromiumPkg = await import('@sparticuz/chromium');
+
+      this.browser = await chromium.launch({
+        headless: true,
+        executablePath: await chromiumPkg.default.executablePath(),
+        args: [
+          ...chromiumPkg.default.args,
+          '--disable-blink-features=AutomationControlled',
+          '--no-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-setuid-sandbox',
+          '--disable-gpu',
+        ],
+      });
+    } else {
+      console.log('💻 Idealista: Usando Playwright local...');
+      this.browser = await chromium.launch({
+        headless: true,
+        args: [
+          '--disable-blink-features=AutomationControlled',
+          '--no-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-setuid-sandbox',
+          '--disable-gpu',
+        ],
+      });
+    }
 
     const context = await this.browser.newContext({
       userAgent:

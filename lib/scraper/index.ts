@@ -25,12 +25,11 @@ export async function scrapeAllPortals(maxPagesPerZone: number = 2): Promise<{
   let errors = 0;
   let saved = 0;
 
-  // SCRAPERAPI: Idealista usando ScraperAPI (sin Playwright, funciona en Vercel)
-  // Pisos.com deshabilitado temporalmente (requiere Playwright/Chrome)
+  // Usando @sparticuz/chromium - funciona en Vercel con Playwright
   const portals = [
-    { name: 'Idealista (ScraperAPI)', fn: scrapeIdealistaWithScraperAPI }, // ✅ Usando ScraperAPI - NO requiere Chrome
-    // { name: 'Pisos.com', fn: scrapePisosCom }, // ❌ Deshabilitado: Playwright needs chrome binaries
-    // { name: 'Fotocasa', fn: scrapeFotocasa }, // Deshabilitado: no encuentra propiedades
+    { name: 'Idealista', fn: scrapeIdealista }, // ✅ Playwright + @sparticuz/chromium
+    { name: 'Pisos.com', fn: scrapePisosCom }, // ✅ Playwright + @sparticuz/chromium
+    // { name: 'Fotocasa', fn: scrapeFotocasa }, // ❌ Deshabilitado: no encuentra propiedades
   ];
 
   for (const portal of portals) {
