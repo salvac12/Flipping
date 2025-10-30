@@ -9,22 +9,18 @@ export class PisosComScraper {
   private usedUnblockAPI: boolean = false;
 
   async init() {
-    // Usar Browserless en producción, Playwright local en desarrollo
-    const browserlessToken = process.env.BROWSERLESS_API_KEY;
-
-    if (browserlessToken) {
-      // Usar conexión estándar (Unblock API desactivado temporalmente)
-      console.log('🌐 Pisos.com: Conectando a Browserless (estándar)...');
-      this.browser = await chromium.connectOverCDP(
-        `wss://production-sfo.browserless.io?token=${browserlessToken}`
-      );
-    } else {
-      console.log('💻 Pisos.com: Usando Playwright local...');
-      this.browser = await chromium.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-dev-shm-usage'],
-      });
-    }
+    // FORZAR Playwright local - Browserless está agotado (429 error)
+    // TODO: Cuando Browserless se renueve, considerar re-habilitar
+    console.log('💻 Pisos.com: Usando Playwright local (Browserless agotado)...');
+    this.browser = await chromium.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-setuid-sandbox',
+        '--disable-gpu',
+      ],
+    });
 
     const context = await this.browser.newContext({
       userAgent:

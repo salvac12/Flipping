@@ -38,27 +38,19 @@ export class IdealistaScraper {
    * Inicializa el navegador con configuración anti-detección
    */
   async init() {
-    // Usar Browserless en producción, Playwright local en desarrollo
-    const browserlessToken = process.env.BROWSERLESS_API_KEY;
-
-    if (browserlessToken) {
-      // Usar conexión estándar (Unblock API desactivado temporalmente)
-      console.log('🌐 Idealista: Conectando a Browserless (estándar)...');
-      this.browser = await chromium.connectOverCDP(
-        `wss://production-sfo.browserless.io?token=${browserlessToken}`
-      );
-    } else {
-      // Fallback a Playwright local (solo desarrollo)
-      console.log('💻 Usando Playwright local...');
-      this.browser = await chromium.launch({
-        headless: true,
-        args: [
-          '--disable-blink-features=AutomationControlled',
-          '--no-sandbox',
-          '--disable-dev-shm-usage',
-        ],
-      });
-    }
+    // FORZAR Playwright local - Browserless está agotado (429 error)
+    // TODO: Cuando Browserless se renueve, considerar re-habilitar
+    console.log('💻 Idealista: Usando Playwright local (Browserless agotado)...');
+    this.browser = await chromium.launch({
+      headless: true,
+      args: [
+        '--disable-blink-features=AutomationControlled',
+        '--no-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-setuid-sandbox',
+        '--disable-gpu',
+      ],
+    });
 
     const context = await this.browser.newContext({
       userAgent:
@@ -459,11 +451,6 @@ export class IdealistaScraper {
     return match ? parseInt(match[1]) : undefined;
   }
 
-  private async randomDelay(min: number, max: number) {
-    const delay = Math.random() * (max - min) + min;
-    await this.page!.waitForTimeout(delay);
-  }
-
   /**
    * Cierra el navegador
    */
@@ -487,8 +474,7 @@ export class IdealistaScraper {
       const properties = await this.scrapeZone(zoneName, maxPagesPerZone);
       allProperties.push(...properties);
 
-      // Delay entre zonas para evitar rate limiting
-      await this.randomDelay(3000, 6000);
+      // Sin delays - procesamos rápido para evitar timeouts
     }
 
     await this.close();
