@@ -183,45 +183,59 @@ export class IdealistaScraper {
 
       // Si usamos Unblock API, la página ya está cargada
       if (!this.usedUnblockAPI) {
-        await this.page!.goto(searchUrl, { waitUntil: 'networkidle', timeout: 30000 });
+        await this.page!.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
       } else {
         console.log('ℹ️ Usando sesión Unblock existente, página ya cargada');
         this.usedUnblockAPI = false; // Reset para siguientes zonas
       }
 
       // Esperar a que carguen las propiedades
-      await this.page!.waitForSelector('.item-info-container', { timeout: 10000 });
+      await this.page!.waitForSelector('.item-info-container', { timeout: 10000 }).catch(() => {});
 
-      for (let pageNum = 1; pageNum <= maxPages; pageNum++) {
-        console.log(`  Página ${pageNum}/${maxPages}`);
+      // OPTIMIZACIÓN: Solo procesar primera página y máximo 10 propiedades
+      const maxProperties = 10;
+      console.log(`  Procesando primera página (límite: ${maxProperties} propiedades)`);
 
-        // Extraer propiedades de la página actual
-        const cards = await this.page!.$$('.item-info-container');
+      // Extraer propiedades de la página actual
+      const cards = await this.page!.$$('.item-info-container');
+      const cardsToProcess = Math.min(cards.length, maxProperties);
+      console.log(`  Encontradas ${cards.length} cards, procesando ${cardsToProcess}`);
 
-        for (const card of cards) {
+      for (let i = 0; i < cardsToProcess; i++) {
+        const card = cards[i];
+        try {
           const property = await this.extractPropertyFromCard(card);
 
           if (property && property.price && property.m2) {
-            // Obtener más detalles visitando la página individual
-            const fullProperty = await this.scrapePropertyDetails(property as any);
+            // OPTIMIZACIÓN: No visitar páginas individuales, trabajar solo con datos del listado
+            // Calcular scoring con los datos disponibles
+            const scoring = calculatePropertyScore({
+              ...property,
+              zone: zoneName,
+            } as any);
 
-            if (fullProperty) {
-              properties.push(fullProperty);
-            }
+            const fullProperty: ScrapedProperty = {
+              ...property,
+              zone: zoneName,
+              hasLift: false, // Por defecto
+              images: [],
+              score: scoring.totalScore,
+              scoreDetails: scoring,
+            } as ScrapedProperty;
+
+            properties.push(fullProperty);
+            console.log(`  ✅ ${i + 1}/${cardsToProcess}: ${property.title?.substring(0, 40)}... - ${property.price}€ - ${property.m2}m²`);
+          } else {
+            console.log(`  ⏭️  ${i + 1}/${cardsToProcess}: Saltada (datos incompletos o < 120m²)`);
           }
 
-          // Delay aleatorio para parecer humano
-          await this.randomDelay(500, 1500);
-        }
-
-        // Ir a la siguiente página
-        const nextButton = await this.page!.$('.next');
-        if (nextButton && pageNum < maxPages) {
-          await nextButton.click();
-          await this.page!.waitForTimeout(2000);
-          await this.page!.waitForSelector('.item-info-container', { timeout: 10000 });
-        } else {
-          break;
+          // Si alcanzamos el límite, detener
+          if (properties.length >= maxProperties) {
+            console.log(`  ⚠️  Límite de ${maxProperties} propiedades alcanzado`);
+            break;
+          }
+        } catch (error) {
+          console.error(`  ❌ Error procesando card ${i + 1}:`, error);
         }
       }
 

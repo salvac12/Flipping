@@ -24,11 +24,11 @@ export async function scrapeAllPortals(maxPagesPerZone: number = 2): Promise<{
   let saved = 0;
 
   // Ejecutar secuencialmente para reducir consumo de minutos
-  // TEMPORAL: Solo Pisos.com para evitar timeout de 5 min en Vercel
+  // OPTIMIZADO: Pisos.com + Idealista (ambos limitados a 10 props y 1 página)
   const portals = [
     { name: 'Pisos.com', fn: scrapePisosCom },
+    { name: 'Idealista', fn: scrapeIdealista }, // ✅ Re-habilitado con optimizaciones
     // { name: 'Fotocasa', fn: scrapeFotocasa }, // Deshabilitado: no encuentra propiedades y causa timeout
-    // { name: 'Idealista', fn: scrapeIdealista }, // Deshabilitado: causa timeout (>3 min)
   ];
 
   for (const portal of portals) {
