@@ -1,7 +1,13 @@
-import { chromium, Browser, Page } from 'playwright';
+import { chromium as playwrightChromium } from 'playwright';
+import { chromium } from 'playwright-extra';
+import stealth from 'puppeteer-extra-plugin-stealth';
+import { Browser, Page } from 'playwright';
 import { MADRID_ZONES } from '../utils/zones';
 import { calculatePropertyScore } from '../scoring/property-scorer';
 import { getBrowserlessUnblockSession } from './browserless-unblock';
+
+// Aplicar plugin stealth para evitar detección de bots
+chromium.use(stealth());
 
 export interface ScrapedProperty {
   url: string;
@@ -35,15 +41,16 @@ export class IdealistaScraper {
   private usedUnblockAPI: boolean = false;
 
   /**
-   * Inicializa el navegador con configuración anti-detección
+   * Inicializa el navegador con configuración anti-detección + stealth
    */
   async init() {
     const isVercel = process.env.VERCEL === '1';
 
     if (isVercel) {
-      console.log('☁️  Idealista: Usando @sparticuz/chromium para Vercel...');
+      console.log('☁️  Idealista: Usando @sparticuz/chromium + stealth para Vercel...');
       const chromiumPkg = await import('@sparticuz/chromium');
 
+      // playwright-extra con stealth + chromium de Vercel
       this.browser = await chromium.launch({
         headless: true,
         executablePath: await chromiumPkg.default.executablePath(),
@@ -55,9 +62,9 @@ export class IdealistaScraper {
           '--disable-setuid-sandbox',
           '--disable-gpu',
         ],
-      });
+      }) as unknown as Browser;
     } else {
-      console.log('💻 Idealista: Usando Playwright local...');
+      console.log('💻 Idealista: Usando Playwright-extra + stealth local...');
       this.browser = await chromium.launch({
         headless: true,
         args: [
@@ -67,7 +74,7 @@ export class IdealistaScraper {
           '--disable-setuid-sandbox',
           '--disable-gpu',
         ],
-      });
+      }) as unknown as Browser;
     }
 
     const context = await this.browser.newContext({
