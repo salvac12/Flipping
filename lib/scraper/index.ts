@@ -1,12 +1,14 @@
 import { scrapeIdealista } from './idealista-scraper';
 import { scrapeFotocasa } from './fotocasa-scraper';
 import { scrapePisosCom } from './pisoscom-scraper';
+import { scrapeIdealistaWithScraperAPI } from './idealista-scraperapi';
 import { ScrapedProperty } from './idealista-scraper';
 import prisma from '@/lib/db/prisma';
 
 export * from './idealista-scraper';
 export * from './fotocasa-scraper';
 export * from './pisoscom-scraper';
+export * from './idealista-scraperapi';
 
 /**
  * Ejecuta todos los scrapers en paralelo
@@ -23,11 +25,11 @@ export async function scrapeAllPortals(maxPagesPerZone: number = 2): Promise<{
   let errors = 0;
   let saved = 0;
 
-  // TEMPORAL: Solo Pisos.com hasta solucionar Playwright en Vercel
-  // Idealista requiere chrome-aws-lambda o Browserless (cuota agotada)
+  // SCRAPERAPI: Idealista usando ScraperAPI (sin Playwright, funciona en Vercel)
+  // Pisos.com deshabilitado temporalmente (requiere Playwright/Chrome)
   const portals = [
-    { name: 'Pisos.com', fn: scrapePisosCom },
-    // { name: 'Idealista', fn: scrapeIdealista }, // ❌ Deshabilitado: Playwright needs chrome binaries not available in Vercel
+    { name: 'Idealista (ScraperAPI)', fn: scrapeIdealistaWithScraperAPI }, // ✅ Usando ScraperAPI - NO requiere Chrome
+    // { name: 'Pisos.com', fn: scrapePisosCom }, // ❌ Deshabilitado: Playwright needs chrome binaries
     // { name: 'Fotocasa', fn: scrapeFotocasa }, // Deshabilitado: no encuentra propiedades
   ];
 
