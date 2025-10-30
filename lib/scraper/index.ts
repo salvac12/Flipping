@@ -23,12 +23,12 @@ export async function scrapeAllPortals(maxPagesPerZone: number = 2): Promise<{
   let errors = 0;
   let saved = 0;
 
-  // Ejecutar secuencialmente para reducir consumo de minutos
-  // OPTIMIZADO: Pisos.com + Idealista (ambos limitados a 10 props y 1 página)
+  // TEMPORAL: Solo Pisos.com hasta solucionar Playwright en Vercel
+  // Idealista requiere chrome-aws-lambda o Browserless (cuota agotada)
   const portals = [
     { name: 'Pisos.com', fn: scrapePisosCom },
-    { name: 'Idealista', fn: scrapeIdealista }, // ✅ Re-habilitado con optimizaciones
-    // { name: 'Fotocasa', fn: scrapeFotocasa }, // Deshabilitado: no encuentra propiedades y causa timeout
+    // { name: 'Idealista', fn: scrapeIdealista }, // ❌ Deshabilitado: Playwright needs chrome binaries not available in Vercel
+    // { name: 'Fotocasa', fn: scrapeFotocasa }, // Deshabilitado: no encuentra propiedades
   ];
 
   for (const portal of portals) {
