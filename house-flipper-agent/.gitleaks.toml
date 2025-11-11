@@ -1,0 +1,53 @@
+# Gitleaks configuration for house-flipper-agent
+title = "Gitleaks configuration"
+
+[extend]
+# useDefault will extend the base configuration with the default gitleaks config:
+# https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml
+useDefault = true
+
+[allowlist]
+description = "Allowlist for false positives"
+paths = [
+  # Analysis files containing public Idealista API keys (not our keys)
+  '''scripts/idealista-api-analysis\.json''',
+  '''scripts/idealista-html-analysis\.json''',
+  '''scripts/IDEALISTA_FINDINGS\.md''',
+  # Documentation files with example secrets
+  '''SECURITY\.md''',
+  '''README\.md''',
+]
+
+# Allow example/template files
+regexes = [
+  '''example''',
+  '''\.env\.example''',
+  '''EXAMPLE''',
+  '''your-.*-here''',
+]
+
+# Custom rules for your specific API keys
+[[rules]]
+id = "mapbox-token"
+description = "Mapbox API Token"
+regex = '''pk\.[a-zA-Z0-9]{60,}'''
+tags = ["key", "mapbox"]
+
+[[rules]]
+id = "scraperapi-key"
+description = "ScraperAPI Key"
+regex = '''[a-f0-9]{32}'''
+tags = ["key", "scraperapi"]
+# Note: This pattern is generic, adjust if needed
+
+[[rules]]
+id = "nextauth-secret"
+description = "NextAuth Secret"
+regex = '''NEXTAUTH_SECRET\s*=\s*[\"']?([a-zA-Z0-9+/=]{40,})[\"']?'''
+tags = ["secret", "nextauth"]
+
+[[rules]]
+id = "database-url"
+description = "PostgreSQL Database URL"
+regex = '''postgres(ql)?:\/\/[^\s"']+'''
+tags = ["secret", "database"]

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Flipper Pro - Alimentar Precios de Referencia</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --primary-500: #3b82f6;
+      --primary-600: #2563eb;
+      --success-500: #10b981;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f9fafb;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      transition: all 0.3s ease;
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+    }
+
+    .select-field:focus, .input-field:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .scraper-card {
+      border: 2px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .scraper-card:hover {
+      border-color: #3b82f6;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    }
+
+    .scraper-card.active {
+      border-color: #10b981;
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .animate-spin {
+      animation: spin 1s linear infinite;
+    }
+
+    .progress-bar {
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      transition: width 0.3s ease;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-lg font-bold text-gray-900">House Flipper Pro</h1>
+            <p class="text-xs text-gray-500">Alimentar Precios de Referencia</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="window.location.href='calculator-complete.html'" class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-lg">
+            🧮 Calculadora
+          </button>
+          <button onclick="window.location.href='pricing-reference.html'" class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg">
+            💰 Consultar Precios
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">Alimentar Base de Datos de Precios</h2>
+      <p class="text-gray-600">Añade nuevas propiedades para mejorar los precios de referencia</p>
+    </div>
+
+    <!-- PASO 1: Selección de Ciudad/Barrio -->
+    <div class="card p-6 mb-8">
+      <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+        <span class="flex items-center justify-center w-8 h-8 bg-blue-100 text-blue-600 rounded-full font-bold">1</span>
+        Selecciona Ciudad y Barrio
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <!-- Ciudad -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Ciudad</label>
+          <select id="city-select" class="select-field w-full px-4 py-3 border border-gray-300 rounded-lg" onchange="updateNeighborhoods()">
+            <option value="madrid">Madrid</option>
+          </select>
+        </div>
+
+        <!-- Barrio -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Barrio / Distrito</label>
+          <select id="neighborhood-select" class="select-field w-full px-4 py-3 border border-gray-300 rounded-lg" onchange="loadNeighborhoodData()">
+            <option value="">Selecciona un barrio...</option>
+            <option value="barrio-salamanca">Barrio de Salamanca (2.246)</option>
+            <option value="centro">Centro (2.012)</option>
+            <option value="chamberi">Chamberí (1.034)</option>
+            <option value="carabanchel">Carabanchel (815)</option>
+            <option value="tetuan">Tetuán (765)</option>
+            <option value="ciudad-lineal">Ciudad Lineal (669)</option>
+            <option value="puente-vallecas">Puente de Vallecas (658)</option>
+            <option value="goya">Goya, Barrio de Salamanca (657)</option>
+            <option value="chamartin">Chamartín (647)</option>
+            <option value="retiro">Retiro (641)</option>
+            <option value="moncloa">Moncloa (615)</option>
+            <option value="fuencarral">Fuencarral (525)</option>
+            <option value="arganzuela">Arganzuela (521)</option>
+            <option value="san-blas">San Blas (505)</option>
+            <option value="lavapies">Lavapiés-Embajadores, Centro (502)</option>
+            <option value="latina">Latina (501)</option>
+            <option value="hortaleza">Hortaleza (476)</option>
+            <option value="recoletos">Recoletos, Barrio de Salamanca (475)</option>
+            <option value="malasana">Malasaña-Universidad, Centro (470)</option>
+            <option value="usera">Usera (431)</option>
+            <option value="villaverde">Villaverde (411)</option>
+            <option value="lista">Lista, Barrio de Salamanca (389)</option>
+            <option value="castellana">Castellana, Barrio de Salamanca (375)</option>
+            <option value="vicalvaro">Vicálvaro (333)</option>
+            <option value="villa-vallecas">Villa de Vallecas (323)</option>
+            <option value="almagro">Almagro, Chamberí (295)</option>
+            <option value="chueca">Chueca-Justicia, Centro (294)</option>
+            <option value="palacio">Palacio, Centro (283)</option>
+            <option value="trafalgar">Trafalgar, Chamberí (248)</option>
+            <option value="huertas">Huertas-Cortes, Centro (246)</option>
+            <option value="ibiza">Ibiza, Retiro (226)</option>
+            <option value="guindalera">Guindalera, Barrio de Salamanca (217)</option>
+            <option value="sol">Sol, Centro (217)</option>
+            <option value="san-diego">San Diego, Puente de Vallecas (212)</option>
+            <option value="villaverde-alto">Villaverde Alto, Villaverde (191)</option>
+            <option value="arguelles">Argüelles, Moncloa (189)</option>
+            <option value="cuatro-caminos">Cuatro Caminos, Tetuán (186)</option>
+            <option value="valdeacederas">Valdeacederas, Tetuán (177)</option>
+            <option value="moratalaz">Moratalaz (173)</option>
+            <option value="vista-alegre">Vista Alegre, Carabanchel (168)</option>
+            <option value="el-viso">El Viso, Chamartín (163)</option>
+            <option value="pueblo-nuevo">Pueblo Nuevo, Ciudad Lineal (163)</option>
+            <option value="nuevos-ministerios">Nuevos Ministerios-Ríos Rosas, Chamberí (158)</option>
+            <option value="palos-frontera">Palos de la Frontera, Arganzuela (149)</option>
+            <option value="penagrande">Peñagrande, Fuencarral (144)</option>
+            <option value="simancas">Simancas, San Blas (143)</option>
+            <option value="puerta-bonita">Puerta Bonita, Carabanchel (140)</option>
+            <option value="bellas-vistas">Bellas Vistas, Tetuán (134)</option>
+            <option value="fuente-berro">Fuente del Berro, Barrio de Salamanca (133)</option>
+            <option value="numancia">Numancia, Puente de Vallecas (133)</option>
+            <option value="san-isidro">San Isidro, Carabanchel (131)</option>
+            <option value="prosperidad">Prosperidad, Chamartín (128)</option>
+            <option value="pacifico">Pacífico, Retiro (126)</option>
+            <option value="puerta-angel">Puerta del Ángel, Latina (123)</option>
+            <option value="arapiles">Arapiles, Chamberí (122)</option>
+            <option value="berrocales">Los Berrocales, Vicálvaro (119)</option>
+            <option value="jeronimos">Jerónimos, Retiro (118)</option>
+            <option value="gaztambide">Gaztambide, Chamberí (117)</option>
+            <option value="cuzco">Cuzco-Castillejos, Tetuán (116)</option>
+            <option value="aluche">Aluche, Latina (115)</option>
+            <option value="aravaca">Aravaca, Moncloa (114)</option>
+            <option value="bernabeu">Bernabéu-Hispanoamérica, Chamartín (114)</option>
+            <option value="ensanche-vallecas">Ensanche de Vallecas - La Gavia (114)</option>
+            <option value="buena-vista">Buena Vista, Carabanchel (113)</option>
+            <option value="casco-vallecas">Casco Histórico de Vallecas (113)</option>
+            <option value="barajas">Barajas (109)</option>
+            <option value="nueva-espana">Nueva España, Chamartín (108)</option>
+            <option value="ventas">Ventas, Ciudad Lineal (100)</option>
+            <option value="pinar-rey">Pinar del Rey, Hortaleza (99)</option>
+            <option value="canillejas">Canillejas, San Blas (96)</option>
+            <option value="conde-orgaz">Conde Orgaz-Piovera, Hortaleza (95)</option>
+            <option value="delicias">Delicias, Arganzuela (95)</option>
+            <option value="acacias">Acacias, Arganzuela (94)</option>
+            <option value="concepcion">Concepción, Ciudad Lineal (94)</option>
+            <option value="vallehermoso">Vallehermoso, Chamberí (94)</option>
+            <option value="berruguete">Berruguete, Tetuán (93)</option>
+            <option value="moscardo">Moscardó, Usera (92)</option>
+            <option value="abrantes">Abrantes, Carabanchel (90)</option>
+            <option value="palomeras-sureste">Palomeras sureste, Puente de Vallecas (90)</option>
+            <option value="lucero">Lucero, Latina (85)</option>
+            <option value="palomeras-bajas">Palomeras Bajas, Puente de Vallecas (85)</option>
+            <option value="entrevias">Entrevías, Puente de Vallecas (79)</option>
+            <option value="pilar">Pilar, Fuencarral (79)</option>
+            <option value="canillas">Canillas, Hortaleza (78)</option>
+            <option value="opanel">Opañel, Carabanchel (78)</option>
+            <option value="tres-olivos">Tres Olivos - Valverde, Fuencarral (77)</option>
+            <option value="rosales">Los Rosales, Villaverde (76)</option>
+            <option value="quintana">Quintana, Ciudad Lineal (75)</option>
+            <option value="imperial">Imperial, Arganzuela (73)</option>
+            <option value="almendrales">Almendrales, Usera (71)</option>
+            <option value="plantio">El Plantío, Moncloa (71)</option>
+            <option value="valdezarza">Valdezarza, Moncloa (70)</option>
+            <option value="ciudad-jardin">Ciudad Jardín, Chamartín (69)</option>
+            <option value="sanchinarro">Sanchinarro, Hortaleza (69)</option>
+            <option value="aguilas">Águilas, Latina (67)</option>
+            <option value="pradolongo">Pradolongo, Usera (66)</option>
+            <option value="castilla">Castilla, Chamartín (65)</option>
+            <option value="comillas">Comillas, Carabanchel (65)</option>
+            <option value="rejas">Rejas, San Blas (65)</option>
+            <option value="chopera">Chopera, Arganzuela (64)</option>
+            <option value="valdemarin">Valdemarín, Moncloa (63)</option>
+            <option value="octubre-orcasur">12 de Octubre-Orcasur, Usera (62)</option>
+            <option value="adelfas">Adelfas, Retiro (62)</option>
+            <option value="ciudad-universitaria">Ciudad Universitaria, Moncloa (61)</option>
+            <option value="santa-eugenia">Santa Eugenia, Villa de Vallecas (61)</option>
+            <option value="colina">Colina, Ciudad Lineal (60)</option>
+            <option value="costillares">Costillares, Ciudad Lineal (59)</option>
+            <option value="las-tablas">Las Tablas, Fuencarral (59)</option>
+            <option value="portazgo">Portazgo, Puente de Vallecas (59)</option>
+            <option value="ventilla">Ventilla-Almenara, Tetuán (59)</option>
+            <option value="fontarron">Fontarrón, Moratalaz (58)</option>
+            <option value="san-cristobal">San Cristóbal, Villaverde (58)</option>
+            <option value="san-pascual">San Pascual, Ciudad Lineal (58)</option>
+            <option value="san-fermin">San Fermín, Usera (56)</option>
+            <option value="estrella">Estrella, Retiro (55)</option>
+            <option value="arcos">Arcos, San Blas (54)</option>
+            <option value="la-paz">La Paz, Fuencarral (54)</option>
+            <option value="nino-jesus">Niño Jesús, Retiro (54)</option>
+            <option value="canaveral">El Cañaveral, Vicálvaro (51)</option>
+            <option value="carmenes">Los Cármenes, Latina (49)</option>
+            <option value="san-juan-bautista">San Juan Bautista, Ciudad Lineal (49)</option>
+            <option value="orcasitas">Orcasitas, Usera (48)</option>
+            <option value="amposta">Amposta, San Blas (47)</option>
+            <option value="casa-campo">Casa de Campo, Moncloa (47)</option>
+            <option value="legazpi">Legazpi, Arganzuela (46)</option>
+            <option value="valdebebas">Valdebebas - Valdefuentes, Hortaleza (46)</option>
+            <option value="ambroz">Ambroz, Vicálvaro (44)</option>
+            <option value="butarque">Butarque, Villaverde (43)</option>
+            <option value="angeles">Los Ángeles, Villaverde (43)</option>
+            <option value="casco-vicalvaro">Casco Histórico de Vicálvaro (42)</option>
+            <option value="salvador">Salvador, San Blas (42)</option>
+            <option value="cerros">Los Cerros, Vicálvaro (41)</option>
+            <option value="alameda-osuna">Alameda de Osuna, Barajas (39)</option>
+            <option value="montecarmelo">Montecarmelo, Fuencarral (39)</option>
+            <option value="campamento">Campamento, Latina (37)</option>
+            <option value="vinateros">Vinateros, Moratalaz (37)</option>
+            <option value="zofio">Zofío, Usera (36)</option>
+            <option value="marroquina">Marroquina, Moratalaz (35)</option>
+            <option value="valdecarros">Valdecarros, Villa de Vallecas (35)</option>
+            <option value="mirasierra">Mirasierra, Fuencarral (34)</option>
+            <option value="hellin">Hellín, San Blas (33)</option>
+            <option value="virgen-cortijo">Virgen del Cortijo - Manoteras, Hortaleza (33)</option>
+            <option value="palomas">Palomas, Hortaleza (31)</option>
+            <option value="pau-carabanchel">Pau de Carabanchel (30)</option>
+            <option value="media-legua">Media Legua, Moratalaz (28)</option>
+            <option value="apostol-santiago">Apóstol Santiago, Hortaleza (25)</option>
+            <option value="cuatro-vientos">Cuatro Vientos, Latina (25)</option>
+            <option value="rosas">Rosas, San Blas (25)</option>
+            <option value="timon">Timón, Barajas (25)</option>
+            <option value="campo-naciones">Campo de las Naciones-Corralejos, Barajas (20)</option>
+            <option value="casco-barajas">Casco Histórico de Barajas (19)</option>
+            <option value="fuentelarreina">Fuentelarreina, Fuencarral (19)</option>
+            <option value="ahijones">Los Ahijones, Vicálvaro (19)</option>
+            <option value="valdebernardo">Valdebernardo - Valderrivas, Vicálvaro (17)</option>
+            <option value="arroyo-fresno">Arroyo del Fresno, Fuencarral (12)</option>
+            <option value="atalaya">Atalaya, Ciudad Lineal (11)</option>
+            <option value="pavones">Pavones, Moratalaz (9)</option>
+            <option value="el-pardo">El Pardo, Fuencarral (8)</option>
+            <option value="aeropuerto">Aeropuerto, Barajas (6)</option>
+            <option value="horcajo">Horcajo, Moratalaz (6)</option>
+          </select>
+          <p class="text-xs text-gray-500 mt-1">169 barrios disponibles</p>
+        </div>
+      </div>
+
+      <!-- Stats de BBDD -->
+      <div id="db-stats" class="hidden">
+        <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-700">Propiedades en Base de Datos</p>
+              <p id="db-count" class="text-3xl font-bold text-blue-600 mt-1">247</p>
+              <p class="text-xs text-gray-600 mt-1">
+                <span id="reformed-count" class="font-medium">142 reformadas</span> •
+                <span id="unreformed-count" class="font-medium">105 sin reformar</span>
+              </p>
+            </div>
+            <div class="text-right">
+              <p class="text-sm text-gray-600">Última actualización</p>
+              <p id="last-update" class="text-sm font-medium text-gray-900">Hace 2 días</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opciones -->
+        <div class="mt-6 grid grid-cols-2 gap-4">
+          <button onclick="useExistingData()" class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors">
+            ✅ Usar Datos Existentes
+          </button>
+          <button onclick="showAddMoreOptions()" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+            ➕ Añadir Más Propiedades
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 2: Añadir Más Propiedades (oculto por defecto) -->
+    <div id="add-more-section" class="hidden space-y-8">
+
+      <!-- Opción A: Scrapers Automáticos -->
+      <div class="card p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+          <span class="flex items-center justify-center w-8 h-8 bg-purple-100 text-purple-600 rounded-full font-bold">2A</span>
+          Lanzar Scrapers Automáticos
+        </h3>
+
+        <p class="text-sm text-gray-600 mb-6">Selecciona uno o varios scrapers para obtener propiedades automáticamente</p>
+
+        <!-- Lista de Scrapers -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+
+          <!-- Idealista -->
+          <label class="scraper-card p-4 rounded-lg cursor-pointer">
+            <div class="flex items-start gap-3">
+              <input type="checkbox" class="scraper-checkbox mt-1 w-5 h-5 rounded" data-scraper="idealista" onchange="updateScraperSelection()">
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="font-semibold text-gray-900">Idealista</span>
+                  <span class="px-2 py-0.5 text-xs font-medium bg-green-100 text-green-700 rounded">Activo</span>
+                </div>
+                <p class="text-xs text-gray-600">Portal principal de inmuebles en España</p>
+                <p class="text-xs text-blue-600 mt-1">~50-100 propiedades/búsqueda</p>
+              </div>
+            </div>
+          </label>
+
+          <!-- Fotocasa -->
+          <label class="scraper-card p-4 rounded-lg cursor-pointer">
+            <div class="flex items-start gap-3">
+              <input type="checkbox" class="scraper-checkbox mt-1 w-5 h-5 rounded" data-scraper="fotocasa" onchange="updateScraperSelection()">
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="font-semibold text-gray-900">Fotocasa</span>
+                  <span class="px-2 py-0.5 text-xs font-medium bg-green-100 text-green-700 rounded">Activo</span>
+                </div>
+                <p class="text-xs text-gray-600">Portal de anuncios inmobiliarios</p>
+                <p class="text-xs text-blue-600 mt-1">~30-80 propiedades/búsqueda</p>
+              </div>
+            </div>
+          </label>
+
+          <!-- Pisos.com -->
+          <label class="scraper-card p-4 rounded-lg cursor-pointer">
+            <div class="flex items-start gap-3">
+              <input type="checkbox" class="scraper-checkbox mt-1 w-5 h-5 rounded" data-scraper="pisoscom" onchange="updateScraperSelection()">
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="font-semibold text-gray-900">Pisos.com</span>
+                  <span class="px-2 py-0.5 text-xs font-medium bg-green-100 text-green-700 rounded">Activo</span>
+                </div>
+                <p class="text-xs text-gray-600">Portal de compraventa</p>
+                <p class="text-xs text-blue-600 mt-1">~40-90 propiedades/búsqueda</p>
+              </div>
+            </div>
+          </label>
+
+          <!-- Clikalia -->
+          <label class="scraper-card p-4 rounded-lg cursor-pointer">
+            <div class="flex items-start gap-3">
+              <input type="checkbox" class="scraper-checkbox mt-1 w-5 h-5 rounded" data-scraper="clikalia" onchange="updateScraperSelection()">
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="font-semibold text-gray-900">Clikalia</span>
+                  <span class="px-2 py-0.5 text-xs font-medium bg-green-100 text-green-700 rounded">Activo</span>
+                </div>
+                <p class="text-xs text-gray-600">Inmobiliaria especializada en reformas</p>
+                <p class="text-xs text-blue-600 mt-1">~20-50 propiedades/búsqueda</p>
+              </div>
+            </div>
+          </label>
+
+          <!-- Gilmar -->
+          <label class="scraper-card p-4 rounded-lg cursor-pointer">
+            <div class="flex items-start gap-3">
+              <input type="checkbox" class="scraper-checkbox mt-1 w-5 h-5 rounded" data-scraper="gilmar" onchange="updateScraperSelection()">
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="font-semibold text-gray-900">Gilmar</span>
+                  <span class="px-2 py-0.5 text-xs font-medium bg-green-100 text-green-700 rounded">Activo</span>
+                </div>
+                <p class="text-xs text-gray-600">Inmobiliaria premium Madrid</p>
+                <p class="text-xs text-blue-600 mt-1">~30-60 propiedades/búsqueda</p>
+              </div>
+            </div>
+          </label>
+
+          <!-- Placeholder para nuevo scraper -->
+          <div class="scraper-card p-4 rounded-lg border-dashed opacity-50">
+            <div class="flex items-center justify-center h-full">
+              <div class="text-center">
+                <svg class="w-8 h-8 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                <p class="text-xs text-gray-500">Añadir nuevo scraper</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Resumen de selección -->
+        <div id="scraper-summary" class="hidden p-4 bg-purple-50 border border-purple-200 rounded-lg mb-4">
+          <p class="text-sm font-medium text-gray-900">
+            <span id="selected-count">0</span> scrapers seleccionados
+          </p>
+          <p class="text-xs text-gray-600 mt-1">
+            Estimado: <span id="estimated-properties" class="font-medium">0-0</span> propiedades
+          </p>
+        </div>
+
+        <!-- Botón Lanzar -->
+        <button id="launch-scrapers-btn" onclick="launchScrapers()" disabled class="w-full px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+          🚀 Lanzar Scrapers Seleccionados
+        </button>
+
+        <!-- Progress -->
+        <div id="scraper-progress" class="hidden mt-6">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-sm">
+              <span class="font-medium text-gray-700">Progreso del Scraping</span>
+              <span id="progress-percentage" class="text-blue-600 font-bold">0%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3">
+              <div id="progress-bar" class="progress-bar h-3 rounded-full" style="width: 0%"></div>
+            </div>
+            <div id="scraper-logs" class="p-3 bg-gray-50 rounded-lg text-xs font-mono text-gray-700 max-h-40 overflow-y-auto">
+              <p>Iniciando scrapers...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción B: Entrada Manual por URL -->
+      <div class="card p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+          <span class="flex items-center justify-center w-8 h-8 bg-green-100 text-green-600 rounded-full font-bold">2B</span>
+          Añadir por URL
+        </h3>
+
+        <p class="text-sm text-gray-600 mb-4">Pega la URL de una propiedad de cualquier portal</p>
+
+        <div class="space-y-4">
+          <div class="flex gap-2">
+            <input
+              type="url"
+              id="property-url"
+              placeholder="https://www.idealista.com/inmueble/..."
+              class="input-field flex-1 px-4 py-3 border border-gray-300 rounded-lg"
+            />
+            <button onclick="parsePropertyURL()" class="btn-gradient px-6 py-3 text-white font-semibold rounded-lg whitespace-nowrap">
+              Analizar
+            </button>
+          </div>
+
+          <div class="text-xs text-gray-500">
+            <p class="mb-1">Portales soportados:</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-100 rounded">Idealista</span>
+              <span class="px-2 py-1 bg-gray-100 rounded">Fotocasa</span>
+              <span class="px-2 py-1 bg-gray-100 rounded">Pisos.com</span>
+              <span class="px-2 py-1 bg-gray-100 rounded">Clikalia</span>
+              <span class="px-2 py-1 bg-gray-100 rounded">Gilmar</span>
+            </div>
+          </div>
+
+          <!-- Preview -->
+          <div id="url-preview" class="hidden p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div class="flex items-center gap-2 text-green-700 mb-3">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-semibold">Propiedad extraída</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-sm mb-3">
+              <div><span class="text-gray-600">Precio:</span> <span class="font-semibold">€385,000</span></div>
+              <div><span class="text-gray-600">Superficie:</span> <span class="font-semibold">120 m²</span></div>
+              <div><span class="text-gray-600">Estado:</span> <span class="font-semibold">Reformado</span></div>
+              <div><span class="text-gray-600">Barrio:</span> <span class="font-semibold">Guindalera</span></div>
+            </div>
+            <button onclick="savePropertyFromURL()" class="w-full btn-gradient px-4 py-2 text-white font-semibold rounded-lg">
+              💾 Guardar en Base de Datos
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opción C: Entrada Manual por Texto -->
+      <div class="card p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+          <span class="flex items-center justify-center w-8 h-8 bg-orange-100 text-orange-600 rounded-full font-bold">2C</span>
+          Añadir copiando Texto
+        </h3>
+
+        <p class="text-sm text-gray-600 mb-4">Copia y pega el texto completo del anuncio</p>
+
+        <div class="space-y-4">
+          <div class="flex gap-2 mb-2">
+            <button onclick="pasteFromClipboard()" class="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+              Pegar
+            </button>
+            <button onclick="clearText()" class="px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg">
+              Limpiar
+            </button>
+          </div>
+
+          <textarea
+            id="property-text"
+            placeholder="Pega aquí el texto del anuncio...
+
+Ejemplo:
+Piso en venta en CL Francisco Silvela
+Guindalera, Madrid
+385.000 €
+120 m² | 3 hab. | 2 baños
+Planta 3ª exterior con ascensor
+Reformado completamente..."
+            class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg font-mono text-sm"
+            rows="8"
+          ></textarea>
+
+          <button onclick="extractFromText()" class="w-full btn-gradient px-6 py-3 text-white font-semibold rounded-lg">
+            Extraer y Guardar Datos
+          </button>
+
+          <!-- Preview -->
+          <div id="text-preview" class="hidden p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div class="flex items-center gap-2 text-green-700 mb-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-semibold">Guardado en Base de Datos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    // Datos simulados de BBDD por barrio (genera datos aleatorios basados en número real de anuncios)
+    const neighborhoodDBData = {};
+
+    // Función para generar datos simulados realistas
+    function generateNeighborhoodData(totalAds) {
+      // Asumimos que tenemos entre 10-30% de los anuncios en BBDD
+      const percentage = 0.15 + Math.random() * 0.15; // 15-30%
+      const total = Math.floor(totalAds * percentage);
+      const reformedPercentage = 0.4 + Math.random() * 0.2; // 40-60% reformadas
+      const reformed = Math.floor(total * reformedPercentage);
+      const unreformed = total - reformed;
+
+      const daysAgo = Math.floor(Math.random() * 14) + 1; // 1-14 días
+      let lastUpdate;
+      if (daysAgo === 1) lastUpdate = 'Hace 1 día';
+      else if (daysAgo < 7) lastUpdate = `Hace ${daysAgo} días`;
+      else if (daysAgo < 14) lastUpdate = `Hace ${Math.floor(daysAgo / 7)} semana${Math.floor(daysAgo / 7) > 1 ? 's' : ''}`;
+      else lastUpdate = 'Hace 2 semanas';
+
+      return { total, reformed, unreformed, lastUpdate };
+    }
+
+    // Generar datos para los 169 barrios
+    const realAdCounts = {
+      'barrio-salamanca': 2246, 'centro': 2012, 'chamberi': 1034, 'carabanchel': 815,
+      'tetuan': 765, 'ciudad-lineal': 669, 'puente-vallecas': 658, 'goya': 657,
+      'chamartin': 647, 'retiro': 641, 'moncloa': 615, 'fuencarral': 525,
+      'arganzuela': 521, 'san-blas': 505, 'lavapies': 502, 'latina': 501,
+      'hortaleza': 476, 'recoletos': 475, 'malasana': 470, 'usera': 431,
+      'villaverde': 411, 'lista': 389, 'castellana': 375, 'vicalvaro': 333,
+      'villa-vallecas': 323, 'almagro': 295, 'chueca': 294, 'palacio': 283,
+      'trafalgar': 248, 'huertas': 246, 'ibiza': 226, 'guindalera': 217,
+      'sol': 217, 'san-diego': 212, 'villaverde-alto': 191, 'arguelles': 189,
+      'cuatro-caminos': 186, 'valdeacederas': 177, 'moratalaz': 173, 'vista-alegre': 168,
+      'el-viso': 163, 'pueblo-nuevo': 163, 'nuevos-ministerios': 158, 'palos-frontera': 149,
+      'penagrande': 144, 'simancas': 143, 'puerta-bonita': 140, 'bellas-vistas': 134,
+      'fuente-berro': 133, 'numancia': 133, 'san-isidro': 131, 'prosperidad': 128,
+      'pacifico': 126, 'puerta-angel': 123, 'arapiles': 122, 'berrocales': 119,
+      'jeronimos': 118, 'gaztambide': 117, 'cuzco': 116, 'aluche': 115,
+      'aravaca': 114, 'bernabeu': 114, 'ensanche-vallecas': 114, 'buena-vista': 113,
+      'casco-vallecas': 113, 'barajas': 109, 'nueva-espana': 108, 'ventas': 100,
+      'pinar-rey': 99, 'canillejas': 96, 'conde-orgaz': 95, 'delicias': 95,
+      'acacias': 94, 'concepcion': 94, 'vallehermoso': 94, 'berruguete': 93,
+      'moscardo': 92, 'abrantes': 90, 'palomeras-sureste': 90, 'lucero': 85,
+      'palomeras-bajas': 85, 'entrevias': 79, 'pilar': 79, 'canillas': 78,
+      'opanel': 78, 'tres-olivos': 77, 'rosales': 76, 'quintana': 75,
+      'imperial': 73, 'almendrales': 71, 'plantio': 71, 'valdezarza': 70,
+      'ciudad-jardin': 69, 'sanchinarro': 69, 'aguilas': 67, 'pradolongo': 66,
+      'castilla': 65, 'comillas': 65, 'rejas': 65, 'chopera': 64,
+      'valdemarin': 63, 'octubre-orcasur': 62, 'adelfas': 62, 'ciudad-universitaria': 61,
+      'santa-eugenia': 61, 'colina': 60, 'costillares': 59, 'las-tablas': 59,
+      'portazgo': 59, 'ventilla': 59, 'fontarron': 58, 'san-cristobal': 58,
+      'san-pascual': 58, 'san-fermin': 56, 'estrella': 55, 'arcos': 54,
+      'la-paz': 54, 'nino-jesus': 54, 'canaveral': 51, 'carmenes': 49,
+      'san-juan-bautista': 49, 'orcasitas': 48, 'amposta': 47, 'casa-campo': 47,
+      'legazpi': 46, 'valdebebas': 46, 'ambroz': 44, 'butarque': 43,
+      'angeles': 43, 'casco-vicalvaro': 42, 'salvador': 42, 'cerros': 41,
+      'alameda-osuna': 39, 'montecarmelo': 39, 'campamento': 37, 'vinateros': 37,
+      'zofio': 36, 'marroquina': 35, 'valdecarros': 35, 'mirasierra': 34,
+      'hellin': 33, 'virgen-cortijo': 33, 'palomas': 31, 'pau-carabanchel': 30,
+      'media-legua': 28, 'apostol-santiago': 25, 'cuatro-vientos': 25, 'rosas': 25,
+      'timon': 25, 'campo-naciones': 20, 'casco-barajas': 19, 'fuentelarreina': 19,
+      'ahijones': 19, 'valdebernardo': 17, 'arroyo-fresno': 12, 'atalaya': 11,
+      'pavones': 9, 'el-pardo': 8, 'aeropuerto': 6, 'horcajo': 6
+    };
+
+    // Generar datos para cada barrio
+    Object.keys(realAdCounts).forEach(key => {
+      neighborhoodDBData[key] = generateNeighborhoodData(realAdCounts[key]);
+    });
+
+    // Estimaciones de propiedades por scraper
+    const scraperEstimates = {
+      'idealista': { min: 50, max: 100 },
+      'fotocasa': { min: 30, max: 80 },
+      'pisoscom': { min: 40, max: 90 },
+      'clikalia': { min: 20, max: 50 },
+      'gilmar': { min: 30, max: 60 },
+    };
+
+    function updateNeighborhoods() {
+      console.log('Ciudad seleccionada');
+    }
+
+    function loadNeighborhoodData() {
+      const neighborhood = document.getElementById('neighborhood-select').value;
+
+      if (!neighborhood) {
+        document.getElementById('db-stats').classList.add('hidden');
+        document.getElementById('add-more-section').classList.add('hidden');
+        return;
+      }
+
+      const data = neighborhoodDBData[neighborhood] || { total: 0, reformed: 0, unreformed: 0, lastUpdate: 'Nunca' };
+
+      // Actualizar stats
+      document.getElementById('db-count').textContent = data.total;
+      document.getElementById('reformed-count').textContent = data.reformed + ' reformadas';
+      document.getElementById('unreformed-count').textContent = data.unreformed + ' sin reformar';
+      document.getElementById('last-update').textContent = data.lastUpdate;
+
+      // Mostrar stats
+      document.getElementById('db-stats').classList.remove('hidden');
+    }
+
+    function useExistingData() {
+      const neighborhood = document.getElementById('neighborhood-select').value;
+      alert('Usando datos existentes de la base de datos.\n\nLos precios de referencia se han calculado correctamente.');
+      // Redirigir a pricing-reference con barrio seleccionado
+      if (neighborhood) {
+        window.location.href = `pricing-reference.html?neighborhood=${neighborhood}`;
+      } else {
+        window.location.href = 'pricing-reference.html';
+      }
+    }
+
+    function showAddMoreOptions() {
+      document.getElementById('add-more-section').classList.remove('hidden');
+      document.getElementById('add-more-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function updateScraperSelection() {
+      const selected = document.querySelectorAll('.scraper-checkbox:checked');
+      const count = selected.length;
+
+      // Actualizar cards activos
+      document.querySelectorAll('.scraper-card').forEach(card => {
+        const checkbox = card.querySelector('.scraper-checkbox');
+        if (checkbox && checkbox.checked) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      // Calcular estimaciones
+      let minTotal = 0;
+      let maxTotal = 0;
+      selected.forEach(checkbox => {
+        const scraper = checkbox.dataset.scraper;
+        const estimates = scraperEstimates[scraper];
+        if (estimates) {
+          minTotal += estimates.min;
+          maxTotal += estimates.max;
+        }
+      });
+
+      // Actualizar summary
+      if (count > 0) {
+        document.getElementById('scraper-summary').classList.remove('hidden');
+        document.getElementById('selected-count').textContent = count;
+        document.getElementById('estimated-properties').textContent = minTotal + '-' + maxTotal;
+        document.getElementById('launch-scrapers-btn').disabled = false;
+      } else {
+        document.getElementById('scraper-summary').classList.add('hidden');
+        document.getElementById('launch-scrapers-btn').disabled = true;
+      }
+    }
+
+    function launchScrapers() {
+      const selected = Array.from(document.querySelectorAll('.scraper-checkbox:checked'))
+        .map(cb => cb.dataset.scraper);
+
+      if (selected.length === 0) return;
+
+      // Mostrar progress
+      document.getElementById('scraper-progress').classList.remove('hidden');
+      document.getElementById('launch-scrapers-btn').disabled = true;
+
+      // Simular scraping
+      const logs = document.getElementById('scraper-logs');
+      const progressBar = document.getElementById('progress-bar');
+      const progressPercentage = document.getElementById('progress-percentage');
+
+      let progress = 0;
+      let currentScraper = 0;
+
+      const interval = setInterval(() => {
+        progress += 5;
+        progressBar.style.width = progress + '%';
+        progressPercentage.textContent = progress + '%';
+
+        if (progress === 25) logs.innerHTML += '<p>✓ Idealista completado: 73 propiedades encontradas</p>';
+        if (progress === 50) logs.innerHTML += '<p>✓ Fotocasa completado: 48 propiedades encontradas</p>';
+        if (progress === 75) logs.innerHTML += '<p>✓ Clikalia completado: 31 propiedades encontradas</p>';
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          logs.innerHTML += '<p class="text-green-600 font-bold mt-2">✓ Scraping completado: 152 propiedades añadidas a la base de datos</p>';
+          setTimeout(() => {
+            alert('Scraping completado!\n\n152 nuevas propiedades añadidas.\n\nActualizando precios de referencia...');
+          }, 500);
+        }
+
+        logs.scrollTop = logs.scrollHeight;
+      }, 300);
+    }
+
+    function parsePropertyURL() {
+      const url = document.getElementById('property-url').value;
+      if (!url.trim()) {
+        alert('Por favor ingresa una URL');
+        return;
+      }
+
+      setTimeout(() => {
+        document.getElementById('url-preview').classList.remove('hidden');
+      }, 1000);
+    }
+
+    function savePropertyFromURL() {
+      alert('Propiedad guardada en la base de datos!\n\n1 nueva propiedad añadida.');
+      document.getElementById('property-url').value = '';
+      document.getElementById('url-preview').classList.add('hidden');
+    }
+
+    async function pasteFromClipboard() {
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById('property-text').value = text;
+      } catch (error) {
+        alert('No se pudo acceder al portapapeles. Pega manualmente con Ctrl+V o Cmd+V');
+      }
+    }
+
+    function clearText() {
+      document.getElementById('property-text').value = '';
+      document.getElementById('text-preview').classList.add('hidden');
+    }
+
+    function extractFromText() {
+      const text = document.getElementById('property-text').value;
+      if (!text.trim()) {
+        alert('Por favor pega el texto del anuncio');
+        return;
+      }
+
+      setTimeout(() => {
+        document.getElementById('text-preview').classList.remove('hidden');
+        alert('Propiedad extraída y guardada en la base de datos!\n\n1 nueva propiedad añadida.');
+        document.getElementById('property-text').value = '';
+      }, 500);
+    }
+
+  </script>
+
+</body>
+</html>

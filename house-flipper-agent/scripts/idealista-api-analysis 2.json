@@ -1,0 +1,1507 @@
+{
+  "targetUrl": "https://www.idealista.com/venta-viviendas/madrid-madrid/",
+  "timestamp": "2025-11-07T09:54:13.585Z",
+  "totalRequests": 312,
+  "apiRequests": [
+    {
+      "url": "https://geo.captcha-delivery.com/interstitial/",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://geo.captcha-delivery.com/interstitial/?initialCid=AHrlqAAAAAMA5vxuV9ClSE0AUSIVHQ%3D%3D&hash=AC81AADC3279CA4C7B968B717FBB30&cid=jNfkE3MfjKI5mtgNvc9gxna3raHhMQZlW0I~HBF_Hz61yh5MIqtzznPgemUJx5zV5KI8Q9a7B9h3mewGlIkWx_d0zFqy7Myjk99kU7_0riJEAc3DLBuvUvLV~OzeRibH&referer=https%3A%2F%2Fwww.idealista.com%2F&s=17156&b=1709036&dm=cd",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "sec-ch-ua-mobile": "?0",
+        "accept-language": "es-ES"
+      },
+      "postData": "cid=jNfkE3MfjKI5mtgNvc9gxna3raHhMQZlW0I~HBF_Hz61yh5MIqtzznPgemUJx5zV5KI8Q9a7B9h3mewGlIkWx_d0zFqy7Myjk99kU7_0riJEAc3DLBuvUvLV~OzeRibH&hash=AC81AADC3279CA4C7B968B717FBB30&referer=https%3A%2F%2Fwww.idealista.com%2F&url=https%3A%2F%2Fwww.idealista.com%2F&s=17156&e=&env=fd1d602976120ae0990655f6830a353104bf78ca456f6ec56b24034dfb865b8d7851a8de9edafedd770ae6394c85e83f&userEnv=1116bb20e8867cc38a16778e04855b7c7dc2ded96421e22fdc2f1aaaeb05569ee21f07937cd389dcfc9df5c295c78020&seed=654e4b01-c762-c7f0-295b-5fe06a5f71b6&b=1709036&dm=cd&ddMessageFormat=&payload=vLDWGyzYhry-cgs2kzW74av-scmFt_0-hmETVIo8-3UriuhXyJpkC3jMtA2vu0NXyGTj-c-SrOWRZ9Atf8CNjgxxKx78edsbSzs34A8OFqgcMx_8g4SA2ssCTT0tePmIQe2oepxQVbtccmkpiD-_K4H-uld-KEmYullPtXjRmVUMQdp98nfRb5-pmUqSUfXOsNf_mWbvMOswsotYJSFYygCvsjIr162LUFzaB_JkpqmpaxFuPgOXjpMbZwX3zo-xvilgGVtfcoQbfeUe675ghhlanHCHLN3YhaUHrRquPoXqrEiFr_JSqHIIzchmECMfNTOpmO5A3tKnxjKU64-gPcNFKhVLxkTZgsisW9HZ_hBfz01MmXIbCSegonm2Ig4d1xuGDMayXJgMHH1CDkcI7PWoGSXvfsaCMT2FU11Vbp6QoEsY-n_YbfpFbtW7bSffzQZzYAeosRA33YrrSWiiyAiDbV1HZzztC1ogQ1O-PrYo_diDQfpL1wsR6RFGcVeAi3nBUnHMCZbBGJEJhGvY8putPWfUFuolmzNBm1skaur1TGpyygf9Ql5cXgGg3zGAMFM-eNEl5sGV-1gtWRVuaUitqVWsMIkX-2qcUoxoLXQZtBtFz9lTMYPsnAvmWiUXBBvEVmmgS7Pf1sQuZm9LVaULOHGu7JFWu6JNQl9RdA4zCyHEyDJR_kYAFzVT1NcARi3mm_JigDbB5_OKXq0bUKynxxkUTpSj0saM1WFAHvFjI3Dml3y7L2R7x1sbOZIOkd3cjMm8z90ZOTZwC17MlIczSkvvkZcfuqQ-5WEXIDDbn8Zmmf_Efcmd8a-nnJy1SdoRUhIWI1mGTmSrlWO4u9wgH6oFr9z5eud3j-WR7oUy6baHlFzt2rd0ZXdykui5SPEcixgIajxSwjxWOinTJUSsJV3eT6SFrQtIKChyRFtFXO3AH-3szKkC0VLADKFIb65hv1qviMOSjSxDVAZrD_zUeieamqatveYdlkZQe1HczDAItYJtSkIgtNrN3xoqJduqVxNgo0NZKRrVIRkQRsTQBC7nIkDC2abOW6DLji0XrMY_cPOfos9zyV_J7Zx4DaGnka8apfdPsQRfGjUzSDqu3pvZjtWzhhvP1QFcs61iWq7EKL71oWlA5gJ9fVX0Aih1TGiP4e-rhB_48XSeYdmjaohI4S1wszlgOsLVp2e7FHlAJQnV6zaIwNeYksJQXdNSzjdc65AfKq1r8vf1TYUTC7rZQf7WxblHz8I9YxSiiHfZlKKzirvEbuEMwZcxPFhn79bP7dqLotOHf--zpV6XXtSAy6x_ACozdamC03T_83Zp5_TS4aSpKf_qimlsqmg4kBT8-Lr-27tJADYn3kgaODASX2gFfmKxyhu_b_nbOvS5iN5i9OoyhGhN4A0h4sGtK-YelJK-Yn13MbdKTDbiieegHCKEPkflDZUD0rbpzH865GabRfIDT0rshsOrhkXLClSKdKt3D5Iidiem51Op516FN-YKkJKFL_MCt--pIFja7zH3t--18EA_F762RnNkJuGvWLfQoWM3g2VoAss8NOdV_UX_ifOzWLQCOhEUaf0Tv7QXRO098iES5wkGudYeJjfKl-pho7-o0AtfylUuRnX0hdqtSzN216Ozqu-ox9vgc7VBnz2V50V5exrTb1W2BZvkAGu4hb-EdM1uvBiZIe3PaZ1NFtc8CShihUIpIxcseA9VWrW3cBdA9jwqlGfSCZ0AnMsZam-4A_pnjWfzbkVxlnlEktrvkOkVZJilfw20nBj8fGLNDAwGyIWIp-e2D-3dNctYbaVg6riU00rVVpILRRP3ZKSOsT7AWhrjO64_Llxz916704XOLOKuoOJWmyHzXCqVQMfJlJyb8Z8bzGAIlLbT97FuFfr1RqJ3bw__6BzU2zRlRAv6-LOBJRRjXJbeomLDLNaml1XT5gzC1ON0TxjN-TYl2DiPqU9B7H9ed9p3hYVDtXXpoKy-5PPSUyXarQ-tirwk0aa4EepyFHxAzXrGVQOfwVn5HEuWLBRCwUTlLYNMwZlKfsd9KU4kW1yYYcASFh1-Zc6DtaRUwWqrvqGgxSAuAbAa3WO7nh-dfOQ7v-aLwufNp7rGoms_Zkvr3-LpOZn1hVcdF82CAf-N5VKeyj3gpwFrxEiLurlk7-k33NPOsspLE4enY7MuuaXoFW2Wf-3AOp8pnAmu9VTAmT7iY3AISOnDVA_t_w_8jlwfoD4dfBicjw025J3Wleqn_tLZF2EeAbDGjKEBGyZYqYnSG1qRpam-WzAiUD8qY2v_GmQj160ab_Dy0ZaQpPqbhRE4PQcYNX54haM2lNmyyA0uUhd8AWSN_RG-h8Y8rmls_DDvU69VPeVj43iFvZknwRBERIm011ZqNpSHg5qKpMVF8eGlm-rH7hsiEBjr0CGlTWtPD1AJ14-FeqteY-Jldqwm5TLK458LrdsKW-ZCcfQ7KUjtjHkzVwKKrq8deOH2E1BXZh6al9ERFy7vFpgiBFtPqDotfwl7tnirHObDzgcTh4KR33Vh3nRkJDjfB-aYInMJTzp8WuN8Lz2DJlCJ8BseK_ZbU2hfH95rUjCjs6O1ZEBIUs0gToq4kRtHJcilaWNOC9eqHPga5ScRED1QG0LCn8mwnjHnsMNLkyt9oNfdA-jEnNuEIkSUy8tE7Nhhd93bipe9xRcQYEZW2wrqXn1wSgrMrDhMlOW2LnSW_ZCo1OUEHxGniwS-_eaGAieY0h5oNS9SfA_SRnREQyE4e1HR2CdmnllteNpc4NsA74n0doRDi5oiubkGBdt3tqgYrN4U1eXKxsVuLJ8ObMCKLMq0rweH2ih81CC47X6EEdLyyanQ_A4ZsEkfW6ZXohnDggMpH5SFe7Z2t_OOAB-Mk0k9T-dWRA2_S5Z0WJHBT108mzYX0pX6-3DcCfHxQYtqeKorwd0cFwS2OG4sCT6kHblSS5u2U6-M8mFwNut2aV_3qpwdx_R2EdUhTTn96Tynxx7itMjqzybI3QZRVH-2XKW_NDCLdEN1x1iJ6-JznNXswGnnTjtX1cltY001GUppwyvb1ykhs96Ld_XZ3Ql-RkGy3jf4Y8TmSIVtkXvvNN9LiYpiKH4xh78Xx-Ao4zCDOJMrthB5Uvfs10nGhOufm-h9lvvETib5UkKi2BbHF2KSCFf9iYINLvaH6hL4_HeIhF4CnhnCr7rXwoMK8joB_z8SQpD45rxHykD4XW4OdvmhAy1liqXWBNNHMKlSkrJIIuyeWuRsTWLbOpoxVfotTZWjVzxvH7OBBN7wyjQ3DoiR5CiH3gj63s7_LhkZPh-g0x6xcC79B5d6RFonf7w2-1x2gb0rsa15k8jQRsF5A50WhMi-zZP3oYGsyqthQATW3N3yloJBXGSyt8SF7fgChmV_xPlr9WFWAjF72NO1D88n86RGKCCVRi4KvyZO0IvPAMX4ykVFhDCRCFDWtOvhHA1DJiRGVAlwoEFNLpvBaE6kngXqffoTtnbOILtdiUtBhprs5vBbqCnZ-_nTcxsOUaMOsGxXGTXwG600y51ywqbR375XzXL8KgTNa9gbRe0FH3ynrdXSK2dgR-68w6GNw2Je-9-xXrI6_vbOfQF504LtpK3w52YjlkAMkiv6bWoQsCGoL3LTZBX5Z08i076ZQWDdtmNAPlLE30CulIcOcV-uY1rftiIuhbfT83qaqRIZn4cXtyEPQCZnEAENTUqznyZARBTnrgnt--i_MMEX7joT98KzzSoUU0Z1HJMrd9X8wj56jcJYsfq-Azn699P9ZihiWD7LM7EkoADOOC9phxTqxtrZ25pNJK76BOPfz_K4Zg8eYnVL2C2J-4Sqs-OpDkk13nUwgNXiuFyrTdVihjYTnXj6dCpGSiIjy2UvrCof2afMMl6GMWdGjPT0Q77mCo5XzSaqRkBu1uoqdI6zPwIU61nUxmE_Jkm_tiZBSivOydeoe5ZWkS1jt7RAu77DdsAxwsDyB0Va4e4JOj5YgQ9dLXDrcN5UGcv1hwmAeFqWL4jneEt1OaFv0z1oMtx6-Rx3BIFDjZHDV1jQ3hdcgKGe-Qm3mURPy3PJEcZkkNtI-wFYYuiYuGz99jePJlnjD0UlYPDTZ0t2mAsmvMiuex1Uw5vc5F86pH4rLKmc5aNrbao20e6FYwPFnC6sTTxpf0cKukGl8LG1o61_a2rhLXQgJG0TC5TZujwJ4FQlEasa3e102Sxi-essANMvy78iMTXv3iH2e-_REegs0iaTeSisxaWctfvj-8hs35C0cX2qtOyulpFdmyjGpmCXI7b2cXs2_G-_W-XVZRZj-XldEZZcQT8kwIUrsWGjuKZw6WF_xNpPHTWpl2uiVrvVhqPnQ_uCcGgWwquowibKHUcImEeSURYxS51Fdp8cvI8v4-dPI15mS_21_wmnSI7Z6AJIoRUQutdd15Cg7P9rGwpdZulITo0kSJza2mHeirSbR6dGmCKjUxZCK3S_qbzyObz2vZezIG2U4U09vdfHXnEnvMM367HbB5-8vgab5Cax2IIOHX7VXhqrpDyKBl77juh7363RNrv6D_rSwJ6ZwrjzHLMaWLmB8Z1IiyO4pS4lmMFziFTva6-QAaYR5pUX8N1FQYzpTtjgjq4tS3Sxx1HGbx8YOPDrQShoQtuaXMreVlb5-kpRZc5VAzOF4uZsuHiP20CH_lHfg-2f2_lVxWXX7MdujtZ6OYl4iWo3mgoOGmggMLgz_tjNi9k3L1G217qRO_Mf-05ku0L1U2HdAb_jxZqF--N3IzEVoOiqX54ePodzQZ98MC3P_DbGU2VW27HeULgaLtR4jAOwbgn3XGd1Fa9V5MIx6q0JESh8X2ehxoGtQL2ZKWC4BmeqQM6rbwpMnsy_P43S_b9GBMYe9yUPCIvQzWJ6bRRyj6UkFA_7Y6Im8SWA4wKNpTaUlAb8DGNTS-pAA2yaCcFWzdnMlFruLUstSO2RRdB8mZ3H8qnqVFa_AMQqPzx0FHrKOVOIaD5ERdltHJDBYX5KSd3IqhMtRWIS6pA5dpUDAI8N_znxZaZVYWrkhpiplPbqCpBKDbi0yrf2ODnOJw7_XKucnH1O5o0nHT2laPyL_t7FecdUiUuRXIW9Rlr1c5_wj59WUX-LHzSpyhljBMqDeeqmDwIOl2YJprPWHhHBAimqe8isOC18Uc46ysda3QQbo1wWg6EVUiXKGtLMX-C4u2tGHSfD_xfZt1b84zq0FPtYA5j8TK8Q6fPdNFFk3eTS9r5hAhmergZ89ti7xCd13d9T8WyQ1wupTIT30adF_mxmaWIcPI1FNsJKSWYEPKXVBsru443hcC1qzBpgO86YQyqVXTmpVh7vV1S60Vz50q6gCYV-1GDRbBVvxaIyeXthlCczdfq0ZcpRG2FkpxUCTDF8aU8YISFC_jMZuHNXzBflFxGp9YHGjNsH5wdNMeioT7KhAs_NZfHdIi3qxcvDJFH6wRWs5M7yeLbO6FQxFEfx8x4r_E-QWKdQlwHoPXxlBw_cnFkqxEWgskAlG6FlvLoHU55KwtWeUZlWq-UKu0s21Zm10oDnt67XLud0vdEjuQmWbEOXIhiFJM2xS1YgDfiq3oJho7mUCPIig9Ikl2Z0syXh_FGc6Rc4ZjJUQEdJscRPPPrSjpEQk7orz7EDLySPeWs3D_Buj6boiUIZKrvPH7dCO839bDhnNevjDw9G8vi5zftOQmo7ELFjX2vj1rgFIIpKNKI65ahb0VYgwI2LjW6J8eEJANmgkAcC69qim2QC43vujClJsdvWmxCEcBaMjWsVih8gzWmTi54HS5hm0azGbM9A2TmicArvZlfxFQdv_u3BCK7Td_0tfrZgq74hOd8En2sRUFOOJ_kbaCLSB-FduuTgJx1md-k7bjpvb0HNpKJSfSf-AKKqJZM07do9W8sLKLH0dxBFyTaYhq43xUYPuWlFtyAJ5nwTYSSHLfFsdy0O1GPhHLQDJULMRZVqZwCHloLRV2P6g_thpXKkFunPXOS5HXfC8EenJBanrmlbQumebJijhuj1zkHtHhSWkMd7zcpQEJYQ1_QTgT_iQFEWdJ_grXJ7Hxc_drQ6zed6UO1bsJncBUO8xW5epg3MKS9Sgk9XpEl8Ogq-yiWSOlZEaA-5YexlU7IQEd7doTi5f9mRRFDiQtdXCfsDM1ydkq5GiktSQywHdCoolA4c3TMiXcfjtnQlnSWx87WoVW37PHeDV3QjOo2W6aD9zvobwaUBRJ7ciDNXSriO6Z4AXfK55K6Dw2mroaW-dJprFG7jROtPNBpQ4iCI1Z3z7Ycavi51uJv7xFtHOq3bubPjgD3CfBkXfb_TPONJGXorBkgVf2y_rgO3Y5XwbfsRsVPf99AXOu4RLFAHb5TfgjtBudKWzGX2O7zhwNQelPsV2gGiOVh93NntquJUZqVwHLgsbRXYbLO0kHtNBnhOhjx2Xy2rqhRTT7bY5WHw8xhlJHPbo50AUmDLgjTO_GmMAUlriIEp-nllCZcQltA7L_SgnxTZ_h3_33zekrE36asRx4AXs6B8oFJjT84HfgiqyauZBRoS9oxt3oGbx8oAmikw8GQOQfY7kxWRxW7SkYXfU-DdKRDr2AtgU6k9QELxBMdFGdv3PM3lVEaFABvCO-E2qXMIZ97yHR_Bq8dj2bZMPX8e6BLh48Z3w1EWAnIOJIX8dYVwLjuFPMejS8r1qM1rKtKH2UB06dOYRcOfjm5fuprkHcKuzX61hQuSrzwRB6psZ578Ay5q3ldx8MVCVfXX6hE_H1oKg2IJD0CyJh8Ru4GmSH2RH4AOe8Q913YmxDuWPWC2niZnBoKNfvv7-pdGqIEdTKOpoQRiKX1DMkIO1vN7hfkt6y8PonMWJy1mcPkIHIOxVAHoiiLfL2fcvdzTwAHmjyCjQ71-rBvpeCP8qbUv49HDcfrc9LGgUovWI1FkuvWbo-IHLZ-nGPcr0qbTVaNKbhIp44LrJAkut8Mw1vyP6ra-J_pjp-dAcDPj_tex2cxkE1Uu0oMC-VQlWMW80x10Zb89zrd7vTd_TIrtVYd_mkwu6eY2t20lmBbOd4nnFuYlKz-mQZWPDFUkWAbL3Fo0CqLDIuIkbqnua_wx3NbQcCX1Fd7N5iCEh8PD60VX0nW",
+      "timestamp": "2025-11-07T09:53:54.200Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/common/i18n/maps/maps_es.properties?20251104171521",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "accept": "text/plain, */*; q=0.01",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:53:55.553Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/common/i18n/home/home_es.properties?20251104171521",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "accept": "text/plain, */*; q=0.01",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:53:55.554Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/common/i18n/authentication_es.properties?20251104171521",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "accept": "text/plain, */*; q=0.01",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:53:55.554Z"
+    },
+    {
+      "url": "https://www.idealista.com/home/searchbox/operation-typology",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"Chromium\";v=\"141.0.7390.37\", \"Not?A_Brand\";v=\"8.0.0.0\"",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "accept-language": "es-ES",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-device-memory": "8",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-arch": "\"x86\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      "timestamp": "2025-11-07T09:53:55.554Z"
+    },
+    {
+      "url": "https://www.idealista.com/menu-api/links/nav-bar?language=es",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"Chromium\";v=\"141.0.7390.37\", \"Not?A_Brand\";v=\"8.0.0.0\"",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "accept-language": "es-ES",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-device-memory": "8",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-arch": "\"x86\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      "timestamp": "2025-11-07T09:53:55.560Z"
+    },
+    {
+      "url": "https://www.idealista.com/login-and-register-api/lara/sl/od",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"Chromium\";v=\"141.0.7390.37\", \"Not?A_Brand\";v=\"8.0.0.0\"",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "accept-language": "es-ES",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-device-memory": "8",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-arch": "\"x86\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      "timestamp": "2025-11-07T09:53:55.561Z"
+    },
+    {
+      "url": "https://www.idealista.com/login-and-register-api/lara/sl/od",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"Chromium\";v=\"141.0.7390.37\", \"Not?A_Brand\";v=\"8.0.0.0\"",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "accept-language": "es-ES",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-device-memory": "8",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-arch": "\"x86\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      "timestamp": "2025-11-07T09:53:55.561Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/caret-down_fill.svg?v99",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:53:55.561Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/user_outline.svg?v99",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:53:55.561Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/menu_outline.svg?v99",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:53:55.562Z"
+    },
+    {
+      "url": "https://www.idealista.com/es/home/user-searches",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"Chromium\";v=\"141.0.7390.37\", \"Not?A_Brand\";v=\"8.0.0.0\"",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "accept-language": "es-ES",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-device-memory": "8",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-arch": "\"x86\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      "timestamp": "2025-11-07T09:53:55.613Z"
+    },
+    {
+      "url": "https://www.idealista.com/home/datalayer",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"Chromium\";v=\"141.0.7390.37\", \"Not?A_Brand\";v=\"8.0.0.0\"",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "accept-language": "es-ES",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-device-memory": "8",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-arch": "\"x86\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      "timestamp": "2025-11-07T09:53:55.738Z"
+    },
+    {
+      "url": "https://st4.idealista.com/datalayers/idealista/portal/home/viewHome.json",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:53:55.738Z"
+    },
+    {
+      "url": "https://integration2.idealista.com/tealium/client",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0",
+        "accept-language": "es-ES"
+      },
+      "postData": "{\"device_type\":\"desktop\",\"event_class\":\"page\",\"event_name\":\"viewHome\",\"event_type\":\"view\",\"page_section\":\"portal\",\"page_subSection\":\"home\",\"response_statusCode\":\"200\",\"setting_country\":\"es\",\"setting_language\":\"es\",\"tm_datalayerVersion\":\"2.0\",\"tm_markup_isTemporary\":\"0\",\"tm_markup_owner\":\"FP\",\"tm_markup_project\":\"TM-3786: Home\",\"user_status\":\"2\",\"cmp_purposes\":[\"usodecoo-qidXjmq8\"],\"cp.utag_main__sn\":\"1\",\"cp.utag_main__se\":\"2\",\"cp.utag_main__ss\":\"0\",\"cp.utag_main__st\":\"1762511035760\",\"cp.utag_main_ses_id\":\"1762509235724\",\"cp.utag_main__pn\":\"1\",\"cp.utag_main__prevTsUrl\":\"https%3A%2F%2Fwww.idealista.com%2F\",\"cp.utag_main__prevTsReferrer\":\"https://www.idealista.com/\",\"cp.utag_main__prevTsSource\":\"Portal sites\",\"cp.utag_main__prevTsCampaign\":\"organicTrafficByTm\",\"cp.PARAGLIDE_LOCALE\":\"es\",\"cp.datadome\":\"eV0~5b12awJP5r_Fd_L0lUb2ROVD5~I105qo4bkjRDfC3St897RKIUahPS_hCm3Kp7XbUho2KHSxeG6OeWekZimUw472w8iBKQou_4n6DamRTqfKE9qLZ0X3WWCwv~0P\",\"cp.didomi_token\":\"eyJ1c2VyX2lkIjoiMTlhNWRiY2EtNWNjYS02M2M1LTk2YWEtNWU4ZWI4YjY0MTdiIiwiY3JlYXRlZCI6IjIwMjUtMTEtMDdUMDk6NTM6NTUuNjYwWiIsInVwZGF0ZWQiOiIyMDI1LTExLTA3VDA5OjUzOjU1LjY2MFoiLCJ2ZXJzaW9uIjpudWxsfQ==\",\"cp.lang\":\"es\",\"meta.description\":\"¿Buscas casa? Con idealista es más fácil. Más de 1.200.000 anuncios de pisos y casas en venta o alquiler. Publicar anuncios es gratis para particulares.\",\"meta.Pragma\":\"no-cache\",\"meta.google-site-verification\":\"google6d051e94feaa2d22.html\",\"meta.viewport\":\"width=device-width, initial-scale=1.0, maximum-scale=1.5, minimum-scale=1.0, user-scalable=1.0\",\"meta.robots\":\"noodp\",\"dom.referrer\":\"https://www.idealista.com/\",\"dom.title\":\"idealista — Casas y pisos, alquiler y venta. Anuncios gratis\",\"dom.domain\":\"www.idealista.com\",\"dom.url\":\"https://www.idealista.com/\",\"dom.pathname\":\"/\",\"dom.viewport_height\":\"1080\",\"dom.viewport_width\":\"1920\",\"ut.domain\":\"idealista.com\",\"ut.version\":\"ut4.54.202511060627\",\"ut.event\":\"view\",\"ut.session_id\":\"1762509235724\",\"ut.account\":\"idealista\",\"ut.profile\":\"es-portal\",\"ut.env\":\"prod\",\"tealium_event\":\"viewHome\",\"tealium_session_id\":\"1762509235724\",\"tealium_session_number\":\"1\",\"tealium_session_event_number\":\"2\",\"tealium_account\":\"idealista\",\"tealium_profile\":\"es-portal\",\"tealium_environment\":\"prod\",\"tealium_random\":\"8741855528917848\",\"tealium_library_name\":\"utag.js\",\"tealium_library_version\":\"4.54.0\",\"tealium_timestamp_epoch\":\"1762509235\",\"tealium_timestamp_utc\":\"2025-11-07T09:53:55.760Z\",\"tealium_timestamp_local\":\"2025-11-07T10:53:55.760\",\"js_page.cmp_purposes_st\":\"usodecoo-qidXjmq8,\",\"js_page.traffic_source_url\":\"https://www.idealista.com/\",\"js_page.traffic_source_referrer\":\"https://www.idealista.com/\",\"js_page.traffic_source_medium\":\"Portal sites\",\"js_page.traffic_source_campaign\":\"organicTrafficByTm\",\"js_page.marketing_transactionId\":\"es1762509235760\",\"js_page.userAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\"js_page.piano_collectionDomain\":\"col.idealista.com\",\"js_page.piano_site\":\"582065\",\"js_page.piano_load\":\"true\",\"js_page.piano_triggerEvent\":\"pageDisplay\",\"js_page.piano_level2\":\"010-idealista/home\",\"js_page.marfeel_load\":\"false\",\"js_page.clarity_load\":\"false\",\"js_page.pingdom_load\":\"false\",\"js_page.dd_key\":\"AC81AADC3279CA4C7B968B717FBB30\",\"js_page.dd_endpoint\":\"https://dd.idealista.com\",\"js_page.dd_load\":\"true\",\"js_page.hotjar_load\":\"false\",\"js_page.beamer_load\":\"false\",\"js_page.landbot_load\":\"false\",\"js_page.gcm_adPersonalization\":\"denied\",\"js_page.gcm_adUserData\":\"denied\",\"js_page.gcm_adStorage\":\"denied\",\"js_page.gcm_analyticsStorage\":\"denied\",\"js_page.gads_conversionId\":\"AW-1061695190\",\"js_page.gads_load\":\"true\",\"js_page.ga4_load\":\"false\",\"js_page.af_load\":\"false\",\"js_page.fb_load\":\"false\",\"js_page.tk_load\":\"false\",\"js_page.bing_load\":\"false\",\"js_page.rtbhouse_event\":\"home\",\"js_page.rtbhouse_load\":\"true\",\"js_page.rtbhouse_taggingHash\":\"wCBrfTqZpg4dW1fLt8FZ\",\"js_page.criteo_event\":\"portal_viewHome\",\"js_page.criteo_deviceType\":\"d\",\"js_page.criteo_load\":\"true\",\"js_page.criteo_accountId\":\"13122,19089,31531\",\"js_page.outbrain_load\":\"true\",\"js_page.outbrain_marketerId\":\"00102f801aea4aa0a21e30487ffdf4c4e8\",\"js_page.outbrain_track\":\"Visita\",\"js_page.taboola_load\":\"true\",\"js_page.taboola_taboolaId\":\"1420147\",\"js_page.linkedin_load\":\"false\",\"js_page.datalake_url\":\"https://integration2.idealista.com/tealium/client\",\"js_page.datalake_load\":\"true\",\"js_page.tealium_collect_load\":\"false\"}",
+      "timestamp": "2025-11-07T09:53:55.789Z"
+    },
+    {
+      "url": "https://ams.creativecdn.com/tags/v2?type=json",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0",
+        "accept-language": "es-ES"
+      },
+      "postData": "{\"v\":\"v0.2.1\",\"sr\":\"https://www.idealista.com/\",\"su\":\"https://www.idealista.com/\",\"th\":\"wCBrfTqZpg4dW1fLt8FZ\",\"tags\":[{\"eventType\":\"custom\",\"name\":\"language\",\"value\":\"es\"},{\"eventType\":\"uid\",\"id\":\"unknown\",\"expiryDate\":\"2026-11-07T09:53:55.806Z\"},{\"eventType\":\"lid\",\"id\":\"3OS2DeiR5HdAHfwLcEP1\",\"expiryDate\":\"2026-11-07T09:53:55.806Z\"}]}",
+      "timestamp": "2025-11-07T09:53:55.810Z"
+    },
+    {
+      "url": "https://ams.creativecdn.com/tags/v2?type=json",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0",
+        "accept-language": "es-ES"
+      },
+      "postData": "{\"v\":\"v0.2.1\",\"sr\":\"https://www.idealista.com/\",\"su\":\"https://www.idealista.com/\",\"th\":\"wCBrfTqZpg4dW1fLt8FZ\",\"tags\":[{\"eventType\":\"home\"},{\"eventType\":\"uid\",\"id\":\"unknown\",\"expiryDate\":\"2026-11-07T09:53:55.806Z\"},{\"eventType\":\"lid\",\"id\":\"3OS2DeiR5HdAHfwLcEP1\",\"expiryDate\":\"2026-11-07T09:53:55.806Z\"}]}",
+      "timestamp": "2025-11-07T09:53:55.810Z"
+    },
+    {
+      "url": "https://psb.taboola.com/topics_api",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:53:55.838Z"
+    },
+    {
+      "url": "https://pagead2.googlesyndication.com/ccm/collect?frm=0&tid=AW-1061695190&en=page_view&dr=www.idealista.com&dl=https%3A%2F%2Fwww.idealista.com%2F&scrsrc=www.googletagmanager.com&rnd=414898211.1762509236&navt=r&npa=1&us_privacy=error&did=dYmQxMT&gdid=dYmQxMT&_tu=CA&gtm=45be5b60h2v9105130979za200zd9105130979xec&gcs=G100&gcd=13p3p3p2p5l1&dma_cps=-&dma=1&tcfd=10001&tag_exp=101509157~103116026~103200004~103233427~104527907~104528501~104684208~104684211~104948813~115480710~115583767~115616986~115938465~115938469~116194002~116217636~116217638&tft=1762509236045&tfd=842&apve=1&apvf=f",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:53:56.096Z"
+    },
+    {
+      "url": "https://ams.creativecdn.com/tags/v2?type=json&tc=1",
+      "method": "POST",
+      "headers": {
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "accept-language": "es-ES",
+        "referer": "https://www.idealista.com/"
+      },
+      "postData": "{\"v\":\"v0.2.1\",\"sr\":\"https://www.idealista.com/\",\"su\":\"https://www.idealista.com/\",\"th\":\"wCBrfTqZpg4dW1fLt8FZ\",\"tags\":[{\"eventType\":\"custom\",\"name\":\"language\",\"value\":\"es\"},{\"eventType\":\"uid\",\"id\":\"unknown\",\"expiryDate\":\"2026-11-07T09:53:55.806Z\"},{\"eventType\":\"lid\",\"id\":\"3OS2DeiR5HdAHfwLcEP1\",\"expiryDate\":\"2026-11-07T09:53:55.806Z\"}]}",
+      "timestamp": "2025-11-07T09:53:56.239Z"
+    },
+    {
+      "url": "https://ams.creativecdn.com/tags/v2?type=json&tc=1",
+      "method": "POST",
+      "headers": {
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "accept-language": "es-ES",
+        "referer": "https://www.idealista.com/"
+      },
+      "postData": "{\"v\":\"v0.2.1\",\"sr\":\"https://www.idealista.com/\",\"su\":\"https://www.idealista.com/\",\"th\":\"wCBrfTqZpg4dW1fLt8FZ\",\"tags\":[{\"eventType\":\"home\"},{\"eventType\":\"uid\",\"id\":\"unknown\",\"expiryDate\":\"2026-11-07T09:53:55.806Z\"},{\"eventType\":\"lid\",\"id\":\"3OS2DeiR5HdAHfwLcEP1\",\"expiryDate\":\"2026-11-07T09:53:55.806Z\"}]}",
+      "timestamp": "2025-11-07T09:53:56.240Z"
+    },
+    {
+      "url": "https://dd.idealista.com/js/",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "content-type": "application/x-www-form-urlencoded",
+        "sec-ch-ua-mobile": "?0",
+        "accept-language": "es-ES"
+      },
+      "postData": "jspl=fNBMaRnhFzZ7TvWjDS1PreW0vPIRUvYrj68GzKrXMefJymeErjVvoTPOOeTNelUcGe7NROp9E0SqvE99u2anRxVumEFYryiFbld-5KrWbkRX2YXDYXKrl7I4VmQEZhG4Sq5V83snQLOhAaCe2KWcPq_tPuVnO8Jwrcs78uoERUIh4AN1rZ1iyL2arHgSABVSPlu6I55RgWXH47nuZ4Ayeic9OO5XMljfUgl1SSkdP99WlEMRz7Ri4koKwNJt1N8Bw40jza2M5nXNFX-Nmp9poQH-yipmoRsAy-f8MFszYL_2-pfamyzemP0vhxVjQaLvpHCNxb7i8vyJBAQp3OfUHsAOuhKjaP1tJBaqsBNEJxoNeuDtXYMinnrvSmqXhq6-9MZmf4cbAlMVXn0ZjC7DOMtcT3wMgJaYgCnwvztbybn9CdZoTmyN6JG7o3MTcBIFMnxb8LEAhOVL835ZcsgzGS1RZUdWVWovuZI3z8Z3i-Jb93YXPuB2n_bQx09gJ-SRijedCeQcgZoNBZkxXjk4C1QBk01ameUpU9fdygk1nC8s8E0tRf3OomeYLpH_-pl1BNgieSfidbGZvUJar21OiUe5LdGCWltsu9PUH7Ucfe4kYbHK6ksK5e_J2vtuAkte8ig565sMO4lP5iZkCNOXfDUFhA1pFBNnzxTWxuq0No1miklQ9-e1vK5cBW9uNWFg-PWnQdzwLGtnmXYwxW7tyTXWsEGXTB95TjQYO4GFtPGGFbtjzbaiSb8Xdv_jIzrSYVLuOfGASFooyoboh9tGN7ugwsjwORWMLqZ__mpQ9l187bPpJUhPcEzwLQOs6Z5cMgkXqR9Hv_ALNd06QhrmBEBfAl5X-SYP2hAAWKZqJDBK8zyrV8zQUb46tFK03VysGZpYfoBHXGYKRzkqiYyFPaKmbsxPkP2JxoqJFJvVKqOi1XtHmLMJd_SGxgszhC-aJGdiwbulwqI1Pp6vzj745AeMg6od1Kl2pd1q_lKYQqv89nfVWakHJ9R_l29JLW_sEsMxLAH4FWRaC7CxGdD9WL8OL5MT0C1pW-M1stR4Kdw2nphiFE4TQHWDAjuW2gmHf8wOlUwyWA7NvLGdmH4-A5DgfAeCDOkTQORK4iL_ASaAnfUMRQAH0F4cAVz6uGgZHGJTjESFjOnqIlmX8TscXxjdFZqHJcBHMNcjRoiA6kAGrzZk6ba9IyrMBvTiKj_u4afsjM2SYRVGBtTuVr7o6g0bC-zO6jH3v4HI79tl1Iz_8iRRJqyORWxkxzTWeyaA8LUGYIeFaqBtHxQ7-QBWXNypeLRrNm4nftvt06f5sY7uFrEUQnDqzwnzh0LvSs2-8vF5Ql0XZUQ9h9YfuRS5pXH1AfwNCPloU3FBKE7DgZDGl15hRrBX9p0FdcV7FPoStnCe6eWiPywMz4JEIflThhqKfqzEpCCwJP-SnCqeS9lv8veivaQXIbhpx5aofRh-Balp2UvwMpT7VgGv29Rk7JoK9kS2xo4XRVG-GcMpfadbl0xXfDa20pAm5f_yGlSrtIXpBtPjR8yY904VwI4eAaat3ja6XfN2gnmmqkCSP7Z1wyJryoQn_GhXvj2AQdcE7zh0-uoYpFT_r1igbu-m5prTK_CMNFuPSxc8o4K9nCBDWCZOysL2AySGee8Gd_2eFsY80FIsgX_j_M-oX80WfUQtJQUh5KkVKj3eTi2LA1tmQH0d0qf8_jp0-8MLmxOmEYWPinwZpVJu2A-0uLfeXGa7HpygtA-Piqs8gBLvStERie02kbOUNoetk5TWuP71eI3-tOZKwyX9AVUNDv0RwEpiblyXbTgROXjloGdH8V6G76eXEzyzQFffEFbw5KmzagbRXw39c08OxyeZR4UFYTPHtGLcgB_raXXj5G0QUTGcnCSeljGX-Iy-NHlN43eLY3lVXZ5hfAbB3r3gAQViXKr1mf-iNqIRoA8Aht9kmfmLHO6lfNoq1ERp8_9braW0UeHK0OUugu5WLPWCZ66L9kpD_cK7o7h160yLgjBTByl3rFX9INNiP_tsHajiPWakMHB1olFEi2m8c-YhuYtXtZWXIbe4jeNXvFBTsG4XwnWuT0-P5qtiph7M2fzXTe1LbN5UlD6D31XAfWdwfZSxAHGCWxgpRgG562NLztgbrVpcNk07LziqG-IbLJMb45O4snCBUl8_aIgf_OpYdxY9JYjf02lvGfZjVu5rH9IEvmG3tEvQIX7Mv47ueLJBKpmc985fo_LZpdGDyWczifFTQ_6qlCCz3JA0KdlAg3YYGHp-Tbh9nADSFzQvW5mucrbjquL4HnjEmB6HCoKePqf4uQQw96OcexGrZSovalQgOC1lPXvOuahlBaPuxLhmN88fMTrdeYE8QSuyN0LeIqhO0ey7PDxUnYmwFGpqqdoy02vprYKG_zBMKfbsctsqn52jcaSkQr324U6wR5TQjW_5DzJgYooqWpSClZcwBrsr3KfkkHR70FxqApLYbvwk8qLjHZoKVHsibvFA2eBr-XWM0Kyt1WkuC3v8elp-XZ8A5uL0KNWKUL9Dy3_A8SCUgazGOzRExBlB1AdaYsb84ts11aVsKVB2MqBKF_GNa6MgkWMr-UgPVnHrQYnf_MghFA7Ph3q_JPUKPgbF77fbq3rheWm1QnzpFsdMBF8-zSy5B2-emYVep7vuRMJ7hFkVjl2GoltoK4t1upM6Ea1uK5S8Xya0Wtxsr8A1FWGkqlPa37wixYCROWE-bFxl2KN7ZBDlOq7OmtGt8-ekrnf6E9Ne6GFMkXqpdapfUNK7aYBj5ZY268HySgq6o7w-9GeyfrulTC8aSB5BKpJdCjL0oWI5cAHhaBMj0TBN2c88uLf7pgeLe-k4xtdjCkZLa-YXb91BtNHaXjDKBwrdz4BcEPfy0LPxjZJ80wpqDJ5DFi1jJW8Yzr7l-gl96VoEOsXXPaGT8JPaEL8ND-36OtNCe9qund5FlpmPsJUGFS_9gEyrYyYIafdBshe_AYvEBiIai6idpKZExerad8hvB5gqCCoSBW2ZnPCxKKyr6SQ2lRbjfrZAOS59Ea6TFagrxvaDMNqKYOkTLxZ8VfANSDW-7kU9q_WmCaEyzus2003tf9oA-8k5tReqqhdTS9vAqyYv5yJoOMiNWwzpVLI6qPFHDmBbc8BpuSNrQup6Zwl37otNivpZtgM-civulpSIElXpgbwkG0YQ4qHK31O2yP4boyUapxT9QamboABkoJC6enY5I-5EVuJ2SX8mmiL9rDGEK7PD76RvT4PmSxedB_mVhA8wsxcD5K3Tn0yaCwuvkIir5-0-VeW-YIkdxyHZeveqlkkT0CoTdgGgxTXpXct0GWx1VndoF1MUXjsg3sBn27UtYKI6v4QGd4kHGbpu_4RB9mx2B5iBJ_SwRYJgNm33tzWlzuRby5iirJZuLJe9679XOVRQqjRjs_0ZjmN0X9LDB1P5dI0HDNziNGgfpgQUwPLZuPBdhC7vrKpVbIWFNq5GWUU0InOaf9vFqtGywPajN6DwNUQla5fAMjKj49oMMQoRiuF1eVcgGceNgQIfsIWMZYIyNlwsvBQ-gb0Eymti69a5Euqq-qxDhn5MZ3KlojOoH90ldQr2hYEMIGdX1m6OF2uVKpipAQ15GVdBANNyhI8IjpQKlWuJZUVX4G1fWzn0lroXLQXj6elFyZgMGM4d1i4z6a3L4_RtopwgV39CBppuscl99KMO_Zbu_SBalTjSCOMq6wK7GyxmCbaLd49ivUXlej-QVwi3M7vkrCPbFlGrFpjMvKNdmGmnhqzXCTHW2EOqLS2r0sEMAZ8ABswozZd4-YUb3xHC0J0pxIvyt9FSW-nfKs0iFR2_DnOaHbZTYRnAlwXXNikpxgzAR9LVsihn5HQE7tSFDNaCf79mSsngfQpWcJ6WlIa2Sn0KcxSkd7v-ewioKnerCXuv93HABQJCtQ0NjpyyC5cFQb9btj1mziGA82x6kX1mNPx70Q8hSUfkWva8Qer1cMgQEiRN8ICppjSBbeN_msK-IxOC8mkOHZSLrp5mzN6irv9KF3qKDfHBuPWzphwrLP0v-km1v1vJ7YzU_xfJxk7FgROFnIUOkP1QYDMVwYMqGWGPANSSilmkK-vdeVmyJQl1khW0IYmudYe_qHFIE2OYAYQoDHgeZO3iSPvpooSwexgxrRChHYe5JU-LSI9XKSyNbp0GI_qPmWETNik6_ghBO0zAIhx5Ah517699FVBGIIi5iK7LTPBf2VrzS0D8k0R5RXepFH0yvor5bnszpBN789VJ5duMqHQanhlpfGY7rsue1n_gIrXLsogQL9M045Th0ZeEjuXzH8tB3sTOyjFZqMDj40XA7TCQxzkaZlL9HL-yJWpwlc2L6bjVCBfISDXucBJ99w7wxunO5wumNz67GkiY3TCHzRpyPZVs1dFxgutC8O73fV6XI4vJ59i7cAWGNaAgXS1CiNIYEdvjPCtQ6DIgkJZX03ynG13rKU7oiN_hdY5hPlbGVg-YO31REAWd0scTY6JS1qm-Q7kpelC_SkomOzJx47yEIgw42pAxre5GxFHd0neADY17qsiSRiQ6-D83zrJtmdPnKcNPk_tJziwYpevLCASRsrUxI9tsMYOfcMr3gYChmrSiBAyGK4flgqhEC9RUkKJWOfJ-sSgHvvEbEl2vRyWiLK42Wz7dpFSnIhNEq5uGpkDyST0PrjRHQ4a-GPMIEvZhlXfjyRij7zV-T2ONBTGFpqpbZ9&eventCounters=%5B%5D&jsType=ch&cid=eV0~5b12awJP5r_Fd_L0lUb2ROVD5~I105qo4bkjRDfC3St897RKIUahPS_hCm3Kp7XbUho2KHSxeG6OeWekZimUw472w8iBKQou_4n6DamRTqfKE9qLZ0X3WWCwv~0P&ddk=AC81AADC3279CA4C7B968B717FBB30&Referer=https%253A%252F%252Fwww.idealista.com%252F&request=%252F&responsePage=origin&ddv=5.1.9",
+      "timestamp": "2025-11-07T09:53:59.813Z"
+    },
+    {
+      "url": "https://maps3.idealista.com/maps/api/staticmap?path=weight%3A2%7Ccolor%3A0x666664ff%7Cfillcolor%3A0x8e8f8c44%7Cenc%3Ag%7DjuFrqfVvMjX%7Bc%40%60N%7BcAj%7E%40kaBp%7C%40oEyxA%7CXey%40EstAaIwk%40xH_BkIqf%40_a%40_XPmZcjBdo%40al%40wLy_%40wr%40wtA%5Ew%40drAxKjc%40wW%7DBohAdh%40sV%7Cd%40_%5BrdDhKng%40aOlOcuAkCsc%40cVop%40dEob%40d%60%40oh%40mPaUj%7EAoP%7EIk%5DaLyOtJw%5Cn%40y%7C%40hz%40mlClaA%7DWtaAuOyBwLdQ%7B%5EnHgUoT%7DcAgG%7Bc%40a%7C%40aF%7Bd%40tY%7Dz%40uYciBhD_%60%40wR_%7C%40g%40ciAwZkq%40%7Do%40bh%40i%5CmAsQsoB_XeRqR_x%40vXyJdI_w%40v%5DkKkKmYxOen%40wIuIfQklAgMu_%40lrAuiAfK%7Ds%40pFdUrd%40wSdf%40qn%40qj%40gxAeiBaw%40_%60BycDjcAmbA%7Ev%40%7BD%60Kg%7C%40wy%40gjC%60s%40mIf_%40acAv%5EsStj%40r_%40b%5Bzy%40%7Cl%40bw%40kYvxCegBzp%40vH%7En%40tlAffDfGfi%40%7Em%40%7D%60AjdBwv%40jfAkNfs%40kr%40xp%40zn%40vGg%7E%40j_Buw%40vC_%5Cd%5Dm%5E%60a%40sIqFuoDe%5DclA%7CNeWe%40eq%40ugAufCzJaoBf%5BlAjk%40%7BKbe%40%7BfA%7E%5DhAjQe%60%40hr%40%5Eje%40%7Dd%40rIsXhQiHpq%40bYjQmQzPhB%7EIrj%40pe%40mIFpVtKcB%7CRvaBlc%40tnB_D%60e%40nLy%40bFvRdN%7BHn%5CfEhFoFpi%40bQdQwGdHwWuIet%40%60Ns%7BCaSqn%40%7Da%40mCvVuh%40do%40sg%40pl%40%7BFxfApVhO%7Cx%40sLdTqGlv%40hiAfc%40bfAtNxg%40lZCaRjk%40jDnfAblA%7EgAxd%40rdAnnAff%40wq%40bStsCwLdhAaWr%5D%7D%5BjnBm_Az%7EAv_%40fw%40qGja%40hX%7Cg%40iFnu%40zWn%60%40xJ%7Cp%40uSj%7EB_XpFii%40%7EiAe%7BDaYnl%40%7E%60Fab%40bjCdYhp%40m%5C%7C%7EAeSvW&size=330x330&map_id=f1fde9e0453d8363&format=png&maptype=roadmap&language=es&key=AIzaSyDtRYtFG_ZNTNX35bgdUxHDDJ7QlUys57s&signature=CyY5SF-mHjdsDRvZM9lQiqGjPJc=",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:03.027Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/common/i18n/authentication_es.properties?20251104171521",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "accept": "text/plain, */*; q=0.01",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:03.325Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/common/i18n/maps/maps_es.properties?20251104171521",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "accept": "text/plain, */*; q=0.01",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:03.326Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/common/i18n/listing_es.properties?20251104171521",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "accept": "text/plain, */*; q=0.01",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:03.326Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/common/i18n/date_es.properties?20251104171521",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "accept": "text/plain, */*; q=0.01",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:03.334Z"
+    },
+    {
+      "url": "https://www.idealista.com/menu-api/links/nav-bar?language=es",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"Chromium\";v=\"141.0.7390.37\", \"Not?A_Brand\";v=\"8.0.0.0\"",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/venta-viviendas/madrid-madrid/",
+        "accept-language": "es-ES",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-device-memory": "8",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-arch": "\"x86\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      "timestamp": "2025-11-07T09:54:03.334Z"
+    },
+    {
+      "url": "https://www.idealista.com/es/zoneExperts/highlighted/1/1/madrid-madrid",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"Chromium\";v=\"141.0.7390.37\", \"Not?A_Brand\";v=\"8.0.0.0\"",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/venta-viviendas/madrid-madrid/",
+        "accept-language": "es-ES",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-device-memory": "8",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-arch": "\"x86\"",
+        "x-requested-with": "XMLHttpRequest",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "accept": "application/json, text/javascript, */*; q=0.01"
+      },
+      "timestamp": "2025-11-07T09:54:03.347Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/caret-down_fill.svg?v99",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:03.347Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/user_outline.svg?v99",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:03.348Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/menu_outline.svg?v99",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:03.348Z"
+    },
+    {
+      "url": "https://integration2.idealista.com/tealium/client",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0",
+        "accept-language": "es-ES"
+      },
+      "postData": "{\"page_section\":\"portal\",\"page_subSection\":\"results\",\"page_name\":\"viewResults\",\"page_language\":\"es\",\"page_template\":\"resultList\",\"page_visibleContent\":[\"moduleAllowed:Georeach\"],\"user_status\":\"2\",\"response_statusCode\":\"200\",\"response_loadBalancer\":\"web\",\"list_ads_adId\":[\"109618864\",\"106702840\",\"109542443\",\"108635798\",\"108922483\",\"108361180\",\"106611139\",\"109168575\",\"106751275\",\"108564817\",\"107346813\",\"109512854\",\"106969492\",\"109774090\",\"107873687\",\"108727665\",\"108745675\",\"108127673\",\"109261565\",\"107145320\",\"108535176\",\"109317163\",\"109196984\",\"108948953\",\"107456787\",\"109112340\",\"109594308\",\"109630900\",\"108573999\",\"108458920\"],\"list_ads_isFavourite\":[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\"],\"list_ads_owner_type\":[\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\"],\"list_ads_hasRequiredLogin\":[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\"],\"list_totalResult\":\"14393\",\"list_currentPageNumber\":\"1\",\"list_totalPageNumber\":\"480\",\"list_type\":\"officialZone\",\"list_orderBy\":\"relevance\",\"list_isTransfer\":\"0\",\"search_operation\":\"1\",\"search_typology\":\"1\",\"search_geo_type\":\"officialZone\",\"search_geo_locationId\":[\"0-EU-ES-28-07-001-079\"],\"search_geo_locationLevel\":\"6\",\"search_orderBy\":\"relevance-desc\",\"search_HL\":\"0\",\"correlation_id\":\"fa3ff810-4eb8-4b59-89fe-39877f4ba03f\",\"correlation_session\":\"24296c0d-c31a-49c1-b89a-c19c7db53163\",\"event_name\":\"viewResults\",\"post_id\":\"5d828729-ce76-439b-a027-38eb0a92c19c\",\"post_time\":\"1762509243040\",\"alert_savedSearch_isGeneric\":\"0\",\"cp.utag_main__sn\":\"1\",\"cp.utag_main_ses_id\":\"1762509235724\",\"cp.utag_main__pn\":\"2\",\"cp.utag_main__prevTsUrl\":\"https%3A%2F%2Fwww.idealista.com%2F\",\"cp.utag_main__prevTsReferrer\":\"https://www.idealista.com/\",\"cp.utag_main__prevTsSource\":\"Portal sites\",\"cp.utag_main__prevTsCampaign\":\"organicTrafficByTm\",\"cp.utag_main__se\":\"4\",\"cp.utag_main__ss\":\"0\",\"cp.utag_main__st\":\"1762511043761\",\"cp.utag_main__prevEventView\":\"010-idealista/home > portal > home > viewHome\",\"cp.utag_main__prevLevel2\":\"010-idealista/home\",\"cp.PARAGLIDE_LOCALE\":\"es\",\"cp.didomi_token\":\"eyJ1c2VyX2lkIjoiMTlhNWRiY2EtNWNjYS02M2M1LTk2YWEtNWU4ZWI4YjY0MTdiIiwiY3JlYXRlZCI6IjIwMjUtMTEtMDdUMDk6NTM6NTUuNjYwWiIsInVwZGF0ZWQiOiIyMDI1LTExLTA3VDA5OjUzOjU1LjY2MFoiLCJ2ZXJzaW9uIjpudWxsfQ==\",\"cp.__rtbh.uid\":\"{\\\"eventType\\\":\\\"uid\\\",\\\"id\\\":\\\"unknown\\\",\\\"expiryDate\\\":\\\"2026-11-07T09:53:55.806Z\\\"}\",\"cp.__rtbh.lid\":\"{\\\"eventType\\\":\\\"lid\\\",\\\"id\\\":\\\"3OS2DeiR5HdAHfwLcEP1\\\",\\\"expiryDate\\\":\\\"2026-11-07T09:53:55.806Z\\\"}\",\"cp._pprv\":\"eyJjb25zZW50Ijp7IjAiOnsibW9kZSI6Im9wdC1pbiJ9LCIxIjp7Im1vZGUiOiJvcHQtaW4ifSwiMiI6eyJtb2RlIjoib3B0LWluIn0sIjMiOnsibW9kZSI6Im9wdC1pbiJ9LCI0Ijp7Im1vZGUiOiJvcHQtaW4ifSwiNSI6eyJtb2RlIjoib3B0LWluIn0sIjYiOnsibW9kZSI6Im9wdC1pbiJ9LCI3Ijp7Im1vZGUiOiJvcHQtaW4ifX0sInB1cnBvc2VzIjpudWxsLCJfdCI6Im14ZDNmN2Z4fG1ob29ocTN4In0=\",\"cp._pcid\":\"{\\\"browserId\\\":\\\"mhoohq3v8mrfeu3r\\\",\\\"_t\\\":\\\"mxd3f7me|mhoohqae\\\"}\",\"cp._pctx\":\"{u}N4IgrgzgpgThIC4B2YA2qA05owMoBcBDfSREQpAeyRCwgEt8oBJAE0RXSwH18yBbAB6sAzADMA7PzEAffgAtKleQEdCYkAF8gA\",\"cp.lang\":\"es\",\"cp.cookieSearch-1\":\"/venta-viviendas/madrid-madrid/:1762509242558\",\"cp.uppar\":\"false\",\"cp.datadome\":\"NFWzyWhvzkxdIJ1h_GJlwA1T19rkCaP1VlFOzMzafiRZN~8~0o0HYddIRXIB1jCyd47gSmDhW8qHc8mYUrt43z13TnsxudCQEm7DAktbMreNJVGuw5KbsX~opjBypSJr\",\"meta.description\":\"14.393 anuncios de casas y pisos en Madrid, a partir de 50.000 euros. Casas y pisos en Madrid de particulares y agencias inmobiliarias.\",\"meta.author\":\"idealista.com\",\"meta.pragma\":\"no-cache\",\"meta.robots\":\"index, follow\",\"meta.viewport\":\"width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0\",\"dom.title\":\"Casas y pisos en Madrid — idealista\",\"dom.domain\":\"www.idealista.com\",\"dom.url\":\"https://www.idealista.com/venta-viviendas/madrid-madrid/\",\"dom.pathname\":\"/venta-viviendas/madrid-madrid/\",\"dom.viewport_height\":\"1080\",\"dom.viewport_width\":\"1920\",\"ut.domain\":\"idealista.com\",\"ut.version\":\"ut4.54.202511060627\",\"ut.event\":\"view\",\"ut.session_id\":\"1762509235724\",\"ut.account\":\"idealista\",\"ut.profile\":\"es-portal\",\"ut.env\":\"prod\",\"tealium_event\":\"viewAdResults\",\"tealium_session_id\":\"1762509235724\",\"tealium_session_number\":\"1\",\"tealium_session_event_number\":\"3\",\"tealium_account\":\"idealista\",\"tealium_profile\":\"es-portal\",\"tealium_environment\":\"prod\",\"tealium_random\":\"4221696858008898\",\"tealium_library_name\":\"utag.js\",\"tealium_library_version\":\"4.54.0\",\"tealium_timestamp_epoch\":\"1762509243\",\"tealium_timestamp_utc\":\"2025-11-07T09:54:03.282Z\",\"tealium_timestamp_local\":\"2025-11-07T10:54:03.282\",\"results_ads_isFavourite\":[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\"],\"results_isTransfer\":\"0\",\"geo_locationId\":[\"0-EU-ES-28-07-001-079\"],\"operation\":\"1\",\"typology\":\"1\",\"setting_language\":\"es\",\"setting_country\":\"es\",\"js_page.page_visibleContent_st\":\"moduleAllowed:Georeach\",\"page_type\":\"resultList\",\"cmp_purposes\":[\"usodecoo-qidXjmq8\"],\"js_page.cmp_purposes_st\":\"usodecoo-qidXjmq8,\",\"results_ad_id\":[\"109618864\",\"106702840\",\"109542443\",\"108635798\",\"108922483\",\"108361180\",\"106611139\",\"109168575\",\"106751275\",\"108564817\",\"107346813\",\"109512854\",\"106969492\",\"109774090\",\"107873687\",\"108727665\",\"108745675\",\"108127673\",\"109261565\",\"107145320\",\"108535176\",\"109317163\",\"109196984\",\"108948953\",\"107456787\",\"109112340\",\"109594308\",\"109630900\",\"108573999\",\"108458920\"],\"results_ad_hasRequiredLogin\":[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\"],\"results_ad_owner_type\":[\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\",\"2\"],\"results_currentPage\":\"1\",\"results_totalPages\":\"480\",\"results_totalResults\":\"14393\",\"results_orderBy\":\"relevance\",\"results_type\":\"officialZone\",\"tm_datalayerVersion\":\"1.5 - Legacy - Legacy\",\"device_type\":\"desktop\",\"js_page.traffic_source_url\":\"https://www.idealista.com/\",\"js_page.traffic_source_referrer\":\"https://www.idealista.com/\",\"js_page.traffic_source_medium\":\"Portal sites\",\"js_page.traffic_source_campaign\":\"organicTrafficByTm\",\"js_page.geo_locationId_st\":\"0-EU-ES-28-07-001-079\",\"js_page.geo_provinceId\":[\"0-EU-ES-28\"],\"js_page.geo_provinceId_st\":\"0-EU-ES-28\",\"js_page.geo_locationLevel\":[\"7\"],\"js_page.geo_locationLevel_st\":\"7\",\"js_page.geo_provinceName\":[\"Madrid\"],\"js_page.geo_provinceName_st\":\"Madrid\",\"js_page.marketing_transactionId\":\"es1762509243282\",\"js_page.userAgent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\"js_page.piano_collectionDomain\":\"col.idealista.com\",\"js_page.piano_site\":\"582065\",\"js_page.piano_load\":\"true\",\"js_page.piano_triggerEvent\":\"pageDisplay\",\"js_page.piano_level2\":\"005-idealista/portal\",\"js_page.marfeel_load\":\"false\",\"js_page.clarity_load\":\"false\",\"js_page.pingdom_load\":\"false\",\"js_page.dd_key\":\"AC81AADC3279CA4C7B968B717FBB30\",\"js_page.dd_endpoint\":\"https://dd.idealista.com\",\"js_page.dd_load\":\"true\",\"js_page.hotjar_load\":\"false\",\"js_page.beamer_load\":\"false\",\"js_page.landbot_load\":\"false\",\"js_page.gcm_adPersonalization\":\"denied\",\"js_page.gcm_adUserData\":\"denied\",\"js_page.gcm_adStorage\":\"denied\",\"js_page.gcm_analyticsStorage\":\"denied\",\"js_page.gads_conversionId\":\"AW-1061695190\",\"js_page.gads_load\":\"true\",\"js_page.gads_event\":\"portal_view_list\",\"js_page.gads_ads_list_ids\":[\"109618864\",\"106702840\",\"109542443\"],\"js_page.ga4_load\":\"false\",\"js_page.af_load\":\"false\",\"js_page.fb_load\":\"false\",\"js_page.tk_load\":\"false\",\"js_page.bing_load\":\"false\",\"js_page.rtbhouse_ads_list_ids\":[\"109618864\",\"106702840\",\"109542443\"],\"js_page.rtbhouse_event\":\"listing\",\"js_page.rtbhouse_load\":\"true\",\"js_page.rtbhouse_taggingHash\":\"wCBrfTqZpg4dW1fLt8FZ\",\"js_page.criteo_ads_ids\":[\"109618864\",\"106702840\",\"109542443\"],\"js_page.criteo_event\":\"portal_viewList\",\"js_page.criteo_deviceType\":\"d\",\"js_page.criteo_load\":\"true\",\"js_page.criteo_accountId\":\"13122,19089,31531\",\"js_page.outbrain_load\":\"true\",\"js_page.outbrain_marketerId\":\"00102f801aea4aa0a21e30487ffdf4c4e8\",\"js_page.outbrain_track\":\"Visita\",\"js_page.taboola_load\":\"true\",\"js_page.taboola_taboolaId\":\"1420147\",\"js_page.linkedin_load\":\"false\",\"js_page.datalake_url\":\"https://integration2.idealista.com/tealium/client\",\"js_page.datalake_load\":\"true\",\"js_page.tealium_collect_load\":\"false\",\"js_page.prevPage\":\"010-idealista/home > portal > home > viewHome\",\"js_page.prevLevel2\":\"010-idealista/home\",\"cp._last_search\":\"officialZone\"}",
+      "timestamp": "2025-11-07T09:54:03.778Z"
+    },
+    {
+      "url": "https://www.idealista.com/es/ajax/listing/georeach/madrid-madrid",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-full-version-list": "\"Chromium\";v=\"141.0.7390.37\", \"Not?A_Brand\";v=\"8.0.0.0\"",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/venta-viviendas/madrid-madrid/",
+        "accept-language": "es-ES",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "sec-ch-ua-model": "\"\"",
+        "sec-ch-device-memory": "8",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-arch": "\"x86\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      "timestamp": "2025-11-07T09:54:03.787Z"
+    },
+    {
+      "url": "https://ams.creativecdn.com/tags/v2?type=json",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/venta-viviendas/madrid-madrid/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0",
+        "accept-language": "es-ES"
+      },
+      "postData": "{\"v\":\"v0.2.1\",\"sr\":\"\",\"su\":\"https://www.idealista.com/venta-viviendas/madrid-madrid/\",\"th\":\"wCBrfTqZpg4dW1fLt8FZ\",\"tags\":[{\"eventType\":\"custom\",\"name\":\"language\",\"value\":\"es\"},{\"eventType\":\"uid\",\"id\":\"unknown\",\"expiryDate\":\"2026-11-07T09:54:03.805Z\"},{\"eventType\":\"lid\",\"id\":\"3OS2DeiR5HdAHfwLcEP1\",\"expiryDate\":\"2026-11-07T09:54:03.805Z\"}]}",
+      "timestamp": "2025-11-07T09:54:03.808Z"
+    },
+    {
+      "url": "https://ams.creativecdn.com/tags/v2?type=json",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/venta-viviendas/madrid-madrid/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "content-type": "application/json",
+        "sec-ch-ua-mobile": "?0",
+        "accept-language": "es-ES"
+      },
+      "postData": "{\"v\":\"v0.2.1\",\"sr\":\"\",\"su\":\"https://www.idealista.com/venta-viviendas/madrid-madrid/\",\"th\":\"wCBrfTqZpg4dW1fLt8FZ\",\"tags\":[{\"eventType\":\"listing\",\"offerIds\":[\"109618864\",\"106702840\",\"109542443\"]},{\"eventType\":\"uid\",\"id\":\"unknown\",\"expiryDate\":\"2026-11-07T09:54:03.805Z\"},{\"eventType\":\"lid\",\"id\":\"3OS2DeiR5HdAHfwLcEP1\",\"expiryDate\":\"2026-11-07T09:54:03.805Z\"}]}",
+      "timestamp": "2025-11-07T09:54:03.808Z"
+    },
+    {
+      "url": "https://psb.taboola.com/topics_api",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:03.816Z"
+    },
+    {
+      "url": "https://pagead2.googlesyndication.com/ccm/collect?frm=0&tid=AW-1061695190&en=page_view&dl=https%3A%2F%2Fwww.idealista.com%2Fventa-viviendas%2Fmadrid-madrid%2F&scrsrc=www.googletagmanager.com&rnd=1900689574.1762509244&navt=n&npa=1&us_privacy=error&did=dYmQxMT&gdid=dYmQxMT&_tu=CA&gtm=45be5b60h2v9105130979za200zd9105130979xec&gcs=G100&gcd=13p3p3p2p5l1&dma_cps=-&dma=1&tcfd=10001&tag_exp=101509157~103116026~103200004~103233427~104527907~104528501~104684208~104684211~104948813~115480709~115583767~115938466~115938468~116194002~116217636~116217638&tft=1762509243841&tfd=1398&apve=1&apvf=f",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:03.852Z"
+    },
+    {
+      "url": "https://maps3.idealista.com/maps/api/staticmap?path=weight%3A2%7Ccolor%3A0x666664ff%7Cfillcolor%3A0x8e8f8c44%7Cenc%3AipxvFdilWkmA%7BRchBgx%40g%7DA%7DrAknAcjB%7Dc%40a%7C%40i_AydCch%40wsCaF%7Bd%40sD%7Bq%40af%40y%7E%40ap%40kwBkN%7B%7E%40oUwq%40uRax%40uc%40kpCcLgwC%60JowCta%40eqClV_v%40tC%7Dl%40uPed%40kf%40ygC_QioCzBcqCxXgmCnm%40ycCfImQtHyiAfe%40adC%7Ew%40%7DwBphAigBlvA%7BrApIqEpU%7BYpwAofAv%5EsS%7CeB_r%40nkByVhpAfBrT%7Bg%40bjAu_BpvAukAlp%40oZn_%40w_%40dfBu%60A%3F%3Fbg%40gYjHmBn%40m%40twAcx%40jQiHzcBkd%40jgBeKr%60BlKjp%40zAvD%60%40dOoIbwBqe%40nl%40yF%60iB_DzgB%60TxfAtV%7CeBfo%40x%7CAfhAfpAr%7EArEnJfcAzc%40bnAjdA%7CXxB%7ChBdk%40d%60BneAtsA%7E%7CA%7CcAzpBlq%40f%60C%60%5DtjCbSnsCfG%7CvC%7BN%7EuCuL%60hAea%40%7E_C_GfQ%60NlyAfCd%7BByJjzBuSd%7EBw%5EjcCeq%40dyB%7BaAxjBkx%40d%7E%40aH%7CK%5DnM%7B%5DbjCgJrc%40%7BHnz%40oi%40n%60Cs%7B%40rsBokAjbBsxAnmAq%60%40nQwMpLkpAn%7D%40kaBt%7C%40mdBpo%40wiBjU_kBuCkhBs%5EsNaH%7DeAjf%40__Bx%5BapAjDaVrQoP%60J_dBzo%40wo%40nIaV%60OakAtkAa%7BAp%7C%40oPxEo_Bzh%40%7D%5EnHyvBnQcwBmNi%7B%40qX&size=520x390&map_id=f1fde9e0453d8363&format=png&maptype=roadmap&language=es&key=AIzaSyCyCjWoBYs1Zq5CLJhDdWHtkH4I3kBCCPc&signature=ZbsX9fG5ZxXq9CuUd2j5GVPNKm8=",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:04.030Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/chevron-left_outline.svg?v100",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:04.037Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/chats_outline.svg?v100",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:04.038Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/phone_outline.svg?v100",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:04.038Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/bell_fill.svg?v100",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:04.038Z"
+    },
+    {
+      "url": "https://st3.idealista.com/static/vendors/icons/chevron-right_outline.svg?v100",
+      "method": "GET",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "accept-language": "es-ES",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "timestamp": "2025-11-07T09:54:04.038Z"
+    },
+    {
+      "url": "https://dd.idealista.com/js/",
+      "method": "POST",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "https://www.idealista.com/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "content-type": "application/x-www-form-urlencoded",
+        "sec-ch-ua-mobile": "?0",
+        "accept-language": "es-ES"
+      },
+      "postData": "jspl=In24VOlur5a9UAT-f_7lx23jwyDQEfnezJ6ahHMJCfmKmeKasW_RMvxBGdIt-yEZ1mdueiXJh2iCqOQE6cKcLiJhXDkr9qafeNHUzqdpaWu8FkPUitSc-eKtmDjZKyS0sFLDwowXAozxuo9XoNV6dryppfK07CjbAX8mWbicMnYVQxHkR-uC65nQ50IT3SoFRN12_Lo7TpbbwRimadjmOY3QVTQlLaf3ww34tJ3NmfZWMvkSkkGppo-YELSJatdnKkkJn0o0idGIPvQ2U38JA5AGSsQuGD3c4GSVdWXdFQEfNqzJzGClXND5LlohqR_8XJxN4V0VyZOyxkM4qjuVXCvjagN3J4nWTW61rauvOJkOU2rQO15-Z9mM51BMktkYZnKNPNoxFMLohjZ3uucj4TsFxBBPJqhhbzvORgGIEu3z6LgEv9YdwqLFsGDEorhfJIm0PumdPiIR3rrzIZ2o8oykUXnLSzRuFR7-bmac2z70cgyKREvAyO4Vha1TKVxVVCQECCsFXqQ48nQeWx1jKCcbl-OT1NXP7laEvHCVKxQjJRORs4r0wMAvjRPFCjPsaxilY_p6Epxv8tRX1404iwLV8euJDfKsUsWAAF12BVhuqmAhYoI-r9cONv9v_c_dN0V-6qWO5qkpM4vaIT2OR93mPJhQpjtWf25qukolHMD6G_cp7PxHqm991Wwo1oI75a_0w-THpNtGobMH4vtAL5Kdvi4LvSuY2AYiRHcVrRZbypQBV7mOirrI1T4BK-MsaqLMk_4Pn4cVUbi5WiITp-O1S8-7iNQxIVANwafXYDhBjYznkAFyfw-uZpg3gl461Hr_gpxvwqbIMip9Pq8ob7V9xC_JxRwNHrMLHHmEIg3v3-iKK-NLk7ONSFPZylkhXcekIqvK6y8K6q5bq3SiAcT9pRw75YJ-qWk3pUft2UR3zLt4GJIu94SdApBhmg7N1ZOR5V019VfYloUMbsjp110VqklgsjEjtI3ysc8zVOIX1VhHAIT3EZLnGUEoW7qNj1alL8TEbepUTfkQPhLu3bDn_bXMpHdGZ0Z0Iy_OqZZJuiXS-bSscLubrPeqqKBUx6NeXHaOsen_lXJvNn5sAl59Pvgd41bdefHD9EhbkVcFO3LGk4r_xPNNCk02B0CLDtZJIQ3j1N3WE4fmUFqAwk-RWKDUKbcgGQJ26Yi2nEPvuxgZd1OwaUxip6v1SQPDig3RWETMO7eMGejbAsQG0Q6f58oZSuTFpvqIZA1Pq0oRAdI5uFUN44KgmfWFVQmU0uB8-PumLJNOkjG4FN1S99tY1Cm2GW-CJmiYIUg1YezURUAfitpqh6xFMs2CUR5l_iD4m0C381r2Y-KA07asnGmjiJgIGXfO4Do6EM0KsGxCuv_ryFUbfv7uqhjETqH0qAo-bN6IPNWTRc816IcJGTUCaTxRwe60NV8ZTuXkrjoyvpC54e7CUoE-DVCNVOm_Qe_UJQVA0RZITiRgnc1jnQiujw7a74C-1QWBEUZVkmyk9mETShJZlxfNHWRsI9hwlM-xU_EKsFk0IJbdnVaYv2VxRSmYTSEdCBbEXl1nogZxvQGKYOMGZS07H7II54QZzPstdsV1ecctubGWI3HnlAtEYiDmJTr-SA5k-aLU6SdUt2svMLt2nD20Nj5bHRQpw1zJ2h95iqdLqpzQOZnnFfA8pQv-ugTrHbNpGYQLoGU3Eq6tzQ7iCmnZGJpC6zu2v4DQW3596soIR_Yep785s810Y3uDm1EQPKwaXCuLnKW4gwoVlr3QQpUU6ew39j7TYW7Klyykh0J79IDlOMf10iplV7sWA8hrjdDiefsZ3O0iUWlu9gUPgnu05xy2KP8ngM4kakQnNxWANEurW7AejAZfWZXIgLoAHmI-tTSkZH3z1Eq7TdKnCeK4pTDWtLFIpIC5z_PG7eQLByFZZguwVGcw81V2EoHDXZCcD5SLYEZQPtl-Iz6K43aDdku7H-gFiCXtOb3N6OWDvLwhaRZi4u26BP-k5cdehqtcPcWaRcOnNXvD_dtJMQmLpB8-ymGXA306GO1zbKMmvIJxQbBu-beFQvSUeT5RBjUbZ0ctpYlUHF0yEfmvdjgYXcyjfp7nwDkOXfxEuaZ-uZrso1yN3C2rFDHRPvOZabaAKA_ezerwQsdDOR9sDYo_CckcxX9oWbLTWLAo1901sjrGMYapaq5-zmW0Kv5Ek96lpQzOlakAREzNlABD3erSSRDEwpKKKKfFIHyDGqX6rcqrmhYE9bG6JMVYbT7Ipe5PZtx62NGcbMZtxH7nKsSY5foguKJYgTP3B8loe2OqbBE6g-ukqk_Ge9b3cfC4fuCfUZWZ1t5fFttkmmRAanEtq8EG8Wy70CRdMjbI3zKxVwGCeKwob0d6QD5_2My-ytAbSOZ1h2vEQUI3vSL8T-YPMqEOXRsg_yHBTHG4eMcKfJCzruU_Y0mkfh10GYk9P5G8p1u-UD3XT7TvEw-__kayCUrs4jx9qKC6AHMuSR8apoydWvM21jO8_Sy2gfZBaG7XR0IPlnqyfrn21DpjRkciJ8Jye0lTl8fuXMxhWUcEwRIpjpJtiWVBw-AP5f04Yt8xNjdNrlTmpEXLs4Rw4_XbBeYHyKY3t6tWGCmxbsMAc9uq6H4XQ2yp0RR4XYn3lGmgf8HfVLxMRSfEAi4P22vk8TsqtUWG5zC9gAGCzi8Excc2gOXjpE3ckEExeENWJc8Y9Y6zg5y4Pdwbl_Y3oIE9NF1A1_2aMJTi8dl4dNKephoL7F1_RZP1lDD0LkOUuebiEtiiJei9tYthnEpqp0cP83CUqJjzIHx8zE49aAwsJkGfMx9qAzoyMVb6CfZiUUHCm_kxVFMjlqRYW8v7ZQAG-G0ThW0k02PfY1s7Vuzs2Pkb4PO8Qx7kVoqmoB3jR-usdiE2svb7MPjDCsacXQtk1cbJhRiiUMRuOXwnuUBai6L0SKSZBwy064epUArKC7ajGMsiiD4qJp5_ET-nbKuNsw6n5c3bxw1gWpgm413vuX52UT6RXEiMgV2IWADUaeiW5OmLh81G4PU1WwYQMoppiQNKdSSH1JacxxKxYyflBc2m6qWyKppufkSgi-SxErVB9Pw1c-Z5zgB3xRKuW-qt-lesCZxVyX2BnCF5l93-4awipicxzgKEylEmQTpQdLiGxfUF1SZlR3fU6lVpmKIa_GYMAlrd6696tLy9QIk6LAucBgw27eTiSqrpwjHa0jgapFlJUXAlAcmQh-TcOWNEokv6XZwZLbNersf1SqqQxUEkKV41QWH7jRSKYQ1O8c-Pk5ZhC9hRaQYt10GrmoLeSq58LYAgA-u-3XN3nTO9pya0MaNMZupF_aXIMugzC5olH_ty9u8AMdJtOlnFXzy-XBYDkCH03BiZySVn_QfL5Poe0DIrqUMb6nACYU8ohOamGB9IKsAWN0xDbxGcsqQABpb0B7j50dTNGnQJJGLBt4-lPokTOwoYHhl_t_6XVW5lc7_ABF_0mPAkIHf_zI3bXIj7ofWppiJUwerzXlFTBaER-j5Z7Ycs6ZEivNRh0g0_Q8XKQ1EJpGgKba5jjtHM5-9kFscoKTuf5Lq5hwE0Mj4MeCVIhB8qY6wdFYln98FZHHzxHjxeLDPubL2cUHqZKNMWBF3uyzGZImfEFIHm3tOOV_sH3V9Aj3B_z3tv_xw3mPdSnsYvUpjFF-gAEMj8KdW07-XkImRQhNbUdDYtMLzbwwQlLSAUjvqoK0yO5D6L879jgeEjmC_CPOvR_H1bc5F_s05HVn_ulsJ_xbufFgmTTb_rzI7-cL96w95_YGkYUprqKiuGVV-IX8BjJU5xAbcq2AcVkcnZbvIIfIBWvK1khx0-K8Kh5ooiRAJ00ZONtDJ2LnfT4BRRhmoBlpTTdKCiNv2Ma5ghDF2miQYm6gcgM8pODy3u8DaMO6VDs_47JeeN4lVm6W82DVTwqyiw_b4NZtZIJTBwWeOYfD8lFdItjX9hYph9gftP073qmsi1mhoTNjPW_8-UliMcDQkZQ0t0guExmi9jC9LU7XKqLtdLdCY4Qpo19mzfbhQlmx6tz3kPbi1RmpeZiyOwAVHYWPVxk-17aMldrmXBxCyj90NL4QH1KB1Ssd2KMBh-VGrz50JHV8Uo4e_1HfvSb9qx7a91jeXtLnOZ2cQMDnX2D0LPsUB2q_2-pvvsVHtm-YTfM3k2Cv20FWcA-NyfZVCPnerbWxPFZYdHRBwIDFpD1z2rLJ0CVeDQDRy_pGdKrWQe0jwtfdpRw-fzYAo-J2Zj3uuMtPW_caimpz7f7nt63sVZeS5viJmOPr7LWJ_HG8ixljvVNCAxoLiH9Jbsp69o4udmnIHGJmeqvx3Spo_J3miGqYrvOgkFWbtvzyrdZlbsIdVJTEkq_E-Tz3saiYDQ8vjrkzqm15klM_d99nY35AM6XkUtuAIP3dOdlq44qkwOh3f6FHWZSGmNNiQMvdKyxv70wTEqIvM1Wqdy1CmDujSuizx6xWXpfRStMuqMR9tu4vdKBovLBnLxxwtllv_rfccW8Awgn_FWEm8vs3LfZ0X97Z3mJayN6e-zKqv71KE_Z9H8mAuDjlRTgCxIi2NRbFdpF942al6eQXWUedNkw-KoSw2p9LQEW2uwKsgV0NO7DbDEA7ChFc5fL5GE0c7-uk1dDuNqgakpmSpJ6EiscejgHVNmdRu6CHxpfIJ1AltVbPW869rYunuswAHwlb0VhlvZYnZuKIS3f1Bd52GkIKT7kkVqBQHPMae5PhfimvL2I9bNw5r9f7PV3FAIyGL1qQK_b1gpdvxsVm0vaMRExhHCaDMqwqvq3qjgBUMGOFs5tO_w98Qz110c6vklLfgyXQb4-fhnhX400XJZZdix6qgMRnLQhLwzZF73DLmIfwtf1Rx2ZBFg8dlYYP1htkX15bJDbiNbFqolz5TBXMJo82fxrrCtZIlV_Jo47C3O8RrzCiqGA-ngCGOplvmv1u3vo3HoTRQKV9S1F_-2QC4656wg1fqRXoZssTm6oNqlJSHqGq4JSyq2SxugTR6dTD2PBHMw6xOGzoMIEq5frhGnozukFnBL6SLBkKiyX97kA-Kpo7y8V4x&eventCounters=%5B%5D&jsType=ch&cid=0ijWB5P9ceJNX~hrlj9QKl5fg0g5J5rG0bgoIzSBPY2S8Ernq6wtkp0ZYXceWLHC8BMjRbdF7nsUzMgUUNkBrL1RU0tCd0nWPdQTefPVi_L7iB7hNbd5ku8PpbQp9AHR&ddk=AC81AADC3279CA4C7B968B717FBB30&Referer=https%253A%252F%252Fwww.idealista.com%252Fventa-viviendas%252Fmadrid-madrid%252F&request=%252Fventa-viviendas%252Fmadrid-madrid%252F&responsePage=origin&ddv=5.1.9",
+      "timestamp": "2025-11-07T09:54:05.008Z"
+    }
+  ],
+  "apiResponses": [
+    {
+      "url": "https://geo.captcha-delivery.com/interstitial/",
+      "status": 200,
+      "headers": {
+        "content-length": "274",
+        "date": "Fri, 07 Nov 2025 09:53:54 GMT",
+        "content-type": "application/json;charset=utf-8",
+        "connection": "keep-alive"
+      },
+      "contentType": "application/json;charset=utf-8",
+      "bodySize": 274,
+      "preview": "{\"cookie\":\"datadome=7V1Wtjcfwpw~vTvgZK5AOC60nHdWiRAiiXL~~qUgH8lRYBUHrzR4~ov92_ZGTcFofZKZwkRltWAYRj0tYUS5eHm5RXHVOk~ktDXpDdD4jUY1UWEAj~g5V~gcOocf0HMl; Max-Age=31536000; Domain=.idealista.com; Path=/; Secure; SameSite=Lax\",\"view\":\"redirect\",\"url\":\"https://www.idealista.com/\"}"
+    },
+    {
+      "url": "https://www.idealista.com/home/searchbox/operation-typology",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=2592000; includeSubDomains",
+        "content-security-policy": "frame-ancestors *.idealista.com *.inmovilla.com;",
+        "cache-control": "no-cache, no-store, must-revalidate, private, max-age=0",
+        "content-encoding": "gzip",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "x-cache": "MISS",
+        "date": "Fri, 07 Nov 2025 09:53:55 GMT",
+        "content-type": "application/json;charset=UTF-8",
+        "vary": "Accept-Encoding"
+      },
+      "contentType": "application/json;charset=UTF-8",
+      "bodySize": 0,
+      "preview": "{\"headers\":{},\"body\":{\"selectedTypology\":null,\"selectedTypologyId\":null,\"selectedOperation\":null,\"selectedOperationId\":null},\"statusCode\":\"OK\"}"
+    },
+    {
+      "url": "https://www.idealista.com/menu-api/links/nav-bar?language=es",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=2592000; includeSubDomains",
+        "content-security-policy": "frame-ancestors *.idealista.com *.inmovilla.com;",
+        "cache-control": "max-age=1800, public",
+        "content-encoding": "gzip",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "x-cache": "MISS",
+        "content-length": "786",
+        "date": "Fri, 07 Nov 2025 09:53:55 GMT",
+        "content-type": "application/json;charset=UTF-8",
+        "vary": "Accept-Encoding"
+      },
+      "contentType": "application/json;charset=UTF-8",
+      "bodySize": 786,
+      "preview": "{\"menuItems\":[{\"data\":{\"text\":\"Propietarios\"},\"children\":[{\"data\":{\"text\":\"Vender\"},\"children\":[{\"data\":{\"text\":\"Publicar tu anuncio gratis\",\"url\":\"/info/publicar-anuncio\"}},{\"data\":{\"text\":\"Valorar tu casa\",\"url\":\"/valoracion-de-inmuebles/\"}},{\"data\":{\"text\":\"Guía para vender\",\"url\":\"/como-vender-tu-casa/\"}},{\"data\":{\"text\":\"Documentos necesarios para la venta\",\"url\":\"/propietarios/documentacion-legal-inmueble\"}},{\"data\":{\"text\":\"Buscar agencias para vender\",\"url\":\"/que-inmobiliaria-elegir/\"}}]"
+    },
+    {
+      "url": "https://www.idealista.com/login-and-register-api/lara/sl/od",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=2592000; includeSubDomains",
+        "content-security-policy": "frame-ancestors *.idealista.com *.inmovilla.com;",
+        "cache-control": "no-cache, no-store, must-revalidate, private, max-age=0",
+        "content-encoding": "gzip",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "x-cache": "MISS",
+        "date": "Fri, 07 Nov 2025 09:53:55 GMT",
+        "x-datadome": "protected",
+        "content-type": "application/json;charset=UTF-8",
+        "vary": "Accept-Encoding"
+      },
+      "contentType": "application/json;charset=UTF-8",
+      "bodySize": 0,
+      "preview": "{\"googleClientId\":\"300135658781-gtndcqaqqpal4q232dc11eff63ltb6lb.apps.googleusercontent.com\",\"appleClientId\":\"com.idealista.login.es\",\"redirectUri\":\"https://www.idealista.com\",\"showGoogleOneTap\":true}"
+    },
+    {
+      "url": "https://www.idealista.com/login-and-register-api/lara/sl/od",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=2592000; includeSubDomains",
+        "content-security-policy": "frame-ancestors *.idealista.com *.inmovilla.com;",
+        "cache-control": "no-cache, no-store, must-revalidate, private, max-age=0",
+        "content-encoding": "gzip",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "x-cache": "MISS",
+        "date": "Fri, 07 Nov 2025 09:53:55 GMT",
+        "x-datadome": "protected",
+        "content-type": "application/json;charset=UTF-8",
+        "vary": "Accept-Encoding"
+      },
+      "contentType": "application/json;charset=UTF-8",
+      "bodySize": 0,
+      "preview": "{\"googleClientId\":\"300135658781-gtndcqaqqpal4q232dc11eff63ltb6lb.apps.googleusercontent.com\",\"appleClientId\":\"com.idealista.login.es\",\"redirectUri\":\"https://www.idealista.com\",\"showGoogleOneTap\":true}"
+    },
+    {
+      "url": "https://www.idealista.com/es/home/user-searches",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=2592000; includeSubDomains",
+        "content-security-policy": "frame-ancestors *.idealista.com *.inmovilla.com;",
+        "cache-control": "no-cache, no-store, must-revalidate, private, max-age=0",
+        "content-encoding": "gzip",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "x-cache": "MISS",
+        "date": "Fri, 07 Nov 2025 09:53:55 GMT",
+        "x-datadome": "protected",
+        "content-type": "application/json;charset=UTF-8",
+        "vary": "Accept-Encoding"
+      },
+      "contentType": "application/json;charset=UTF-8",
+      "bodySize": 0,
+      "preview": "{\"headers\":{},\"body\":{\"lastSearch\":null,\"savedSearches\":[],\"totalSavedSearches\":0},\"statusCode\":\"OK\"}"
+    },
+    {
+      "url": "https://www.idealista.com/home/datalayer",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=2592000; includeSubDomains",
+        "content-security-policy": "frame-ancestors *.idealista.com *.inmovilla.com;",
+        "cache-control": "no-cache, no-store, must-revalidate, private, max-age=0",
+        "content-encoding": "gzip",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "x-cache": "MISS",
+        "date": "Fri, 07 Nov 2025 09:53:55 GMT",
+        "content-type": "application/json;charset=UTF-8",
+        "vary": "Accept-Encoding"
+      },
+      "contentType": "application/json;charset=UTF-8",
+      "bodySize": 0,
+      "preview": "{\"responseStatusCode\":\"200\",\"settingCountry\":\"es\",\"settingLanguage\":\"es\",\"userStatus\":\"2\"}"
+    },
+    {
+      "url": "https://st4.idealista.com/datalayers/idealista/portal/home/viewHome.json",
+      "status": 200,
+      "headers": {
+        "access-control-max-age": "0",
+        "etag": "\"9721ea2acdbe6a0145639831f3627421\"",
+        "age": "644389",
+        "access-control-allow-methods": "GET",
+        "x-cache": "Hit from cloudfront",
+        "x-amz-cf-id": "ryaBJPLuTnilrWB5yQ--mRYHis5hmiFAjSW4Idr5Ix4uOzmksFI6yQ==",
+        "date": "Tue, 04 Nov 2025 00:57:36 GMT",
+        "content-type": "application/json",
+        "last-modified": "Mon, 31 Mar 2025 15:10:23 GMT",
+        "via": "1.1 f2113b8d87e7207937f1be60021effe0.cloudfront.net (CloudFront)",
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "content-length": "939",
+        "x-amz-cf-pop": "MAD56-P4",
+        "server": "AmazonS3",
+        "x-amz-server-side-encryption": "AES256"
+      },
+      "contentType": "application/json",
+      "bodySize": 939,
+      "preview": "{\n    \"device\": {\n        \"type\": \"${deviceType}\"\n    },\n    \"event\": {\n        \"class\": \"page\",\n        \"name\": \"viewHome\",\n        \"type\": \"view\"\n    },\n    \"page\": {\n        \"section\": \"portal\",\n        \"subSection\": \"home\"\n    },\n    \"response\": {\n        \"statusCode\": \"${responseStatusCode}\"\n    },\n    \"setting\": {\n        \"country\": \"${settingCountry}\",\n        \"language\": \"${settingLanguage}\"\n    },\n    \"tm\": {\n        \"datalayerVersion\": \"2.0\",\n        \"markup\": {\n            \"isTemporar"
+    },
+    {
+      "url": "https://ams.creativecdn.com/tags/v2?type=json&tc=1",
+      "status": 200,
+      "headers": {
+        "access-control-max-age": "3600",
+        "cache-control": "no-cache, no-store, must-revalidate, private, max-age=0",
+        "content-encoding": "gzip",
+        "pragma": "no-cache",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST",
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "access-control-allow-origin": "https://www.idealista.com",
+        "content-length": "139",
+        "date": "Fri, 07 Nov 2025 09:53:56 GMT",
+        "content-type": "application/json;charset=utf-8",
+        "vary": "Origin"
+      },
+      "contentType": "application/json;charset=utf-8",
+      "bodySize": 139,
+      "preview": "[{\"url\":\"https://ib.adnxs.com/setuid?entity=315&code=YIyKzhjoSX6OKUjsYkcIAagC0LUaulFEoFTVgbMwULo&consent=1\",\"type\":\"IMG\"}]"
+    },
+    {
+      "url": "https://ams.creativecdn.com/tags/v2?type=json&tc=1",
+      "status": 200,
+      "headers": {
+        "access-control-max-age": "3600",
+        "cache-control": "no-cache, no-store, must-revalidate, private, max-age=0",
+        "content-encoding": "gzip",
+        "pragma": "no-cache",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST",
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "access-control-allow-origin": "https://www.idealista.com",
+        "content-length": "191",
+        "date": "Fri, 07 Nov 2025 09:53:56 GMT",
+        "content-type": "application/json;charset=utf-8",
+        "vary": "Origin"
+      },
+      "contentType": "application/json;charset=utf-8",
+      "bodySize": 191,
+      "preview": "[{\"url\":\"https://cm.g.doubleclick.net/pixel?google_nid=rtb_house&google_cm&google_sc&google_ula=5153224&process_consent=T&google_hm=YIyKzhjoSX6OKUjsYkcIAagC0LUaulFEoFTVgbMwULo&pi=adx&tdc=ams\",\"type\":\"IMG\"}]"
+    },
+    {
+      "url": "https://dd.idealista.com/js/",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "pragma": "no-cache",
+        "x-content-type-options": "nosniff",
+        "via": "1.1 google, 1.1 65fafc6240b0e8b3e15609a24840fab6.cloudfront.net (CloudFront)",
+        "expires": "0",
+        "access-control-allow-origin": "*",
+        "x-cache": "Miss from cloudfront",
+        "content-length": "234",
+        "x-amz-cf-id": "w7_c9K7sHi_RJXUFLlCliRoKzhIUZT3YITOninQ-qeXx6sKmhpBjEA==",
+        "date": "Fri, 07 Nov 2025 09:53:59 GMT",
+        "content-type": "application/json;charset=utf-8",
+        "x-amz-cf-pop": "MAD53-P8",
+        "server": "DataDome"
+      },
+      "contentType": "application/json;charset=utf-8",
+      "bodySize": 234,
+      "preview": "{\"status\":200,\"cookie\":\"datadome=G3diPbkcIS7LkacXe6O30wlTTIymG3xQxdRj7Q5bGDoYU6UVZ~ZI~gqrY~cuETLGk9HHO1GZc_LImQRJ8ZPeBRWbiCkjiEsePIslKI1VBdEM_IGohOW~p34ZEGfGZYdR; Max-Age=31536000; Domain=.idealista.com; Path=/; Secure; SameSite=Lax\"}"
+    },
+    {
+      "url": "https://maps3.idealista.com/maps/api/staticmap?path=weight%3A2%7Ccolor%3A0x666664ff%7Cfillcolor%3A0x8e8f8c44%7Cenc%3Ag%7DjuFrqfVvMjX%7Bc%40%60N%7BcAj%7E%40kaBp%7C%40oEyxA%7CXey%40EstAaIwk%40xH_BkIqf%40_a%40_XPmZcjBdo%40al%40wLy_%40wr%40wtA%5Ew%40drAxKjc%40wW%7DBohAdh%40sV%7Cd%40_%5BrdDhKng%40aOlOcuAkCsc%40cVop%40dEob%40d%60%40oh%40mPaUj%7EAoP%7EIk%5DaLyOtJw%5Cn%40y%7C%40hz%40mlClaA%7DWtaAuOyBwLdQ%7B%5EnHgUoT%7DcAgG%7Bc%40a%7C%40aF%7Bd%40tY%7Dz%40uYciBhD_%60%40wR_%7C%40g%40ciAwZkq%40%7Do%40bh%40i%5CmAsQsoB_XeRqR_x%40vXyJdI_w%40v%5DkKkKmYxOen%40wIuIfQklAgMu_%40lrAuiAfK%7Ds%40pFdUrd%40wSdf%40qn%40qj%40gxAeiBaw%40_%60BycDjcAmbA%7Ev%40%7BD%60Kg%7C%40wy%40gjC%60s%40mIf_%40acAv%5EsStj%40r_%40b%5Bzy%40%7Cl%40bw%40kYvxCegBzp%40vH%7En%40tlAffDfGfi%40%7Em%40%7D%60AjdBwv%40jfAkNfs%40kr%40xp%40zn%40vGg%7E%40j_Buw%40vC_%5Cd%5Dm%5E%60a%40sIqFuoDe%5DclA%7CNeWe%40eq%40ugAufCzJaoBf%5BlAjk%40%7BKbe%40%7BfA%7E%5DhAjQe%60%40hr%40%5Eje%40%7Dd%40rIsXhQiHpq%40bYjQmQzPhB%7EIrj%40pe%40mIFpVtKcB%7CRvaBlc%40tnB_D%60e%40nLy%40bFvRdN%7BHn%5CfEhFoFpi%40bQdQwGdHwWuIet%40%60Ns%7BCaSqn%40%7Da%40mCvVuh%40do%40sg%40pl%40%7BFxfApVhO%7Cx%40sLdTqGlv%40hiAfc%40bfAtNxg%40lZCaRjk%40jDnfAblA%7EgAxd%40rdAnnAff%40wq%40bStsCwLdhAaWr%5D%7D%5BjnBm_Az%7EAv_%40fw%40qGja%40hX%7Cg%40iFnu%40zWn%60%40xJ%7Cp%40uSj%7EB_XpFii%40%7EiAe%7BDaYnl%40%7E%60Fab%40bjCdYhp%40m%5C%7C%7EAeSvW&size=330x330&map_id=f1fde9e0453d8363&format=png&maptype=roadmap&language=es&key=AIzaSyDtRYtFG_ZNTNX35bgdUxHDDJ7QlUys57s&signature=CyY5SF-mHjdsDRvZM9lQiqGjPJc=",
+      "status": 200,
+      "headers": {
+        "age": "6356",
+        "report-to": "{\"group\":\"msaispmnec:797:0\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/scaffolding/msaispmnec:797:0\"}],}",
+        "expires": "Sat, 08 Nov 2025 08:08:07 GMT",
+        "server-timing": "gfet4t7; dur=129",
+        "x-cache": "HIT",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "date": "Fri, 07 Nov 2025 09:54:03 GMT",
+        "content-type": "image/png",
+        "x-served-by": "cache-mad2200100-MAD",
+        "x-cache-hits": "6",
+        "x-frame-options": "SAMEORIGIN",
+        "cache-control": "public, max-age=86400",
+        "x-timer": "S1762509243.124596,VS0,VE0",
+        "content-security-policy-report-only": "script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/msaispmnec:797:0",
+        "via": "1.1 varnish",
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "cross-origin-opener-policy-report-only": "same-origin; report-to=msaispmnec:797:0",
+        "content-length": "43549",
+        "x-xss-protection": "0",
+        "server": "scaffolding on HTTPServer2"
+      },
+      "contentType": "image/png",
+      "bodySize": 43549,
+      "preview": "�PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0001J\u0000\u0000\u0001J\b\u0003\u0000\u0000\u0000L��7\u0000\u0000\u0003\u0000PLTE/04679<=A?BH<DREFHGHJHIKDJSOQTRSTUVYTXVVYZYXW[[\\\\^a_bgca\\eeecehfhedjnhfchhfkkjmnqmqmmqspnkqqnqrsquysysu{zxvrzxu{{}m{�v{�y�|}��|��n��x��p���~z��}�����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������Ò�Ŗ�ɚ����Ě�˟�Π�£�¥�ͩ�Ǯ�ȣ�ѧ�ԫ�ճ�ƶ�˺���Ů�î�Ƶ�ж�Ѹ�ռ�ٽ�ɺ�վ��Ԑ���ã�ѯ�έ����ȷ����ƽ�ε����ļ�ƾ�Ȼ�ӱ�ŵ�ɴ�ʸ�γ�ڹ�ϼ�Ѫ�����������»�ӿ�ʻ"
+    },
+    {
+      "url": "https://www.idealista.com/menu-api/links/nav-bar?language=es",
+      "status": 200,
+      "headers": {
+        "content-security-policy": "frame-ancestors *.idealista.com *.inmovilla.com;",
+        "cache-control": "max-age=1800, public",
+        "content-encoding": "gzip",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "x-cache": "MISS",
+        "content-length": "786",
+        "date": "Fri, 07 Nov 2025 09:53:55 GMT",
+        "content-type": "application/json;charset=UTF-8",
+        "vary": "Accept-Encoding"
+      },
+      "contentType": "application/json;charset=UTF-8",
+      "bodySize": 786,
+      "preview": "{\"menuItems\":[{\"data\":{\"text\":\"Propietarios\"},\"children\":[{\"data\":{\"text\":\"Vender\"},\"children\":[{\"data\":{\"text\":\"Publicar tu anuncio gratis\",\"url\":\"/info/publicar-anuncio\"}},{\"data\":{\"text\":\"Valorar tu casa\",\"url\":\"/valoracion-de-inmuebles/\"}},{\"data\":{\"text\":\"Guía para vender\",\"url\":\"/como-vender-tu-casa/\"}},{\"data\":{\"text\":\"Documentos necesarios para la venta\",\"url\":\"/propietarios/documentacion-legal-inmueble\"}},{\"data\":{\"text\":\"Buscar agencias para vender\",\"url\":\"/que-inmobiliaria-elegir/\"}}]"
+    },
+    {
+      "url": "https://www.idealista.com/es/zoneExperts/highlighted/1/1/madrid-madrid",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=2592000; includeSubDomains",
+        "content-security-policy": "frame-ancestors *.idealista.com *.inmovilla.com;",
+        "cache-control": "max-age=3600, public",
+        "content-encoding": "gzip",
+        "age": "1830",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "x-cache": "HIT",
+        "content-length": "28",
+        "date": "Fri, 07 Nov 2025 09:54:03 GMT",
+        "content-type": "application/json;charset=UTF-8",
+        "vary": "Accept-Encoding"
+      },
+      "contentType": "application/json;charset=UTF-8",
+      "bodySize": 28,
+      "preview": "[]"
+    },
+    {
+      "url": "https://ams.creativecdn.com/tags/v2?type=json",
+      "status": 200,
+      "headers": {
+        "access-control-max-age": "3600",
+        "cache-control": "no-cache, no-store, must-revalidate, private, max-age=0",
+        "content-encoding": "gzip",
+        "pragma": "no-cache",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST",
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "access-control-allow-origin": "https://www.idealista.com",
+        "content-length": "129",
+        "date": "Fri, 07 Nov 2025 09:54:03 GMT",
+        "content-type": "application/json;charset=utf-8",
+        "vary": "Origin"
+      },
+      "contentType": "application/json;charset=utf-8",
+      "bodySize": 129,
+      "preview": "[{\"url\":\"https://rt.udmserve.net/udm/fetch.pix?rtbh=YIyKzhjoSX6OKUjsYkcIAagC0LUaulFEoFTVgbMwULo\",\"type\":\"IMG\"}]"
+    },
+    {
+      "url": "https://ams.creativecdn.com/tags/v2?type=json",
+      "status": 200,
+      "headers": {
+        "access-control-max-age": "3600",
+        "cache-control": "no-cache, no-store, must-revalidate, private, max-age=0",
+        "content-encoding": "gzip",
+        "pragma": "no-cache",
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST",
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "access-control-allow-origin": "https://www.idealista.com",
+        "content-length": "161",
+        "date": "Fri, 07 Nov 2025 09:54:03 GMT",
+        "content-type": "application/json;charset=utf-8",
+        "vary": "Origin"
+      },
+      "contentType": "application/json;charset=utf-8",
+      "bodySize": 161,
+      "preview": "[{\"url\":\"https://pixel.rubiconproject.com/tap.php?v=58592&nid=3470&put=YIyKzhjoSX6OKUjsYkcIAagC0LUaulFEoFTVgbMwULo&expires=180\",\"type\":\"IMG\"}]"
+    },
+    {
+      "url": "https://www.idealista.com/es/ajax/listing/georeach/madrid-madrid",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=2592000; includeSubDomains",
+        "content-security-policy": "frame-ancestors *.idealista.com *.inmovilla.com;",
+        "cache-control": "no-cache, no-store, must-revalidate, private, max-age=0",
+        "content-encoding": "gzip",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "accept-ranges": "bytes",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "x-cache": "MISS",
+        "date": "Fri, 07 Nov 2025 09:54:04 GMT",
+        "x-datadome": "protected",
+        "content-type": "application/json;charset=UTF-8",
+        "vary": "Accept-Encoding"
+      },
+      "contentType": "application/json;charset=UTF-8",
+      "bodySize": 0,
+      "preview": "{\"headers\":{},\"body\":{\"title\":\"Obras nuevas con tus filtros cerca de la zona que buscas\",\"ads\":[{\"adId\":107688503,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/28/47/e0/1241894984.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/28/47/e0/1241894984.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/28/47/e0/1241894984.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealis"
+    },
+    {
+      "url": "https://maps3.idealista.com/maps/api/staticmap?path=weight%3A2%7Ccolor%3A0x666664ff%7Cfillcolor%3A0x8e8f8c44%7Cenc%3AipxvFdilWkmA%7BRchBgx%40g%7DA%7DrAknAcjB%7Dc%40a%7C%40i_AydCch%40wsCaF%7Bd%40sD%7Bq%40af%40y%7E%40ap%40kwBkN%7B%7E%40oUwq%40uRax%40uc%40kpCcLgwC%60JowCta%40eqClV_v%40tC%7Dl%40uPed%40kf%40ygC_QioCzBcqCxXgmCnm%40ycCfImQtHyiAfe%40adC%7Ew%40%7DwBphAigBlvA%7BrApIqEpU%7BYpwAofAv%5EsS%7CeB_r%40nkByVhpAfBrT%7Bg%40bjAu_BpvAukAlp%40oZn_%40w_%40dfBu%60A%3F%3Fbg%40gYjHmBn%40m%40twAcx%40jQiHzcBkd%40jgBeKr%60BlKjp%40zAvD%60%40dOoIbwBqe%40nl%40yF%60iB_DzgB%60TxfAtV%7CeBfo%40x%7CAfhAfpAr%7EArEnJfcAzc%40bnAjdA%7CXxB%7ChBdk%40d%60BneAtsA%7E%7CA%7CcAzpBlq%40f%60C%60%5DtjCbSnsCfG%7CvC%7BN%7EuCuL%60hAea%40%7E_C_GfQ%60NlyAfCd%7BByJjzBuSd%7EBw%5EjcCeq%40dyB%7BaAxjBkx%40d%7E%40aH%7CK%5DnM%7B%5DbjCgJrc%40%7BHnz%40oi%40n%60Cs%7B%40rsBokAjbBsxAnmAq%60%40nQwMpLkpAn%7D%40kaBt%7C%40mdBpo%40wiBjU_kBuCkhBs%5EsNaH%7DeAjf%40__Bx%5BapAjDaVrQoP%60J_dBzo%40wo%40nIaV%60OakAtkAa%7BAp%7C%40oPxEo_Bzh%40%7D%5EnHyvBnQcwBmNi%7B%40qX&size=520x390&map_id=f1fde9e0453d8363&format=png&maptype=roadmap&language=es&key=AIzaSyCyCjWoBYs1Zq5CLJhDdWHtkH4I3kBCCPc&signature=ZbsX9fG5ZxXq9CuUd2j5GVPNKm8=",
+      "status": 200,
+      "headers": {
+        "age": "10043",
+        "report-to": "{\"group\":\"msaispmnec:797:0\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/scaffolding/msaispmnec:797:0\"}],}",
+        "expires": "Sat, 08 Nov 2025 07:06:40 GMT",
+        "server-timing": "gfet4t7; dur=144",
+        "x-cache": "HIT",
+        "alt-svc": "h3=\":443\";ma=86400,h3-29=\":443\";ma=86400,h3-27=\":443\";ma=86400",
+        "date": "Fri, 07 Nov 2025 09:54:04 GMT",
+        "content-type": "image/png",
+        "x-served-by": "cache-mad2200126-MAD",
+        "x-cache-hits": "4",
+        "x-frame-options": "SAMEORIGIN",
+        "cache-control": "public, max-age=86400",
+        "x-timer": "S1762509244.060152,VS0,VE0",
+        "content-security-policy-report-only": "script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/msaispmnec:797:0",
+        "via": "1.1 varnish",
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "cross-origin-opener-policy-report-only": "same-origin; report-to=msaispmnec:797:0",
+        "content-length": "57612",
+        "x-xss-protection": "0",
+        "server": "scaffolding on HTTPServer2"
+      },
+      "contentType": "image/png",
+      "bodySize": 57612,
+      "preview": "�PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0002\b\u0000\u0000\u0001�\b\u0003\u0000\u0000\u0000)p�d\u0000\u0000\u0003\u0000PLTE/04;<><=ABBDGHJHIK@GSDKVFMYLOTOPQPPORSTUVYXWV\\[\\Y^e_chca\\ddegghghffkhhfeiifkkinnplplot|pnkqqnrrrrtxs{uu~xxvszyvzz{{~�|�}~��y��w���~z��}���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������Ú�ʟ�Π����®�ȣ�Ч�Ԫ�ը�ٷ����ǝì�ʱ�ů�Ǳ�ɱ�ó�Ǹ�ȹ�з�ֹ�ٻ�Ժ�ڽ�ʻ�Ӿ��҉�����Ǯ����ʹ�ż�¼�ϳ�ѵ����º�ƹ�ƾ�ɹ�ԭ�ï�"
+    },
+    {
+      "url": "https://dd.idealista.com/js/",
+      "status": 200,
+      "headers": {
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "pragma": "no-cache",
+        "x-content-type-options": "nosniff",
+        "via": "1.1 google, 1.1 65fafc6240b0e8b3e15609a24840fab6.cloudfront.net (CloudFront)",
+        "expires": "0",
+        "access-control-allow-origin": "*",
+        "x-cache": "Miss from cloudfront",
+        "content-length": "234",
+        "x-amz-cf-id": "EvI6Tg0yqEGeqMk_7yUrMAUgaCYUHoirBhYnMJ8JtPUX4FVKgGK16A==",
+        "date": "Fri, 07 Nov 2025 09:54:05 GMT",
+        "content-type": "application/json;charset=utf-8",
+        "x-amz-cf-pop": "MAD53-P8",
+        "server": "DataDome"
+      },
+      "contentType": "application/json;charset=utf-8",
+      "bodySize": 234,
+      "preview": "{\"status\":200,\"cookie\":\"datadome=lRs6EvvThWkKOLvw0CVI4qaSn~ZwEdToeBDenYwRqH6mUvi0BXKVE0DiDnn1gb_C99iLTHjSEQbZ_4pR23ApSrWHo1crO_R0cSlgVjoKDaBzkjLrpm9gfsnC9P3jG0pY; Max-Age=31536000; Domain=.idealista.com; Path=/; Secure; SameSite=Lax\"}"
+    }
+  ],
+  "cookies": [
+    {
+      "name": "PARAGLIDE_LOCALE",
+      "value": "es",
+      "domain": ".www.idealista.com",
+      "path": "/",
+      "expires": 1797069243.109285,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "userUUID",
+      "value": "24296c0d-c31a-49c1-b89a-c19c7db53163",
+      "domain": "www.idealista.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "SESSION",
+      "value": "d0d8340597b8dac9~15e109e1-d29e-472f-96bd-47a5138a8449",
+      "domain": "www.idealista.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "didomi_token",
+      "value": "eyJ1c2VyX2lkIjoiMTlhNWRiY2EtNWNjYS02M2M1LTk2YWEtNWU4ZWI4YjY0MTdiIiwiY3JlYXRlZCI6IjIwMjUtMTEtMDdUMDk6NTM6NTUuNjYwWiIsInVwZGF0ZWQiOiIyMDI1LTExLTA3VDA5OjUzOjU1LjY2MFoiLCJ2ZXJzaW9uIjpudWxsfQ==",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1794131635,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__sn",
+      "value": "1",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1794045243,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main_ses_id",
+      "value": "1762509235724%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__prevTsUrl",
+      "value": "https%3A%2F%2Fwww.idealista.com%2F%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__prevTsReferrer",
+      "value": "https://www.idealista.com/%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__prevTsSource",
+      "value": "Portal sites%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__prevTsCampaign",
+      "value": "organicTrafficByTm%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__prevTsProvider",
+      "value": "%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__prevTsNotificationId",
+      "value": "%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__ss",
+      "value": "0%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__prevEventLink",
+      "value": "",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1794045243,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_pprv",
+      "value": "eyJjb25zZW50Ijp7IjAiOnsibW9kZSI6Im9wdC1pbiJ9LCIxIjp7Im1vZGUiOiJvcHQtaW4ifSwiMiI6eyJtb2RlIjoib3B0LWluIn0sIjMiOnsibW9kZSI6Im9wdC1pbiJ9LCI0Ijp7Im1vZGUiOiJvcHQtaW4ifSwiNSI6eyJtb2RlIjoib3B0LWluIn0sIjYiOnsibW9kZSI6Im9wdC1pbiJ9LCI3Ijp7Im1vZGUiOiJvcHQtaW4ifX0sInB1cnBvc2VzIjpudWxsLCJfdCI6Im14ZDNmN2Z4fG1ob29ocTN4In0%3D",
+      "domain": ".www.idealista.com",
+      "path": "/",
+      "expires": 1796637235,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_pcid",
+      "value": "%7B%22browserId%22%3A%22mhoohq3v8mrfeu3r%22%2C%22_t%22%3A%22mxd3f7me%7Cmhoohqae%22%7D",
+      "domain": ".www.idealista.com",
+      "path": "/",
+      "expires": 1796637236,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_pctx",
+      "value": "%7Bu%7DN4IgrgzgpgThIC4B2YA2qA05owMoBcBDfSREQpAeyRCwgEt8oBJAE0RXSwH18yBbAB6sAzADMA7PzEAffgAtKleQEdCYkAF8gA",
+      "domain": ".www.idealista.com",
+      "path": "/",
+      "expires": 1796637236,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ts",
+      "value": "1762509236",
+      "domain": ".creativecdn.com",
+      "path": "/",
+      "expires": 1794045236.096177,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None",
+      "partitionKey": "https://idealista.com",
+      "_crHasCrossSiteAncestor": true
+    },
+    {
+      "name": "g",
+      "value": "ar0P5YTxZr7jlpjgo3QO_1762509236171",
+      "domain": ".creativecdn.com",
+      "path": "/",
+      "expires": 1794045236.096092,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "c",
+      "value": "ar0P5YTxZr7jlpjgo3QO_wCBrfTqZpg4dW1fLt8FZ_1762509236171",
+      "domain": ".creativecdn.com",
+      "path": "/",
+      "expires": 1794045236.09615,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None",
+      "partitionKey": "https://idealista.com",
+      "_crHasCrossSiteAncestor": true
+    },
+    {
+      "name": "XANDR_PANID",
+      "value": "Lqf_5kZoafro4bV-F5icSFbOCPsrUTyN6BgjYIyRPC8J7W828tab34z_CygDSeebUVQuTyDf8ngLs0ymP7CJo6WURX2pLYwmmn-teUV9IPg.",
+      "domain": ".adnxs.com",
+      "path": "/",
+      "expires": 1770285239.839117,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None",
+      "partitionKey": "https://idealista.com",
+      "_crHasCrossSiteAncestor": true
+    },
+    {
+      "name": "uuid2",
+      "value": "5762900681580358142",
+      "domain": ".adnxs.com",
+      "path": "/",
+      "expires": 1770285239.839189,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "IDE",
+      "value": "AHWqTUkD3ghWvNxNYyvHit616cwwebqw4b7Oq4PVG9rmKtw4lquNSuN9N54RRFJD1u0",
+      "domain": ".doubleclick.net",
+      "path": "/",
+      "expires": 1796205239.828465,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "anj",
+      "value": "dTM7k!M4/rD>6NRF']wIg2ImUrK1sS!@wnfH1YbZRGH!W=3>W1icuyV1rL$4gmpOA]$Qowl!d_4m>bVp4uNr]gw.F4/Z5.$`qn1kC]W9Tu*Q9X%nugO%v4VB%nmbH->Ip0",
+      "domain": ".adnxs.com",
+      "path": "/",
+      "expires": 1770285239.839171,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "contact15e109e1-d29e-472f-96bd-47a5138a8449",
+      "value": "\"{'maxNumberContactsAllow':10}\"",
+      "domain": "www.idealista.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "cookieSearch-1",
+      "value": "%2Fventa-viviendas%2Fmadrid-madrid%2F%3A1762509242558",
+      "domain": "www.idealista.com",
+      "path": "/",
+      "expires": 1794045242.951631,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "uppar",
+      "value": "false",
+      "domain": "www.idealista.com",
+      "path": "/",
+      "expires": 1794045242.951653,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__pn",
+      "value": "2%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__se",
+      "value": "4%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__st",
+      "value": "1762511043761%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__prevEventView",
+      "value": "005-idealista/portal > portal > results > resultList > viewResults%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main__prevLevel2",
+      "value": "005-idealista/portal%3Bexp-session",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1762511043,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_last_search",
+      "value": "officialZone",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__rtbh.uid",
+      "value": "%7B%22eventType%22%3A%22uid%22%2C%22id%22%3A%22unknown%22%2C%22expiryDate%22%3A%222026-11-07T09%3A54%3A03.805Z%22%7D",
+      "domain": "www.idealista.com",
+      "path": "/",
+      "expires": 1794045243,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__rtbh.lid",
+      "value": "%7B%22eventType%22%3A%22lid%22%2C%22id%22%3A%223OS2DeiR5HdAHfwLcEP1%22%2C%22expiryDate%22%3A%222026-11-07T09%3A54%3A03.805Z%22%7D",
+      "domain": "www.idealista.com",
+      "path": "/",
+      "expires": 1794045243,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "lang",
+      "value": "es",
+      "domain": "www.idealista.com",
+      "path": "/",
+      "expires": 1794045242.936421,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "udmts",
+      "value": "1762509244.0",
+      "domain": ".udmserve.net",
+      "path": "/",
+      "expires": 1794045244.519353,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "dt",
+      "value": "6BF5EFB2-79C7-37E0-BD35-6DF2431A0A66",
+      "domain": ".udmserve.net",
+      "path": "/",
+      "expires": 1794045244.519419,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "rtbh",
+      "value": "YIyKzhjoSX6OKUjsYkcIAagC0LUaulFEoFTVgbMwULo",
+      "domain": ".udmserve.net",
+      "path": "/",
+      "expires": 1770285244.519444,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "datadome",
+      "value": "lRs6EvvThWkKOLvw0CVI4qaSn~ZwEdToeBDenYwRqH6mUvi0BXKVE0DiDnn1gb_C99iLTHjSEQbZ_4pR23ApSrWHo1crO_R0cSlgVjoKDaBzkjLrpm9gfsnC9P3jG0pY",
+      "domain": ".idealista.com",
+      "path": "/",
+      "expires": 1794045244.949996,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "localStorage": {
+    "__rtbh.lid": "{\"eventType\":\"lid\",\"id\":\"3OS2DeiR5HdAHfwLcEP1\",\"expiryDate\":\"2026-11-07T09:54:03.805Z\"}",
+    "didomi_token": "eyJ1c2VyX2lkIjoiMTlhNWRiY2EtNWNjYS02M2M1LTk2YWEtNWU4ZWI4YjY0MTdiIiwiY3JlYXRlZCI6IjIwMjUtMTEtMDdUMDk6NTM6NTUuNjYwWiIsInVwZGF0ZWQiOiIyMDI1LTExLTA3VDA5OjUzOjU1LjY2MFoiLCJ2ZXJzaW9uIjpudWxsfQ==",
+    "__rtbh.uid": "{\"eventType\":\"uid\",\"id\":\"unknown\",\"expiryDate\":\"2026-11-07T09:54:03.805Z\"}"
+  },
+  "sessionStorage": {
+    "ddOriginalReferrer": "",
+    "__rtbh.lid": "{\"eventType\":\"lid\",\"id\":\"3OS2DeiR5HdAHfwLcEP1\",\"expiryDate\":\"2026-11-07T09:54:03.805Z\"}",
+    "geoReachPosition": "0",
+    "__rtbh.uid": "{\"eventType\":\"uid\",\"id\":\"unknown\",\"expiryDate\":\"2026-11-07T09:54:03.805Z\"}",
+    "geoReachCache": "{\"{\\\"location\\\":\\\"madrid-madrid\\\",\\\"filterParams\\\":{}}\":{\"data\":{\"title\":\"Obras nuevas con tus filtros cerca de la zona que buscas\",\"ads\":[{\"adId\":107688503,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/28/47/e0/1241894984.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/28/47/e0/1241894984.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/28/47/e0/1241894984.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/28/47/e0/1241894984.webp\"},\"ribbons\":[\"Obra nueva\"],\"distance\":\"362.2577952490621\",\"address\":\"Chalet pareado en Avenida De Los Ángeles, 13\",\"detailUrl\":\"/inmueble/107688503/\",\"price\":1298281,\"features\":[\"5 hab.\",\"275 m²\"],\"preferredContactMethod\":\"ALL\",\"isFavorite\":false},{\"adId\":108264484,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/ee/1b/6d/1379668325.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/ee/1b/6d/1379668325.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/ee/1b/6d/1379668325.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/ee/1b/6d/1379668325.webp\"},\"ribbons\":[\"Obra nueva terminada\"],\"distance\":\"1415.5023177753221\",\"address\":\"Chalet adosado en Valetin Robledo, 21\",\"detailUrl\":\"/inmueble/108264484/\",\"price\":1490000,\"features\":[\"6 hab.\",\"400 m²\"],\"preferredContactMethod\":\"ALL\",\"isFavorite\":false},{\"adId\":109301423,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/ee/b9/15/1370383288.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/ee/b9/15/1370383288.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/ee/b9/15/1370383288.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/ee/b9/15/1370383288.webp\"},\"ribbons\":[\"Obra nueva\"],\"distance\":\"2817.684485104947\",\"address\":\"Piso en Camino Pocito San Roque, 4\",\"detailUrl\":\"/inmueble/109301423/\",\"price\":351750,\"features\":[\"1 hab.\",\"61 m²\"],\"preferredContactMethod\":\"ALL\",\"isFavorite\":false},{\"adId\":109223690,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/11/ca/6c/1372397259.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/11/ca/6c/1372397259.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/11/ca/6c/1372397259.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/11/ca/6c/1372397259.webp\"},\"ribbons\":[\"Obra nueva\"],\"distance\":\"3080.7910875487833\",\"address\":\"Piso en Avenida Nuestra Señora Del Retamar\",\"detailUrl\":\"/inmueble/109223690/\",\"price\":608000,\"features\":[\"2 hab.\",\"72 m²\",\"Planta 3ª Con ascensor\"],\"preferredContactMethod\":\"ALL\",\"isFavorite\":false},{\"adId\":103325177,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/65/93/b1/1373567931.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/65/93/b1/1373567931.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/65/93/b1/1373567931.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/65/93/b1/1373567931.webp\"},\"ribbons\":[\"Obra nueva terminada\"],\"distance\":\"5559.837643588449\",\"address\":\"Ático en Calle Higuera\",\"detailUrl\":\"/inmueble/103325177/\",\"price\":745611,\"features\":[\"3 hab.\",\"237 m²\",\"Planta 3ª ext. Con ascensor\"],\"preferredContactMethod\":\"ALL\",\"isFavorite\":false},{\"adId\":97879475,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/50/85/6c/1377899827.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/50/85/6c/1377899827.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/50/85/6c/1377899827.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/50/85/6c/1377899827.webp\"},\"ribbons\":[\"Obra nueva\"],\"distance\":\"7264.376909475994\",\"address\":\"Chalet pareado en Calle Fresno, 9\",\"detailUrl\":\"/inmueble/97879475/\",\"price\":890000,\"features\":[\"4 hab.\",\"265 m²\"],\"preferredContactMethod\":\"ALL\",\"isFavorite\":false},{\"adId\":109496420,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/1e/6c/5c/1376434106.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/1e/6c/5c/1376434106.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/1e/6c/5c/1376434106.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/1e/6c/5c/1376434106.webp\"},\"ribbons\":[\"Obra nueva\"],\"distance\":\"8401.698968054081\",\"address\":\"Chalet pareado en Calle Manzanilla, 1\",\"detailUrl\":\"/inmueble/109496420/\",\"price\":423897,\"features\":[\"3 hab.\",\"140 m²\"],\"preferredContactMethod\":\"ALL\",\"isFavorite\":false},{\"adId\":108977580,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/73/de/a0/1360663466.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/73/de/a0/1360663466.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/73/de/a0/1360663466.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/73/de/a0/1360663466.webp\"},\"ribbons\":[\"Obra nueva\"],\"distance\":\"8686.52211998859\",\"address\":\"Chalet pareado en Calle Dublín\",\"detailUrl\":\"/inmueble/108977580/\",\"price\":825000,\"features\":[\"4 hab.\",\"211 m²\"],\"preferredContactMethod\":\"ALL\",\"isFavorite\":false},{\"adId\":109372767,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/da/d4/cf/1372679993.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/da/d4/cf/1372679993.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/da/d4/cf/1372679993.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/da/d4/cf/1372679993.webp\"},\"ribbons\":[\"Obra nueva\"],\"distance\":\"8837.045435374985\",\"address\":\"Casa o chalet independiente en Calle La Valeta, 4\",\"detailUrl\":\"/inmueble/109372767/\",\"price\":1495000,\"features\":[\"4 hab.\",\"416 m²\"],\"preferredContactMethod\":\"ALL\",\"isFavorite\":false},{\"adId\":109590864,\"thumbnails\":{\"thumbnail\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/c0/d0/4f/1381264233.jpg\",\"thumbnailWebp\":\"https://img4.idealista.com/blur/591_420_mq/0/id.pro.es.image.master/c0/d0/4f/1381264233.webp\",\"thumbnailMobile\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/c0/d0/4f/1381264233.jpg\",\"thumbnailMobileWebp\":\"https://img4.idealista.com/blur/340_280_mq/0/id.pro.es.image.master/c0/d0/4f/1381264233.webp\"},\"ribbons\":[\"Obra nueva\"],\"distance\":\"9065.70596614727\",\"address\":\"Piso en Calle Las Vallas, 12\",\"detailUrl\":\"/inmueble/109590864/\",\"price\":215000,\"features\":[\"1 hab.\",\"51 m²\",\"Bajo ext. Con ascensor\"],\"preferredContactMethod\":\"ALL\",\"isFavorite\":false}],\"saveSearchCardInfo\":{\"staticMapUrl\":\"https://maps3.idealista.com/maps/api/staticmap?path=weight%3A2%7Ccolor%3A0x666664ff%7Cfillcolor%3A0x8e8f8c44%7Cenc%3AipxvFdilWkmA%7BRchBgx%40g%7DA%7DrAknAcjB%7Dc%40a%7C%40i_AydCch%40wsCaF%7Bd%40sD%7Bq%40af%40y%7E%40ap%40kwBkN%7B%7E%40oUwq%40uRax%40uc%40kpCcLgwC%60JowCta%40eqClV_v%40tC%7Dl%40uPed%40kf%40ygC_QioCzBcqCxXgmCnm%40ycCfImQtHyiAfe%40adC%7Ew%40%7DwBphAigBlvA%7BrApIqEpU%7BYpwAofAv%5EsS%7CeB_r%40nkByVhpAfBrT%7Bg%40bjAu_BpvAukAlp%40oZn_%40w_%40dfBu%60A%3F%3Fbg%40gYjHmBn%40m%40twAcx%40jQiHzcBkd%40jgBeKr%60BlKjp%40zAvD%60%40dOoIbwBqe%40nl%40yF%60iB_DzgB%60TxfAtV%7CeBfo%40x%7CAfhAfpAr%7EArEnJfcAzc%40bnAjdA%7CXxB%7ChBdk%40d%60BneAtsA%7E%7CA%7CcAzpBlq%40f%60C%60%5DtjCbSnsCfG%7CvC%7BN%7EuCuL%60hAea%40%7E_C_GfQ%60NlyAfCd%7BByJjzBuSd%7EBw%5EjcCeq%40dyB%7BaAxjBkx%40d%7E%40aH%7CK%5DnM%7B%5DbjCgJrc%40%7BHnz%40oi%40n%60Cs%7B%40rsBokAjbBsxAnmAq%60%40nQwMpLkpAn%7D%40kaBt%7C%40mdBpo%40wiBjU_kBuCkhBs%5EsNaH%7DeAjf%40__Bx%5BapAjDaVrQoP%60J_dBzo%40wo%40nIaV%60OakAtkAa%7BAp%7C%40oPxEo_Bzh%40%7D%5EnHyvBnQcwBmNi%7B%40qX&size=520x390&map_id=f1fde9e0453d8363&format=png&maptype=roadmap&language=es&key=AIzaSyCyCjWoBYs1Zq5CLJhDdWHtkH4I3kBCCPc&signature=ZbsX9fG5ZxXq9CuUd2j5GVPNKm8=\",\"filterSummary\":[\"Todos los precios\",\"Todos los tamaños\",\"Estado: Obra nueva\"],\"searchTitle\":\"Obra nueva en Madrid y alrededores\",\"searchUrl\":\"/areas/venta-viviendas/con-obra-nueva/?shape=%2528%2528ipxvFdilWkmA%257BRchBgx%2540g%257DA%257DrAknAcjB%257Dc%2540a%257C%2540i_AydCch%2540wsCaF%257Bd%2540sD%257Bq%2540af%2540y%257E%2540ap%2540kwBkN%257B%257E%2540oUwq%2540uRax%2540uc%2540kpCcLgwC%2560JowCta%2540eqClV_v%2540tC%257Dl%2540uPed%2540kf%2540ygC_QioCzBcqCxXgmCnm%2540ycCfImQtHyiAfe%2540adC%257Ew%2540%257DwBphAigBlvA%257BrApIqEpU%257BYpwAofAv%255EsS%257CeB_r%2540nkByVhpAfBrT%257Bg%2540bjAu_BpvAukAlp%2540oZn_%2540w_%2540dfBu%2560A%253F%253Fbg%2540gYjHmBn%2540m%2540twAcx%2540jQiHzcBkd%2540jgBeKr%2560BlKjp%2540zAvD%2560%2540dOoIbwBqe%2540nl%2540yF%2560iB_DzgB%2560TxfAtV%257CeBfo%2540x%257CAfhAfpAr%257EArEnJfcAzc%2540bnAjdA%257CXxB%257ChBdk%2540d%2560BneAtsA%257E%257CA%257CcAzpBlq%2540f%2560C%2560%255DtjCbSnsCfG%257CvC%257BN%257EuCuL%2560hAea%2540%257E_C_GfQ%2560NlyAfCd%257BByJjzBuSd%257EBw%255EjcCeq%2540dyB%257BaAxjBkx%2540d%257E%2540aH%257CK%255DnM%257B%255DbjCgJrc%2540%257BHnz%2540oi%2540n%2560Cs%257B%2540rsBokAjbBsxAnmAq%2560%2540nQwMpLkpAn%257D%2540kaBt%257C%2540mdBpo%2540wiBjU_kBuCkhBs%255EsNaH%257DeAjf%2540__Bx%255BapAjDaVrQoP%2560J_dBzo%2540wo%2540nIaV%2560OakAtkAa%257BAp%257C%2540oPxEo_Bzh%2540%257D%255EnHyvBnQcwBmNi%257B%2540qX%2529%2529\",\"isSearchAlreadySaved\":false}},\"locale\":\"es\",\"time\":1762509243937}}",
+    "lastListingPage": "1",
+    "lastGeoReachs": "[{\"location\":\"madrid-madrid\",\"filterParams\":{}}]"
+  },
+  "recommendations": [
+    "✅ Se encontraron 4 endpoints relacionados con propiedades",
+    "   - GET https://www.idealista.com/home/searchbox/operation-typology",
+    "   - GET https://www.idealista.com/es/home/user-searches",
+    "   - GET https://st3.idealista.com/static/common/i18n/listing_es.properties?20251104171521",
+    "   - GET https://www.idealista.com/es/ajax/listing/georeach/madrid-madrid",
+    "🛡️ DataDome detectado en cookies. Necesitarás gestionar estas cookies."
+  ]
+}

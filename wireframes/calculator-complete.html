@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Flipper Pro - Calculadora Completa</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --primary-500: #3b82f6;
+      --primary-600: #2563eb;
+      --success-500: #10b981;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f9fafb;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      transition: all 0.3s ease;
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+    }
+
+    .result-success {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      border: 2px solid #10b981;
+    }
+
+    .result-warning {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 2px solid #f59e0b;
+    }
+
+    .result-error {
+      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+      border: 2px solid #ef4444;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .param-category {
+      border-left: 4px solid #3b82f6;
+      padding-left: 16px;
+    }
+
+    .toggle-checkbox:checked {
+      background-color: #3b82f6;
+      border-color: #3b82f6;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-lg font-bold text-gray-900">House Flipper Pro</h1>
+            <p class="text-xs text-gray-500">Calculadora Profesional</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="window.location.href='pricing-reference.html'" class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg">
+            💰 Consultar Precios
+          </button>
+          <button onclick="window.location.href='feed-pricing-data.html'" class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-lg">
+            📥 Alimentar Datos
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">Calculadora de Inversión Profesional</h2>
+      <p class="text-gray-600">Sistema completo de análisis con todos los parámetros configurables</p>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 xl:grid-cols-5 gap-8">
+
+      <!-- Left Column: Input (3/5) -->
+      <div class="xl:col-span-3 space-y-6">
+
+        <!-- Input Methods Tabs -->
+        <div class="card">
+          <div class="border-b border-gray-200">
+            <nav class="flex -mb-px" role="tablist">
+              <button
+                id="tab-url"
+                onclick="switchTab('url')"
+                class="tab-active px-6 py-3 text-sm font-medium border-b-2 border-blue-600 text-blue-600"
+                role="tab"
+                aria-selected="true"
+              >
+                <span class="flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                  </svg>
+                  <span>Por URL</span>
+                </span>
+              </button>
+              <button
+                id="tab-text"
+                onclick="switchTab('text')"
+                class="px-6 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 border-transparent"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                  <span>Por Texto</span>
+                </span>
+              </button>
+              <button
+                id="tab-manual"
+                onclick="switchTab('manual')"
+                class="px-6 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 border-transparent"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                  </svg>
+                  <span>Manual</span>
+                </span>
+              </button>
+            </nav>
+          </div>
+
+          <!-- Tab Content: URL -->
+          <div id="panel-url" class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Importar desde URL</h3>
+            <p class="text-sm text-gray-600 mb-4">Pega la URL de Idealista, Fotocasa, Pisos.com o Clikalia</p>
+
+            <div class="space-y-4">
+              <div class="flex gap-2">
+                <input
+                  type="url"
+                  id="property-url"
+                  placeholder="https://www.idealista.com/inmueble/..."
+                  class="input-field flex-1 px-4 py-3 border border-gray-300 rounded-lg"
+                />
+                <button onclick="parseURL()" class="btn-gradient px-6 py-3 text-white font-semibold rounded-lg whitespace-nowrap">
+                  Analizar
+                </button>
+              </div>
+
+              <div class="text-xs text-gray-500">
+                <p class="mb-1">Portales soportados:</p>
+                <ul class="list-disc list-inside space-y-1">
+                  <li>idealista.com</li>
+                  <li>fotocasa.es</li>
+                  <li>pisos.com</li>
+                  <li>clikalia.es</li>
+                </ul>
+              </div>
+
+              <div id="url-preview" class="hidden p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div class="flex items-center gap-2 text-green-700 mb-3">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="font-semibold">Datos extraídos correctamente</span>
+                </div>
+                <button onclick="applyURLData()" class="w-full btn-gradient px-4 py-2 text-white font-semibold rounded-lg">
+                  Aplicar a la Calculadora
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Content: Text -->
+          <div id="panel-text" class="p-6 hidden">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Importar desde Texto</h3>
+            <p class="text-sm text-gray-600 mb-4">Copia y pega el texto completo del anuncio</p>
+
+            <div class="space-y-4">
+              <div class="flex gap-2 mb-2">
+                <button onclick="pasteFromClipboard()" class="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                  </svg>
+                  Pegar
+                </button>
+                <button onclick="clearText()" class="px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg">
+                  Limpiar
+                </button>
+              </div>
+
+              <textarea
+                id="property-text"
+                placeholder="Pega aquí el texto del anuncio...
+
+Ejemplo:
+Piso en venta en CL Francisco Silvela
+Guindalera, Madrid
+385.000 €
+120 m² | 3 hab. | 2 baños
+Planta 3ª exterior con ascensor..."
+                class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg font-mono text-sm"
+                rows="8"
+              ></textarea>
+
+              <button onclick="extractFromText()" class="w-full btn-gradient px-6 py-3 text-white font-semibold rounded-lg">
+                Extraer Datos
+              </button>
+
+              <div id="text-preview" class="hidden p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div class="flex items-center gap-2 text-green-700 mb-3">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="font-semibold">Datos extraídos</span>
+                </div>
+                <button onclick="applyTextData()" class="w-full btn-gradient px-4 py-2 text-white font-semibold rounded-lg">
+                  Aplicar a la Calculadora
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Content: Manual -->
+          <div id="panel-manual" class="p-6 hidden">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">📍 Datos de la Propiedad</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Ubicación</label>
+                <input type="text" id="location" value="C/ Velázquez 42, Salamanca, Madrid" class="input-field w-full px-4 py-2 border border-gray-300 rounded-lg" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Precio de Compra (€)</label>
+                <input type="number" id="purchase-price" value="385000" class="input-field w-full px-4 py-2 border border-gray-300 rounded-lg" oninput="calculate()" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Superficie (m²)</label>
+                <input type="number" id="surface" value="120" class="input-field w-full px-4 py-2 border border-gray-300 rounded-lg" oninput="calculate()" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Precio de Venta (€)</label>
+                <input type="number" id="sale-price" value="600000" class="input-field w-full px-4 py-2 border border-gray-300 rounded-lg" oninput="calculate()" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Duración Proyecto (meses)</label>
+                <input type="number" id="project-duration" value="6" class="input-field w-full px-4 py-2 border border-gray-300 rounded-lg" oninput="calculate()" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Parámetros Completos -->
+        <div class="card">
+          <button onclick="toggleParams()" class="w-full p-6 flex items-center justify-between text-left">
+            <h3 class="text-lg font-semibold text-gray-900">⚙️ Parámetros Completos de Cálculo</h3>
+            <svg id="params-chevron" class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+
+          <div id="advanced-params" class="hidden px-6 pb-6 space-y-6">
+
+            <!-- COMPRA -->
+            <div class="param-category">
+              <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <span>🏠 Costes de Compra</span>
+              </h4>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">ITP (%)</label>
+                  <input type="number" id="itp-rate" value="6" step="0.1" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Notaría Compra (%)</label>
+                  <input type="number" id="notary-purchase-rate" value="0.3" step="0.1" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Notaría Min (€)</label>
+                  <input type="number" id="notary-purchase-min" value="600" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Registro (%)</label>
+                  <input type="number" id="registry-rate" value="0.2" step="0.1" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Registro Min (€)</label>
+                  <input type="number" id="registry-min" value="400" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Gestoría (€)</label>
+                  <input type="number" id="management-fee" value="500" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Tasación (€)</label>
+                  <input type="number" id="valuation-fee" value="400" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Due Diligence (€)</label>
+                  <input type="number" id="due-diligence-fee" value="800" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Comisión Compra (%)</label>
+                  <input type="number" id="commission-purchase-rate" value="3" step="0.1" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+              </div>
+
+              <!-- Opciones Compra -->
+              <div class="mt-4 space-y-2">
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" id="include-due-diligence" class="toggle-checkbox w-4 h-4 rounded" onchange="calculate()" />
+                  <span class="text-sm text-gray-700">Incluir Due Diligence</span>
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" id="include-commission-purchase" class="toggle-checkbox w-4 h-4 rounded" onchange="calculate()" />
+                  <span class="text-sm text-gray-700">Incluir Comisión de Compra</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- REFORMA -->
+            <div class="param-category">
+              <h4 class="font-bold text-gray-900 mb-3">🔨 Costes de Reforma</h4>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Reforma (€/m²)</label>
+                  <input type="number" id="renovation-m2" value="1200" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">IVA Reforma (%)</label>
+                  <input type="number" id="renovation-vat" value="21" step="0.1" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Licencia Obra (%)</label>
+                  <input type="number" id="construction-license" value="4" step="0.1" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Proyecto Arquitecto (%)</label>
+                  <input type="number" id="architect-rate" value="3" step="0.1" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Seguro Obra (%)</label>
+                  <input type="number" id="construction-insurance-rate" value="0.5" step="0.1" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Mobiliario (€)</label>
+                  <input type="number" id="furniture-budget" value="5000" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+              </div>
+
+              <!-- Opciones Reforma -->
+              <div class="mt-4 space-y-2">
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" id="include-construction-insurance" class="toggle-checkbox w-4 h-4 rounded" onchange="calculate()" />
+                  <span class="text-sm text-gray-700">Incluir Seguro de Obra</span>
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" id="include-furniture" class="toggle-checkbox w-4 h-4 rounded" onchange="calculate()" />
+                  <span class="text-sm text-gray-700">Incluir Mobiliario</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- MANTENIMIENTO -->
+            <div class="param-category">
+              <h4 class="font-bold text-gray-900 mb-3">🏡 Mantenimiento Mensual</h4>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Comunidad (€/mes)</label>
+                  <input type="number" id="community-fee" value="250" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Seguro (€/mes)</label>
+                  <input type="number" id="insurance-monthly" value="50" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Suministros (€/mes)</label>
+                  <input type="number" id="utilities-monthly" value="100" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">IBI (% anual)</label>
+                  <input type="number" id="ibi-rate" value="0.1" step="0.01" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+              </div>
+            </div>
+
+            <!-- VENTA -->
+            <div class="param-category">
+              <h4 class="font-bold text-gray-900 mb-3">💰 Costes de Venta</h4>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Comisión Venta (%)</label>
+                  <input type="number" id="commission-sale-rate" value="5" step="0.1" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Plusvalía (€)</label>
+                  <input type="number" id="plusvalia" value="1250" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Notaría Venta (%)</label>
+                  <input type="number" id="notary-sale-rate" value="0.1" step="0.01" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Notaría Min (€)</label>
+                  <input type="number" id="notary-sale-min" value="300" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Gestoría Venta (€)</label>
+                  <input type="number" id="management-sale" value="300" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Cédula Energética (€)</label>
+                  <input type="number" id="energy-cert" value="150" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Cédula Habitabilidad (€)</label>
+                  <input type="number" id="habitability-cert" value="200" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Home Staging (€)</label>
+                  <input type="number" id="home-staging" value="1500" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Marketing (€)</label>
+                  <input type="number" id="marketing-fee" value="500" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+              </div>
+
+              <!-- Opciones Venta -->
+              <div class="mt-4">
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" id="include-home-staging" checked class="toggle-checkbox w-4 h-4 rounded" onchange="calculate()" />
+                  <span class="text-sm text-gray-700">Incluir Home Staging</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- IMPUESTOS -->
+            <div class="param-category">
+              <h4 class="font-bold text-gray-900 mb-3">📊 Impuestos</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs text-gray-600 mb-1">Impuesto Sociedades (%)</label>
+                  <input type="number" id="corporate-tax" value="25" step="0.1" class="input-field w-full px-3 py-2 text-sm border border-gray-300 rounded" oninput="calculate()" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Botón Restaurar -->
+            <div class="pt-4 border-t">
+              <button onclick="resetDefaults()" class="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">
+                🔄 Restaurar Valores por Defecto (Madrid 2025)
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Results (2/5) -->
+      <div class="xl:col-span-2 space-y-6">
+
+        <!-- ROI Principal -->
+        <div id="result-main" class="result-success p-6 rounded-xl">
+          <div class="text-center">
+            <p class="text-sm font-medium text-gray-700 mb-2">ROI ESTIMADO</p>
+            <p id="roi-value" class="text-5xl font-bold text-green-600 mb-2">24.3%</p>
+            <p id="roi-annual" class="text-sm text-gray-700 mb-3">Anualizado: 48.6%</p>
+            <div class="flex items-center justify-center gap-2 text-green-700">
+              <span class="font-semibold" id="viable-text">✅ Inversión Viable</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desglose Detallado -->
+        <div class="card p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Desglose Completo</h3>
+
+          <!-- Inversión Total -->
+          <div class="mb-4 p-4 bg-red-50 rounded-lg">
+            <div class="flex justify-between items-center">
+              <span class="font-semibold text-gray-900">INVERSIÓN TOTAL</span>
+              <span id="total-investment" class="text-2xl font-bold text-red-600">€0</span>
+            </div>
+          </div>
+
+          <!-- Costes de Compra -->
+          <details class="mb-3">
+            <summary class="cursor-pointer font-semibold text-gray-900 py-2">🏠 Costes de Compra: <span id="purchase-total" class="text-blue-600">€0</span></summary>
+            <div class="pl-6 mt-2 space-y-1 text-sm">
+              <div class="flex justify-between"><span>Precio compra</span><span id="purchase-price-detail">€0</span></div>
+              <div class="flex justify-between"><span>ITP</span><span id="itp-detail">€0</span></div>
+              <div class="flex justify-between"><span>Notaría</span><span id="notary-purchase-detail">€0</span></div>
+              <div class="flex justify-between"><span>Registro</span><span id="registry-detail">€0</span></div>
+              <div class="flex justify-between"><span>Gestoría</span><span id="management-detail">€0</span></div>
+              <div class="flex justify-between"><span>Tasación</span><span id="valuation-detail">€0</span></div>
+              <div class="flex justify-between" id="due-diligence-row" style="display:none"><span>Due Diligence</span><span id="due-diligence-detail">€0</span></div>
+              <div class="flex justify-between" id="commission-purchase-row" style="display:none"><span>Comisión compra</span><span id="commission-purchase-detail">€0</span></div>
+            </div>
+          </details>
+
+          <!-- Costes de Reforma -->
+          <details class="mb-3">
+            <summary class="cursor-pointer font-semibold text-gray-900 py-2">🔨 Costes de Reforma: <span id="renovation-total" class="text-blue-600">€0</span></summary>
+            <div class="pl-6 mt-2 space-y-1 text-sm">
+              <div class="flex justify-between"><span>Presupuesto obra</span><span id="renovation-budget">€0</span></div>
+              <div class="flex justify-between"><span>IVA</span><span id="renovation-vat-detail">€0</span></div>
+              <div class="flex justify-between"><span>Licencia obra</span><span id="license-detail">€0</span></div>
+              <div class="flex justify-between"><span>Proyecto arquitecto</span><span id="architect-detail">€0</span></div>
+              <div class="flex justify-between" id="construction-insurance-row" style="display:none"><span>Seguro obra</span><span id="construction-insurance-detail">€0</span></div>
+              <div class="flex justify-between" id="furniture-row" style="display:none"><span>Mobiliario</span><span id="furniture-detail">€0</span></div>
+            </div>
+          </details>
+
+          <!-- Mantenimiento -->
+          <details class="mb-3">
+            <summary class="cursor-pointer font-semibold text-gray-900 py-2">🏡 Mantenimiento: <span id="maintenance-total" class="text-blue-600">€0</span></summary>
+            <div class="pl-6 mt-2 space-y-1 text-sm">
+              <div class="flex justify-between"><span>Gastos mensuales × <span id="duration-months">6</span> meses</span><span id="monthly-detail">€0</span></div>
+              <div class="flex justify-between"><span>IBI</span><span id="ibi-detail">€0</span></div>
+            </div>
+          </details>
+
+          <!-- Costes de Venta -->
+          <details class="mb-3">
+            <summary class="cursor-pointer font-semibold text-gray-900 py-2">💰 Costes de Venta: <span id="sale-total" class="text-blue-600">€0</span></summary>
+            <div class="pl-6 mt-2 space-y-1 text-sm">
+              <div class="flex justify-between"><span>Comisión venta + IVA</span><span id="commission-sale-detail">€0</span></div>
+              <div class="flex justify-between"><span>Plusvalía</span><span id="plusvalia-detail">€0</span></div>
+              <div class="flex justify-between"><span>Notaría</span><span id="notary-sale-detail">€0</span></div>
+              <div class="flex justify-between"><span>Gestoría</span><span id="management-sale-detail">€0</span></div>
+              <div class="flex justify-between"><span>Certificados</span><span id="certificates-detail">€0</span></div>
+              <div class="flex justify-between" id="staging-row"><span>Home Staging + Marketing</span><span id="staging-detail">€0</span></div>
+            </div>
+          </details>
+
+          <!-- Resultados -->
+          <div class="mt-4 pt-4 border-t space-y-3">
+            <div class="flex justify-between text-lg">
+              <span class="font-semibold">Precio de Venta</span>
+              <span id="sale-price-detail" class="font-bold text-green-600">€0</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Beneficio Bruto</span>
+              <span id="gross-profit">€0</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Impuesto Sociedades</span>
+              <span id="corporate-tax-detail">€0</span>
+            </div>
+            <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+              <span class="text-lg font-bold text-gray-900">BENEFICIO NETO</span>
+              <span id="net-profit" class="text-2xl font-bold text-green-600">€0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="grid grid-cols-2 gap-4">
+          <button class="btn-gradient px-6 py-3 text-white font-semibold rounded-lg">
+            💾 Guardar
+          </button>
+          <button class="px-6 py-3 bg-white border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50">
+            📄 Exportar PDF
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    function calculate() {
+      // Datos básicos
+      const purchasePrice = parseFloat(document.getElementById('purchase-price').value) || 0;
+      const surface = parseFloat(document.getElementById('surface').value) || 0;
+      const salePrice = parseFloat(document.getElementById('sale-price').value) || 0;
+      const duration = parseFloat(document.getElementById('project-duration').value) || 0;
+
+      // Parámetros Compra
+      const itpRate = parseFloat(document.getElementById('itp-rate').value) || 0;
+      const notaryPurchaseRate = parseFloat(document.getElementById('notary-purchase-rate').value) || 0;
+      const notaryPurchaseMin = parseFloat(document.getElementById('notary-purchase-min').value) || 0;
+      const registryRate = parseFloat(document.getElementById('registry-rate').value) || 0;
+      const registryMin = parseFloat(document.getElementById('registry-min').value) || 0;
+      const managementFee = parseFloat(document.getElementById('management-fee').value) || 0;
+      const valuationFee = parseFloat(document.getElementById('valuation-fee').value) || 0;
+      const dueDiligenceFee = parseFloat(document.getElementById('due-diligence-fee').value) || 0;
+      const commissionPurchaseRate = parseFloat(document.getElementById('commission-purchase-rate').value) || 0;
+
+      const includeDueDiligence = document.getElementById('include-due-diligence').checked;
+      const includeCommissionPurchase = document.getElementById('include-commission-purchase').checked;
+
+      // Costes Compra
+      const itp = purchasePrice * (itpRate / 100);
+      const notaryPurchase = Math.max(purchasePrice * (notaryPurchaseRate / 100), notaryPurchaseMin);
+      const registry = Math.max(purchasePrice * (registryRate / 100), registryMin);
+      const dueDiligence = includeDueDiligence ? dueDiligenceFee : 0;
+      const commissionPurchase = includeCommissionPurchase ? purchasePrice * (commissionPurchaseRate / 100) : 0;
+
+      const totalPurchase = purchasePrice + itp + notaryPurchase + registry + managementFee + valuationFee + dueDiligence + commissionPurchase;
+
+      // Parámetros Reforma
+      const renovationM2 = parseFloat(document.getElementById('renovation-m2').value) || 0;
+      const renovationVatRate = parseFloat(document.getElementById('renovation-vat').value) || 0;
+      const licenseRate = parseFloat(document.getElementById('construction-license').value) || 0;
+      const architectRate = parseFloat(document.getElementById('architect-rate').value) || 0;
+      const constructionInsuranceRate = parseFloat(document.getElementById('construction-insurance-rate').value) || 0;
+      const furnitureBudget = parseFloat(document.getElementById('furniture-budget').value) || 0;
+
+      const includeConstructionInsurance = document.getElementById('include-construction-insurance').checked;
+      const includeFurniture = document.getElementById('include-furniture').checked;
+
+      // Costes Reforma
+      const renovationBudget = surface * renovationM2;
+      const renovationVat = renovationBudget * (renovationVatRate / 100);
+      const license = renovationBudget * (licenseRate / 100);
+      const architect = renovationBudget * (architectRate / 100);
+      const constructionInsurance = includeConstructionInsurance ? renovationBudget * (constructionInsuranceRate / 100) : 0;
+      const furniture = includeFurniture ? furnitureBudget : 0;
+
+      const totalRenovation = renovationBudget + renovationVat + license + architect + constructionInsurance + furniture;
+
+      // Parámetros Mantenimiento
+      const communityFee = parseFloat(document.getElementById('community-fee').value) || 0;
+      const insuranceMonthly = parseFloat(document.getElementById('insurance-monthly').value) || 0;
+      const utilitiesMonthly = parseFloat(document.getElementById('utilities-monthly').value) || 0;
+      const ibiRate = parseFloat(document.getElementById('ibi-rate').value) || 0;
+
+      // Costes Mantenimiento
+      const monthlyMaintenance = communityFee + insuranceMonthly + utilitiesMonthly;
+      const ibiAnnual = purchasePrice * (ibiRate / 100);
+      const ibiPeriod = (ibiAnnual / 12) * duration;
+      const totalMaintenance = (monthlyMaintenance * duration) + ibiPeriod;
+
+      // Parámetros Venta
+      const commissionSaleRate = parseFloat(document.getElementById('commission-sale-rate').value) || 0;
+      const plusvalia = parseFloat(document.getElementById('plusvalia').value) || 0;
+      const notarySaleRate = parseFloat(document.getElementById('notary-sale-rate').value) || 0;
+      const notarySaleMin = parseFloat(document.getElementById('notary-sale-min').value) || 0;
+      const managementSale = parseFloat(document.getElementById('management-sale').value) || 0;
+      const energyCert = parseFloat(document.getElementById('energy-cert').value) || 0;
+      const habitabilityCert = parseFloat(document.getElementById('habitability-cert').value) || 0;
+      const homeStaging = parseFloat(document.getElementById('home-staging').value) || 0;
+      const marketingFee = parseFloat(document.getElementById('marketing-fee').value) || 0;
+
+      const includeHomeStaging = document.getElementById('include-home-staging').checked;
+
+      // Costes Venta
+      const commissionSale = (salePrice * (commissionSaleRate / 100)) * 1.21; // + IVA
+      const notarySale = Math.max(salePrice * (notarySaleRate / 100), notarySaleMin);
+      const certificates = energyCert + habitabilityCert;
+      const staging = includeHomeStaging ? homeStaging + marketingFee : marketingFee;
+
+      const totalSale = commissionSale + plusvalia + notarySale + managementSale + certificates + staging;
+
+      // Totales
+      const totalInvestment = totalPurchase + totalRenovation + totalMaintenance + totalSale;
+      const grossProfit = salePrice - totalInvestment;
+
+      const corporateTaxRate = parseFloat(document.getElementById('corporate-tax').value) || 0;
+      const corporateTax = grossProfit > 0 ? grossProfit * (corporateTaxRate / 100) : 0;
+      const netProfit = grossProfit - corporateTax;
+
+      const roi = totalInvestment > 0 ? (netProfit / totalInvestment) * 100 : 0;
+      const annualizedROI = roi * (12 / duration);
+
+      // Actualizar UI
+      document.getElementById('roi-value').textContent = roi.toFixed(1) + '%';
+      document.getElementById('roi-annual').textContent = 'Anualizado: ' + annualizedROI.toFixed(1) + '%';
+      document.getElementById('total-investment').textContent = '€' + totalInvestment.toLocaleString('es-ES', {minimumFractionDigits: 0});
+
+      // Detalles
+      document.getElementById('purchase-total').textContent = '€' + totalPurchase.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('purchase-price-detail').textContent = '€' + purchasePrice.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('itp-detail').textContent = '€' + itp.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('notary-purchase-detail').textContent = '€' + notaryPurchase.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('registry-detail').textContent = '€' + registry.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('management-detail').textContent = '€' + managementFee.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('valuation-detail').textContent = '€' + valuationFee.toLocaleString('es-ES', {minimumFractionDigits: 0});
+
+      document.getElementById('due-diligence-row').style.display = includeDueDiligence ? 'flex' : 'none';
+      document.getElementById('due-diligence-detail').textContent = '€' + dueDiligence.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('commission-purchase-row').style.display = includeCommissionPurchase ? 'flex' : 'none';
+      document.getElementById('commission-purchase-detail').textContent = '€' + commissionPurchase.toLocaleString('es-ES', {minimumFractionDigits: 0});
+
+      document.getElementById('renovation-total').textContent = '€' + totalRenovation.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('renovation-budget').textContent = '€' + renovationBudget.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('renovation-vat-detail').textContent = '€' + renovationVat.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('license-detail').textContent = '€' + license.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('architect-detail').textContent = '€' + architect.toLocaleString('es-ES', {minimumFractionDigits: 0});
+
+      document.getElementById('construction-insurance-row').style.display = includeConstructionInsurance ? 'flex' : 'none';
+      document.getElementById('construction-insurance-detail').textContent = '€' + constructionInsurance.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('furniture-row').style.display = includeFurniture ? 'flex' : 'none';
+      document.getElementById('furniture-detail').textContent = '€' + furniture.toLocaleString('es-ES', {minimumFractionDigits: 0});
+
+      document.getElementById('maintenance-total').textContent = '€' + totalMaintenance.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('duration-months').textContent = duration;
+      document.getElementById('monthly-detail').textContent = '€' + (monthlyMaintenance * duration).toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('ibi-detail').textContent = '€' + ibiPeriod.toLocaleString('es-ES', {minimumFractionDigits: 0});
+
+      document.getElementById('sale-total').textContent = '€' + totalSale.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('commission-sale-detail').textContent = '€' + commissionSale.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('plusvalia-detail').textContent = '€' + plusvalia.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('notary-sale-detail').textContent = '€' + notarySale.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('management-sale-detail').textContent = '€' + managementSale.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('certificates-detail').textContent = '€' + certificates.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('staging-detail').textContent = '€' + staging.toLocaleString('es-ES', {minimumFractionDigits: 0});
+
+      document.getElementById('sale-price-detail').textContent = '€' + salePrice.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('gross-profit').textContent = '€' + grossProfit.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('corporate-tax-detail').textContent = '€' + corporateTax.toLocaleString('es-ES', {minimumFractionDigits: 0});
+      document.getElementById('net-profit').textContent = '€' + netProfit.toLocaleString('es-ES', {minimumFractionDigits: 0});
+
+      // Cambiar color según ROI
+      const resultCard = document.getElementById('result-main');
+      const roiValueEl = document.getElementById('roi-value');
+      const viableText = document.getElementById('viable-text');
+
+      if (roi >= 20) {
+        resultCard.className = 'result-success p-6 rounded-xl';
+        roiValueEl.className = 'text-5xl font-bold text-green-600 mb-2';
+        viableText.textContent = '✅ Inversión Muy Viable';
+      } else if (roi >= 10) {
+        resultCard.className = 'result-warning p-6 rounded-xl';
+        roiValueEl.className = 'text-5xl font-bold text-yellow-600 mb-2';
+        viableText.textContent = '⚠️ Inversión Moderada';
+      } else {
+        resultCard.className = 'result-error p-6 rounded-xl';
+        roiValueEl.className = 'text-5xl font-bold text-red-600 mb-2';
+        viableText.textContent = '❌ Inversión No Viable';
+      }
+    }
+
+    function toggleParams() {
+      const panel = document.getElementById('advanced-params');
+      const icon = document.getElementById('params-chevron');
+      panel.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    }
+
+    function resetDefaults() {
+      if(!confirm('¿Restaurar todos los parámetros a valores por defecto de Madrid 2025?')) return;
+
+      // Compra
+      document.getElementById('itp-rate').value = 6;
+      document.getElementById('notary-purchase-rate').value = 0.3;
+      document.getElementById('notary-purchase-min').value = 600;
+      document.getElementById('registry-rate').value = 0.2;
+      document.getElementById('registry-min').value = 400;
+      document.getElementById('management-fee').value = 500;
+      document.getElementById('valuation-fee').value = 400;
+      document.getElementById('due-diligence-fee').value = 800;
+      document.getElementById('commission-purchase-rate').value = 3;
+
+      // Reforma
+      document.getElementById('renovation-m2').value = 1200;
+      document.getElementById('renovation-vat').value = 21;
+      document.getElementById('construction-license').value = 4;
+      document.getElementById('architect-rate').value = 3;
+      document.getElementById('construction-insurance-rate').value = 0.5;
+      document.getElementById('furniture-budget').value = 5000;
+
+      // Mantenimiento
+      document.getElementById('community-fee').value = 250;
+      document.getElementById('insurance-monthly').value = 50;
+      document.getElementById('utilities-monthly').value = 100;
+      document.getElementById('ibi-rate').value = 0.1;
+
+      // Venta
+      document.getElementById('commission-sale-rate').value = 5;
+      document.getElementById('plusvalia').value = 1250;
+      document.getElementById('notary-sale-rate').value = 0.1;
+      document.getElementById('notary-sale-min').value = 300;
+      document.getElementById('management-sale').value = 300;
+      document.getElementById('energy-cert').value = 150;
+      document.getElementById('habitability-cert').value = 200;
+      document.getElementById('home-staging').value = 1500;
+      document.getElementById('marketing-fee').value = 500;
+
+      // Impuestos
+      document.getElementById('corporate-tax').value = 25;
+
+      calculate();
+    }
+
+
+    // Tab switching
+    function switchTab(tabName) {
+      // Hide all panels
+      document.getElementById('panel-url').classList.add('hidden');
+      document.getElementById('panel-text').classList.add('hidden');
+      document.getElementById('panel-manual').classList.add('hidden');
+
+      // Remove active class from all tabs
+      document.getElementById('tab-url').classList.remove('tab-active', 'border-blue-600', 'text-blue-600');
+      document.getElementById('tab-url').classList.add('text-gray-500', 'border-transparent');
+      document.getElementById('tab-text').classList.remove('tab-active', 'border-blue-600', 'text-blue-600');
+      document.getElementById('tab-text').classList.add('text-gray-500', 'border-transparent');
+      document.getElementById('tab-manual').classList.remove('tab-active', 'border-blue-600', 'text-blue-600');
+      document.getElementById('tab-manual').classList.add('text-gray-500', 'border-transparent');
+
+      // Show selected panel
+      document.getElementById('panel-' + tabName).classList.remove('hidden');
+
+      // Add active class to selected tab
+      const activeTab = document.getElementById('tab-' + tabName);
+      activeTab.classList.remove('text-gray-500', 'border-transparent');
+      activeTab.classList.add('tab-active', 'border-blue-600', 'text-blue-600');
+
+      // Update ARIA
+      document.getElementById('tab-url').setAttribute('aria-selected', tabName === 'url');
+      document.getElementById('tab-text').setAttribute('aria-selected', tabName === 'text');
+      document.getElementById('tab-manual').setAttribute('aria-selected', tabName === 'manual');
+    }
+
+    // URL parsing
+    function parseURL() {
+      const url = document.getElementById('property-url').value;
+      if (!url.trim()) {
+        alert('Por favor ingresa una URL');
+        return;
+      }
+
+      // Simulate API call
+      setTimeout(() => {
+        document.getElementById('url-preview').classList.remove('hidden');
+        alert('Datos extraídos de la URL!\n\nPrecio: €385,000\nSuperficie: 120 m²\nHabitaciones: 3\n\nClick en "Aplicar a la Calculadora"');
+      }, 1000);
+    }
+
+    function applyURLData() {
+      document.getElementById('purchase-price').value = 385000;
+      document.getElementById('surface').value = 120;
+      document.getElementById('location').value = 'C/ Velázquez 42, Salamanca, Madrid';
+
+      switchTab('manual');
+      calculate();
+
+      alert('Datos aplicados! Revisa y ajusta si es necesario.');
+    }
+
+    // Text extraction
+    async function pasteFromClipboard() {
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById('property-text').value = text;
+      } catch (error) {
+        alert('No se pudo acceder al portapapeles. Pega manualmente con Ctrl+V o Cmd+V');
+      }
+    }
+
+    function clearText() {
+      document.getElementById('property-text').value = '';
+      document.getElementById('text-preview').classList.add('hidden');
+    }
+
+    function extractFromText() {
+      const text = document.getElementById('property-text').value;
+      if (!text.trim()) {
+        alert('Por favor pega el texto del anuncio');
+        return;
+      }
+
+      setTimeout(() => {
+        document.getElementById('text-preview').classList.remove('hidden');
+      }, 500);
+    }
+
+    function applyTextData() {
+      document.getElementById('purchase-price').value = 385000;
+      document.getElementById('surface').value = 120;
+      document.getElementById('location').value = 'C/ Velázquez 42, Salamanca, Madrid';
+
+      switchTab('manual');
+      calculate();
+
+      alert('Datos aplicados!');
+    }
+
+    // Cargar parámetros de URL si existen
+    function loadURLParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const reformed = urlParams.get('reformed');
+      const unreformed = urlParams.get('unreformed');
+      const neighborhood = urlParams.get('neighborhood');
+
+      if (reformed && unreformed) {
+        // Calcular precio de venta estimado (reformado)
+        const surface = parseFloat(document.getElementById('surface').value) || 120;
+        const estimatedSalePrice = Math.round(reformed * surface);
+
+        // Actualizar precio de venta
+        document.getElementById('sale-price').value = estimatedSalePrice;
+
+        // Mostrar notificación
+        if (neighborhood) {
+          setTimeout(() => {
+            alert(`Precios aplicados desde ${decodeURIComponent(neighborhood)}:\n\n` +
+                  `€${reformed}/m² (reformado)\n` +
+                  `€${unreformed}/m² (sin reformar)\n\n` +
+                  `Precio de venta estimado: €${estimatedSalePrice.toLocaleString('es-ES')}`);
+          }, 500);
+        }
+
+        // Recalcular
+        calculate();
+      }
+    }
+
+    // Calcular al cargar
+    calculate();
+    loadURLParams();
+  </script>
+
+</body>
+</html>

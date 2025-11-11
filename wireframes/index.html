@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Flipper Pro - Wireframes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .nav-card {
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
+      border-color: #3b82f6;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-primary { background: #dbeafe; color: #1e40af; }
+    .badge-success { background: #d1fae5; color: #065f46; }
+    .badge-warning { background: #fef3c7; color: #92400e; }
+  </style>
+</head>
+<body>
+
+  <div class="card p-8 md:p-12 max-w-5xl mx-4">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-500 rounded-2xl mb-4">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+      </div>
+      <h1 class="text-4xl font-bold text-gray-900 mb-2">House Flipper Pro</h1>
+      <p class="text-gray-600">Wireframes Interactivos - Plataforma de Análisis Inmobiliario</p>
+    </div>
+
+    <!-- Navigation Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+      <!-- Calculadora -->
+      <div class="nav-card p-6" onclick="window.location.href='calculator-complete.html'">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl">
+            <span class="text-2xl">🧮</span>
+          </div>
+          <span class="badge badge-primary">Dashboard Principal</span>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Calculadora de Inversión</h3>
+        <p class="text-sm text-gray-600 mb-4">Analiza ROI con 48+ parámetros configurables. Incluye entrada por URL, texto y manual.</p>
+        <div class="flex items-center gap-2 text-xs text-gray-500">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>3 métodos de entrada • 48 parámetros • Cálculo en tiempo real</span>
+        </div>
+      </div>
+
+      <!-- Precios de Referencia -->
+      <div class="nav-card p-6" onclick="window.location.href='pricing-reference.html'">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center justify-center w-12 h-12 bg-green-100 rounded-xl">
+            <span class="text-2xl">💰</span>
+          </div>
+          <span class="badge badge-success">Consulta</span>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Consultar Precios de Referencia</h3>
+        <p class="text-sm text-gray-600 mb-4">Consulta precios medios por barrio con ajustes premium de 20 factores.</p>
+        <div class="flex items-center gap-2 text-xs text-gray-500">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>169 barrios • Ajustes premium • Integración con calculadora</span>
+        </div>
+      </div>
+
+      <!-- Alimentar Datos -->
+      <div class="nav-card p-6" onclick="window.location.href='feed-pricing-data.html'">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-xl">
+            <span class="text-2xl">📥</span>
+          </div>
+          <span class="badge badge-warning">Admin</span>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Alimentar Precios de Referencia</h3>
+        <p class="text-sm text-gray-600 mb-4">Añade propiedades mediante scrapers automáticos, URL o texto.</p>
+        <div class="flex items-center gap-2 text-xs text-gray-500">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>5 scrapers activos • Entrada manual • Stats de BBDD</span>
+        </div>
+      </div>
+
+      <!-- Login (Bonus) -->
+      <div class="nav-card p-6" onclick="window.location.href='login-design.html'">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-xl">
+            <span class="text-2xl">🔐</span>
+          </div>
+          <span class="badge badge-primary">Bonus</span>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Login / Register</h3>
+        <p class="text-sm text-gray-600 mb-4">Diseño de autenticación con glassmorphism y validación completa.</p>
+        <div class="flex items-center gap-2 text-xs text-gray-500">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>Social login • WCAG 2.1 AA • Responsive</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Features Summary -->
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+      <h4 class="font-semibold text-gray-900 mb-3">✨ Características Implementadas</h4>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-700">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>Navegación completa entre páginas</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>Paso de parámetros entre páginas</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>169 barrios de Madrid integrados</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>Cálculos en tiempo real</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>Diseño responsive (mobile-first)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>Accesibilidad WCAG 2.1 AA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-600">
+      <p>Wireframes HTML interactivos creados para <strong>House Flipper Pro</strong></p>
+      <p class="mt-1">Listos para integración en Next.js 15 con React 19</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

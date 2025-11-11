@@ -1,0 +1,529 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Usuario del sistema
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  password      String
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts         Account[]
+  sessions         Session[]
+  favorites        UserFavorite[]
+  searchCriteria   SearchCriteria[]
+  passwordResetTokens PasswordResetToken[]
+  flippingAnalyses FlippingAnalysis[]
+}
+
+// Para NextAuth
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Token para recuperación de contraseña
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expires   DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+}
+
+// Propiedad scrapeada
+model Property {
+  id          String   @id @default(cuid())
+  url         String   @unique
+  portal      Portal   @default(IDEALISTA)
+
+  // Datos básicos
+  title       String
+  price       Float
+  m2          Float
+  pricePerM2  Float
+  address     String
+  zone        String
+  city        String   @default("Madrid")
+
+  // Coordenadas
+  latitude    Float?
+  longitude   Float?
+
+  // Características
+  rooms       Int?
+  bathrooms   Int?
+  floor       Int?
+  isExterior  Boolean  @default(false)
+  hasLift     Boolean  @default(false)
+  buildYear   Int?
+
+  // Estado y reforma
+  condition   String?  // "para reformar", "buen estado", etc.
+  needsReform Boolean  @default(false)
+
+  // Scoring
+  score       Float    @default(0)
+  scoreDetails Json?   // Desglose del scoring
+
+  // Imágenes y descripción
+  images      String[]
+  description String?
+
+  // Metadatos
+  status      PropertyStatus @default(ACTIVE)
+  scrapedAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  createdAt   DateTime  @default(now())
+
+  // Relaciones
+  history     PropertyHistory[]
+  favorites   UserFavorite[]
+  flippingAnalyses FlippingAnalysis[]
+}
+
+// Historial de cambios de precio
+model PropertyHistory {
+  id          String   @id @default(cuid())
+  propertyId  String
+  property    Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  price       Float
+  pricePerM2  Float
+  status      PropertyStatus
+
+  createdAt   DateTime @default(now())
+
+  @@index([propertyId])
+}
+
+// Favoritos de usuario
+model UserFavorite {
+  id         String   @id @default(cuid())
+  userId     String
+  propertyId String
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  notes      String?
+  rating     Int?     // 1-5
+  decision   FavoriteDecision?
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([userId, propertyId])
+  @@index([userId])
+}
+
+// Criterios de búsqueda configurables
+model SearchCriteria {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  name      String   // Nombre del criterio
+
+  // Filtros de zona
+  zones     String[] // ["GUINDALERA", "DELICIAS", etc.]
+
+  // Filtros de precio y superficie
+  minPrice  Float?
+  maxPrice  Float?
+  minM2     Float?
+  maxM2     Float?
+  maxPricePerM2 Float?
+
+  // Filtros de características
+  minRooms      Int?
+  minBathrooms  Int?
+  minFloor      Int?
+  maxFloor      Int?
+  exteriorOnly  Boolean @default(true)
+  needsReform   Boolean @default(true)
+
+  // Filtros de edificio
+  minBuildYear  Int?
+  maxBuildYear  Int?
+
+  // Scoring mínimo
+  minScore      Float?
+
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId])
+}
+
+// Análisis de House Flipping
+model FlippingAnalysis {
+  id            String   @id @default(cuid())
+  userId        String
+  propertyId    String?  // Opcional, puede estar vinculado a una propiedad
+
+  // Nombre descriptivo del análisis
+  name          String
+  notes         String?
+
+  // Datos de entrada
+  purchasePrice Float    // Precio de compra
+  salePrice     Float    // Precio de venta estimado
+  surface       Float    // Superficie en m²
+  duration      Int      // Duración del proyecto en meses
+  location      String   // Ubicación/zona
+
+  // Cálculos y parámetros guardados
+  calculations  Json     // Todos los cálculos (costes, ROI, etc)
+  parameters    Json     // Parámetros usados (ITP, reforma/m², etc)
+
+  // Resultados principales
+  totalInvestment Float  // Inversión total
+  netProfit      Float   // Beneficio neto
+  roi            Float   // ROI en porcentaje
+  viable         Boolean // Si es viable o no
+
+  // Timestamps
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relaciones
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  property      Property? @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+  priceEstimations PriceEstimation[]
+
+  @@index([userId])
+  @@index([propertyId])
+}
+
+
+// Propiedades vendidas (histórico) - Para comparables reales
+model SoldProperty {
+  id            String   @id @default(cuid())
+
+  // Datos básicos
+  portal        Portal
+  externalId    String?  // ID del portal si está disponible
+  url           String?
+  title         String
+  address       String
+  zone          String
+  city          String   @default("Madrid")
+
+  // Coordenadas
+  latitude      Float
+  longitude     Float
+
+  // Precio
+  salePrice     Float    // Precio real de venta
+  salePricePerM2 Float   // Precio/m² de venta
+  listingPrice  Float?   // Precio de anuncio original (si disponible)
+
+  // Características
+  surface       Float
+  rooms         Int?
+  bathrooms     Int?
+  floor         Int?
+  isExterior    Boolean  @default(true)
+  hasLift       Boolean  @default(false)
+  buildYear     Int?
+
+  // Estado en momento de venta
+  condition     String?  // "reformado", "para reformar", "buen estado", etc.
+  wasReformed   Boolean  @default(false)  // Si se vendió reformado
+  reformQuality String?  // "basica", "media", "alta" si fue reformado
+
+  // Fechas
+  listingDate   DateTime?  // Fecha de publicación del anuncio
+  saleDate      DateTime   // Fecha de venta
+  daysOnMarket  Int?       // Días en el mercado
+
+  // Metadata
+  dataSource    String     // "scraped", "api", "manual"
+  reliability   Int @default(5)  // 1-10, fiabilidad del dato
+  notes         String?
+
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@index([zone, saleDate])
+  @@index([latitude, longitude])
+  @@index([surface, saleDate])
+  @@unique([portal, externalId])
+}
+
+// Base de datos de costes de reforma
+model ReformCost {
+  id            String   @id @default(cuid())
+
+  // Identificación
+  name          String   // Descripción de la reforma
+  zone          String?  // Zona específica o null para general
+
+  // Tipo de reforma
+  reformType    ReformType
+  quality       ReformQuality
+
+  // Costes
+  costPerM2     Float    // Coste por m²
+  minCost       Float?   // Coste mínimo total
+  maxCost       Float?   // Coste máximo total
+
+  // Detalles
+  includesItems String[] // ["fontanería", "electricidad", "pintura", etc.]
+  excludesItems String[] // Lo que NO incluye
+
+  // Metadata
+  source        String   // "contractor", "platform", "estimate"
+  year          Int      // Año del presupuesto
+  isActive      Boolean  @default(true)
+  notes         String?
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([reformType, quality])
+  @@index([zone])
+}
+
+// Tracking de predicciones para validar precisión
+model PredictionTracking {
+  id              String   @id @default(cuid())
+  propertyId      String?  // Si está vinculado a una Property
+
+  // Datos de la predicción
+  predictedPrice  Float    // Precio predicho
+  predictedMin    Float    // Rango mínimo
+  predictedMax    Float    // Rango máximo
+  confidence      Float    // Nivel de confianza (0-100)
+
+  // Datos de entrada usados
+  inputData       Json     // Características usadas para la predicción
+  method          EstimationMethod
+  comparablesUsed Int      // Número de comparables
+
+  // Resultado real (cuando se conozca)
+  actualPrice     Float?   // Precio real de venta
+  actualSaleDate  DateTime? // Fecha de venta real
+
+  // Métricas de error
+  absoluteError   Float?   // Error absoluto
+  percentageError Float?   // Error porcentual
+  withinRange     Boolean? // Si estuvo dentro del rango predicho
+
+  // Metadata
+  predictionDate  DateTime @default(now())
+  validatedAt     DateTime? // Cuando se validó con dato real
+  notes           String?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([predictionDate])
+  @@index([propertyId])
+}
+
+// Zona de mercado con precios dinámicos
+model MarketZone {
+  id              String   @id @default(cuid())
+
+  // Identificación
+  name            String   @unique // "GUINDALERA", "DELICIAS", etc.
+  displayName     String   // "Guindalera"
+
+  // Ubicación
+  centerLatitude  Float
+  centerLongitude Float
+  radius          Float    // Radio en metros
+
+  // Precios (actualizados automáticamente)
+  avgPricePerM2   Float    // Precio medio actual
+  minPricePerM2   Float    // Precio mínimo observado
+  maxPricePerM2   Float    // Precio máximo observado
+
+  // Precios reformados vs sin reformar
+  avgReformedPricePerM2    Float?
+  avgUnreformedPricePerM2  Float?
+
+  // Estadísticas
+  propertiesCount Int @default(0)  // Propiedades activas
+  soldCount       Int @default(0)  // Ventas registradas
+  avgDaysOnMarket Int?             // Días medios en mercado
+
+  // Tendencias
+  priceGrowth3m   Float?   // Crecimiento 3 meses (%)
+  priceGrowth6m   Float?   // Crecimiento 6 meses (%)
+  priceGrowth12m  Float?   // Crecimiento 12 meses (%)
+
+  // Metadata
+  lastUpdated     DateTime @default(now())
+  isActive        Boolean  @default(true)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([name])
+}
+
+// Comparable de mercado para estimación de precio
+model MarketComparable {
+  id            String   @id @default(cuid())
+  estimationId  String
+
+  // Datos del comparable
+  url           String
+  price         Float
+  pricePerM2    Float
+  surface       Float
+  rooms         Int?
+  bathrooms     Int?
+  floor         Int?
+  isExterior    Boolean
+  hasLift       Boolean
+  condition     String?
+  address       String
+  distance      Float    // Distancia en metros desde la propiedad objetivo
+
+  // Ajustes de precio
+  surfaceAdjustment    Float @default(0)  // % ajuste por superficie
+  floorAdjustment      Float @default(0)  // % ajuste por planta
+  exteriorAdjustment   Float @default(0)  // % ajuste por exterior/interior
+  conditionAdjustment  Float @default(0)  // % ajuste por estado
+  totalAdjustment      Float @default(0)  // % ajuste total
+
+  adjustedPrice        Float  // Precio ajustado del comparable
+  weight               Float  // Peso en el cálculo final (basado en similitud)
+
+  createdAt    DateTime @default(now())
+
+  // Relación
+  priceEstimation PriceEstimation @relation(fields: [estimationId], references: [id], onDelete: Cascade)
+
+  @@index([estimationId])
+}
+
+// Estimación de precio de venta
+model PriceEstimation {
+  id            String   @id @default(cuid())
+  analysisId    String
+
+  // Datos de entrada
+  inputData     Json     // Características de la propiedad a estimar
+
+  // Resultados de la estimación
+  minPrice      Float    // Precio mínimo estimado
+  avgPrice      Float    // Precio promedio estimado
+  maxPrice      Float    // Precio máximo estimado
+  confidence    Float    // Nivel de confianza (0-100)
+
+  // Precio por m²
+  minPricePerM2 Float
+  avgPricePerM2 Float
+  maxPricePerM2 Float
+
+  // Método utilizado
+  method        EstimationMethod @default(COMPARABLES)
+
+  // Metadata
+  comparablesCount Int     // Número de comparables utilizados
+  searchRadius     Float   // Radio de búsqueda en metros
+  notes           String?  // Notas o advertencias del sistema
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relaciones
+  flippingAnalysis FlippingAnalysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  comparables      MarketComparable[]
+
+  @@index([analysisId])
+}
+
+// Enums
+enum EstimationMethod {
+  COMPARABLES     // Método de comparables
+  AI_ENHANCED     // Comparables + ajustes IA
+  MANUAL          // Entrada manual del usuario
+}
+
+enum Portal {
+  IDEALISTA
+  FOTOCASA
+  PISOS_COM
+}
+
+enum PropertyStatus {
+  ACTIVE      // Disponible
+  SOLD        // Vendida
+  REMOVED     // Retirada del mercado
+  ARCHIVED    // Archivada (muy antigua)
+}
+
+enum FavoriteDecision {
+  INTERESTED      // Interesado
+  VISIT_SCHEDULED // Visita programada
+  DISCARDED       // Descartada
+  OFFER_MADE      // Oferta realizada
+  PURCHASED       // Comprada
+}
+
+enum ReformType {
+  INTEGRAL    // Reforma integral completa
+  PARTIAL     // Reforma parcial (cocina, baño)
+  COSMETIC    // Reforma cosmética (pintura, suelos)
+  STRUCTURAL  // Reforma estructural
+}
+
+enum ReformQuality {
+  BASIC       // Calidad básica
+  MEDIUM      // Calidad media
+  HIGH        // Calidad alta
+  LUXURY      // Lujo
+}

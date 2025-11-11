@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Flipper Pro - Calculadora de Inversión</title>
+  <meta name="description" content="Calculadora de inversión inmobiliaria con análisis de ROI y comparables">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --primary-500: #3b82f6;
+      --primary-600: #2563eb;
+      --success-500: #10b981;
+      --warning-500: #f59e0b;
+      --error-500: #ef4444;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f9fafb;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      transition: all 0.3s ease;
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, #10b981, #059669);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+    }
+
+    .result-card {
+      background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+      border: 2px solid #3b82f6;
+    }
+
+    .result-success {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      border: 2px solid #10b981;
+    }
+
+    .result-warning {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 2px solid #f59e0b;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-slide-in {
+      animation: slideIn 0.4s ease-out;
+    }
+
+    .quick-action-card {
+      border: 2px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .quick-action-card:hover {
+      border-color: #3b82f6;
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.15);
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center w-10 h-10 bg-blue-500 rounded-lg">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-lg font-bold text-gray-900">House Flipper Pro</h1>
+            <p class="text-xs text-gray-500 hidden sm:block">Calculadora de Inversión</p>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="flex items-center gap-3">
+          <button onclick="showPricingReference()" class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Precios de Referencia</span>
+          </button>
+
+          <button onclick="showPropertySearch()" class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-lg transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <span>Buscar Propiedades</span>
+          </button>
+
+          <!-- User Avatar -->
+          <button class="flex items-center gap-2 p-1 pr-3 hover:bg-gray-100 rounded-lg transition-colors">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
+              JD
+            </div>
+            <span class="hidden md:block text-sm font-medium text-gray-700">Juan</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" role="main">
+
+    <!-- Page Header -->
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Calculadora de Inversión Inmobiliaria</h2>
+      <p class="text-gray-600">Analiza la rentabilidad de tu proyecto de compra, reforma y venta</p>
+    </div>
+
+    <!-- Quick Action Cards (Mobile) -->
+    <div class="grid grid-cols-2 gap-4 mb-8 sm:hidden">
+      <button onclick="showPricingReference()" class="quick-action-card p-4 bg-white rounded-lg text-center">
+        <svg class="w-8 h-8 text-green-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span class="text-sm font-medium text-gray-900">Precios de Referencia</span>
+      </button>
+
+      <button onclick="showPropertySearch()" class="quick-action-card p-4 bg-white rounded-lg text-center">
+        <svg class="w-8 h-8 text-blue-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <span class="text-sm font-medium text-gray-900">Buscar Propiedades</span>
+      </button>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+
+      <!-- Left Column: Input Form -->
+      <div class="space-y-6">
+
+        <!-- Input Methods Tabs -->
+        <div class="card">
+          <div class="border-b border-gray-200">
+            <nav class="flex -mb-px" role="tablist">
+              <button
+                id="tab-url"
+                onclick="switchTab('url')"
+                class="tab-active px-6 py-3 text-sm font-medium border-b-2 border-blue-600 text-blue-600"
+                role="tab"
+                aria-selected="true"
+              >
+                <span class="flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                  </svg>
+                  <span>Por URL</span>
+                </span>
+              </button>
+              <button
+                id="tab-text"
+                onclick="switchTab('text')"
+                class="px-6 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 border-transparent"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                  <span>Por Texto</span>
+                </span>
+              </button>
+              <button
+                id="tab-manual"
+                onclick="switchTab('manual')"
+                class="px-6 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 border-transparent"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                  </svg>
+                  <span>Manual</span>
+                </span>
+              </button>
+            </nav>
+          </div>
+
+          <!-- Tab Content: URL -->
+          <div id="panel-url" class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Importar desde URL</h3>
+            <p class="text-sm text-gray-600 mb-4">Pega la URL de Idealista, Fotocasa, Pisos.com o Clikalia</p>
+
+            <div class="space-y-4">
+              <div class="flex gap-2">
+                <input
+                  type="url"
+                  id="property-url"
+                  placeholder="https://www.idealista.com/inmueble/..."
+                  class="input-field flex-1 px-4 py-3 border border-gray-300 rounded-lg transition-all"
+                />
+                <button onclick="parseURL()" class="btn-gradient px-6 py-3 text-white font-semibold rounded-lg whitespace-nowrap">
+                  Analizar
+                </button>
+              </div>
+
+              <!-- URL Examples -->
+              <div class="text-xs text-gray-500">
+                <p class="mb-1">Soportado:</p>
+                <ul class="list-disc list-inside space-y-1">
+                  <li>idealista.com</li>
+                  <li>fotocasa.es</li>
+                  <li>pisos.com</li>
+                  <li>clikalia.es</li>
+                </ul>
+              </div>
+
+              <div id="url-preview" class="hidden p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div class="flex items-center gap-2 text-green-700 mb-3">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="font-semibold">Datos extraídos correctamente</span>
+                </div>
+                <button onclick="applyURLData()" class="w-full btn-gradient px-4 py-2 text-white font-semibold rounded-lg">
+                  Aplicar a la Calculadora
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Content: Text -->
+          <div id="panel-text" class="p-6 hidden">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Importar desde Texto</h3>
+            <p class="text-sm text-gray-600 mb-4">Copia y pega el texto completo del anuncio</p>
+
+            <div class="space-y-4">
+              <div class="flex gap-2 mb-2">
+                <button onclick="pasteFromClipboard()" class="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                  </svg>
+                  Pegar desde portapapeles
+                </button>
+                <button onclick="clearText()" class="px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+                  Limpiar
+                </button>
+              </div>
+
+              <textarea
+                id="property-text"
+                placeholder="Pega aquí el texto del anuncio...
+
+Ejemplo:
+Ático en venta en CL Francisco Silvela
+Guindalera, Madrid
+949.000 €
+100 m²
+3 hab. | 2 baños
+Planta 11ª exterior con ascensor
+Reformado completamente..."
+                class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg transition-all font-mono text-sm"
+                rows="8"
+              ></textarea>
+
+              <button onclick="extractFromText()" class="w-full btn-gradient px-6 py-3 text-white font-semibold rounded-lg">
+                Extraer Datos del Anuncio
+              </button>
+
+              <div id="text-preview" class="hidden p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div class="flex items-center gap-2 text-green-700 mb-3">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="font-semibold">Datos extraídos correctamente</span>
+                </div>
+                <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+                  <div><span class="text-gray-600">Precio:</span> <span class="font-semibold">€385,000</span></div>
+                  <div><span class="text-gray-600">Superficie:</span> <span class="font-semibold">120 m²</span></div>
+                  <div><span class="text-gray-600">Habitaciones:</span> <span class="font-semibold">3</span></div>
+                  <div><span class="text-gray-600">Baños:</span> <span class="font-semibold">2</span></div>
+                </div>
+                <button onclick="applyTextData()" class="w-full btn-gradient px-4 py-2 text-white font-semibold rounded-lg">
+                  Aplicar a la Calculadora
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Content: Manual -->
+          <div id="panel-manual" class="p-6 hidden">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+              Entrada Manual de Datos
+            </h3>
+
+            <div class="space-y-4">
+              <!-- Ubicación -->
+              <div>
+                <label for="location" class="block text-sm font-medium text-gray-700 mb-1">
+                  Ubicación
+                </label>
+                <input
+                  type="text"
+                  id="location"
+                  placeholder="C/ Velázquez 42, Salamanca, Madrid"
+                  class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg transition-all"
+                />
+              </div>
+
+            <!-- Precio de Compra -->
+            <div>
+              <label for="purchase-price" class="block text-sm font-medium text-gray-700 mb-1">
+                Precio de Compra (€)
+              </label>
+              <div class="relative">
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">€</span>
+                <input
+                  type="number"
+                  id="purchase-price"
+                  placeholder="385,000"
+                  value="385000"
+                  class="input-field w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg transition-all"
+                  oninput="calculateROI()"
+                />
+              </div>
+            </div>
+
+            <!-- Superficie -->
+            <div>
+              <label for="surface" class="block text-sm font-medium text-gray-700 mb-1">
+                Superficie (m²)
+              </label>
+              <div class="relative">
+                <input
+                  type="number"
+                  id="surface"
+                  placeholder="120"
+                  value="120"
+                  class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg transition-all"
+                  oninput="calculateROI()"
+                />
+                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">m²</span>
+              </div>
+            </div>
+
+            <!-- Coste Reforma -->
+            <div>
+              <label for="renovation-cost" class="block text-sm font-medium text-gray-700 mb-1">
+                Coste de Reforma (€/m²)
+              </label>
+              <div class="relative">
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">€</span>
+                <input
+                  type="number"
+                  id="renovation-cost"
+                  placeholder="800"
+                  value="800"
+                  class="input-field w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg transition-all"
+                  oninput="calculateROI()"
+                />
+                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500">/m²</span>
+              </div>
+            </div>
+
+            <!-- Precio de Venta Estimado -->
+            <div>
+              <label for="sale-price" class="block text-sm font-medium text-gray-700 mb-1">
+                Precio de Venta Estimado (€)
+                <span class="text-xs text-gray-500 ml-2">(basado en comparables)</span>
+              </label>
+              <div class="relative">
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">€</span>
+                <input
+                  type="number"
+                  id="sale-price"
+                  placeholder="550,000"
+                  value="550000"
+                  class="input-field w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg transition-all"
+                  oninput="calculateROI()"
+                />
+              </div>
+              <button onclick="showPricingReference()" class="mt-2 text-xs text-blue-600 hover:underline flex items-center gap-1">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Ver precios de referencia para esta zona
+              </button>
+            </div>
+
+            <!-- Duración del Proyecto -->
+            <div>
+              <label for="duration" class="block text-sm font-medium text-gray-700 mb-1">
+                Duración del Proyecto (meses)
+              </label>
+              <input
+                type="number"
+                id="duration"
+                placeholder="6"
+                value="6"
+                class="input-field w-full px-4 py-3 border border-gray-300 rounded-lg transition-all"
+                oninput="calculateROI()"
+              />
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Costes Adicionales (Collapsible) -->
+        <div class="card p-6">
+          <button onclick="toggleAdvanced()" class="w-full flex items-center justify-between text-left">
+            <h3 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              Parámetros Avanzados
+            </h3>
+            <svg id="chevron-icon" class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+
+          <div id="advanced-params" class="hidden mt-4 space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">ITP (%)</label>
+                <input type="number" value="10" class="input-field w-full px-3 py-2 border border-gray-300 rounded-lg" oninput="calculateROI()" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Comisión Venta (%)</label>
+                <input type="number" value="3" class="input-field w-full px-3 py-2 border border-gray-300 rounded-lg" oninput="calculateROI()" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Notaría (€)</label>
+                <input type="number" value="2500" class="input-field w-full px-3 py-2 border border-gray-300 rounded-lg" oninput="calculateROI()" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Gestoría (€)</label>
+                <input type="number" value="1200" class="input-field w-full px-3 py-2 border border-gray-300 rounded-lg" oninput="calculateROI()" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Results -->
+      <div class="space-y-6">
+
+        <!-- Resultado Principal -->
+        <div id="result-main" class="result-success p-8 rounded-xl animate-slide-in">
+          <div class="text-center">
+            <p class="text-sm font-medium text-gray-700 mb-2">ROI ESTIMADO</p>
+            <p id="roi-value" class="text-5xl font-bold text-green-600 mb-4">24.3%</p>
+            <div class="flex items-center justify-center gap-2 text-green-700">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-semibold">Inversión Viable</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desglose de Números -->
+        <div class="card p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Desglose Financiero</h3>
+
+          <div class="space-y-4">
+            <!-- Inversión Total -->
+            <div class="flex items-center justify-between py-3 border-b border-gray-200">
+              <span class="text-gray-700">Inversión Total</span>
+              <span id="total-investment" class="text-lg font-bold text-gray-900">€482,700</span>
+            </div>
+
+            <!-- Breakdown -->
+            <div class="pl-4 space-y-2 text-sm">
+              <div class="flex justify-between text-gray-600">
+                <span>• Precio de compra</span>
+                <span id="price-breakdown">€385,000</span>
+              </div>
+              <div class="flex justify-between text-gray-600">
+                <span>• Reforma (800€/m² × 120m²)</span>
+                <span id="renovation-breakdown">€96,000</span>
+              </div>
+              <div class="flex justify-between text-gray-600">
+                <span>• ITP (10%)</span>
+                <span id="itp-breakdown">€38,500</span>
+              </div>
+              <div class="flex justify-between text-gray-600">
+                <span>• Otros gastos</span>
+                <span id="other-costs">€3,700</span>
+              </div>
+            </div>
+
+            <!-- Precio de Venta -->
+            <div class="flex items-center justify-between py-3 border-b border-gray-200">
+              <span class="text-gray-700">Precio de Venta</span>
+              <span id="sale-price-display" class="text-lg font-bold text-green-600">€550,000</span>
+            </div>
+
+            <!-- Comisión de Venta -->
+            <div class="pl-4 space-y-2 text-sm">
+              <div class="flex justify-between text-gray-600">
+                <span>• Comisión agencia (3%)</span>
+                <span id="commission-breakdown">€16,500</span>
+              </div>
+            </div>
+
+            <!-- Beneficio Neto -->
+            <div class="flex items-center justify-between py-4 bg-green-50 rounded-lg px-4">
+              <span class="text-lg font-semibold text-gray-900">Beneficio Neto</span>
+              <span id="net-profit" class="text-2xl font-bold text-green-600">€50,800</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Escenarios -->
+        <div class="card p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Escenarios de ROI</h3>
+
+          <div class="space-y-3">
+            <!-- Pesimista -->
+            <div class="p-3 bg-red-50 rounded-lg border border-red-200">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-sm font-medium text-red-900">Pesimista (-15% venta)</span>
+                <span class="text-lg font-bold text-red-600">15.2%</span>
+              </div>
+              <p class="text-xs text-red-700">Venta: €467,500 | Beneficio: €27,800</p>
+            </div>
+
+            <!-- Realista -->
+            <div class="p-3 bg-blue-50 rounded-lg border-2 border-blue-400">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-sm font-medium text-blue-900">Realista (base)</span>
+                <span class="text-lg font-bold text-blue-600">24.3%</span>
+              </div>
+              <p class="text-xs text-blue-700">Venta: €550,000 | Beneficio: €50,800</p>
+            </div>
+
+            <!-- Optimista -->
+            <div class="p-3 bg-green-50 rounded-lg border border-green-200">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-sm font-medium text-green-900">Optimista (+10% venta)</span>
+                <span class="text-lg font-bold text-green-600">32.1%</span>
+              </div>
+              <p class="text-xs text-green-700">Venta: €605,000 | Beneficio: €75,300</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acciones -->
+        <div class="grid grid-cols-2 gap-4">
+          <button class="btn-gradient px-6 py-3 text-white font-semibold rounded-lg">
+            💾 Guardar Análisis
+          </button>
+          <button class="px-6 py-3 bg-white border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors">
+            📄 Exportar PDF
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    function calculateROI() {
+      const purchasePrice = parseFloat(document.getElementById('purchase-price').value) || 0;
+      const surface = parseFloat(document.getElementById('surface').value) || 0;
+      const renovationCost = parseFloat(document.getElementById('renovation-cost').value) || 0;
+      const salePrice = parseFloat(document.getElementById('sale-price').value) || 0;
+
+      // Cálculos
+      const totalRenovation = surface * renovationCost;
+      const itp = purchasePrice * 0.10;
+      const otherCosts = 3700;
+      const totalInvestment = purchasePrice + totalRenovation + itp + otherCosts;
+
+      const commission = salePrice * 0.03;
+      const netProfit = salePrice - totalInvestment - commission;
+      const roi = (netProfit / totalInvestment) * 100;
+
+      // Actualizar UI
+      document.getElementById('roi-value').textContent = roi.toFixed(1) + '%';
+      document.getElementById('total-investment').textContent = '€' + totalInvestment.toLocaleString('es-ES');
+      document.getElementById('price-breakdown').textContent = '€' + purchasePrice.toLocaleString('es-ES');
+      document.getElementById('renovation-breakdown').textContent = '€' + totalRenovation.toLocaleString('es-ES');
+      document.getElementById('itp-breakdown').textContent = '€' + itp.toLocaleString('es-ES');
+      document.getElementById('other-costs').textContent = '€' + otherCosts.toLocaleString('es-ES');
+      document.getElementById('sale-price-display').textContent = '€' + salePrice.toLocaleString('es-ES');
+      document.getElementById('commission-breakdown').textContent = '€' + commission.toLocaleString('es-ES');
+      document.getElementById('net-profit').textContent = '€' + netProfit.toLocaleString('es-ES');
+
+      // Cambiar color según viabilidad
+      const resultCard = document.getElementById('result-main');
+      if (roi >= 20) {
+        resultCard.className = 'result-success p-8 rounded-xl animate-slide-in';
+        document.getElementById('roi-value').className = 'text-5xl font-bold text-green-600 mb-4';
+      } else if (roi >= 10) {
+        resultCard.className = 'result-warning p-8 rounded-xl animate-slide-in';
+        document.getElementById('roi-value').className = 'text-5xl font-bold text-yellow-600 mb-4';
+      } else {
+        resultCard.className = 'result-card p-8 rounded-xl animate-slide-in';
+        document.getElementById('roi-value').className = 'text-5xl font-bold text-red-600 mb-4';
+      }
+
+      // Escenarios
+      const pessimisticSale = salePrice * 0.85;
+      const optimisticSale = salePrice * 1.10;
+
+      console.log('ROI calculado:', roi.toFixed(1) + '%');
+    }
+
+    function toggleAdvanced() {
+      const panel = document.getElementById('advanced-params');
+      const icon = document.getElementById('chevron-icon');
+      panel.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    }
+
+    function showPricingReference() {
+      alert('Abriendo Precios de Referencia (Comparables)...\n\nAquí verías una base de datos con propiedades reformadas y sin reformar para estimar el precio de venta.');
+    }
+
+    function showPropertySearch() {
+      alert('Abriendo Búsqueda de Propiedades...\n\nAquí buscarías propiedades en portales inmobiliarios y las importarías directamente a la calculadora.');
+    }
+
+    // Tab switching
+    function switchTab(tabName) {
+      // Hide all panels
+      document.getElementById('panel-url').classList.add('hidden');
+      document.getElementById('panel-text').classList.add('hidden');
+      document.getElementById('panel-manual').classList.add('hidden');
+
+      // Remove active class from all tabs
+      document.getElementById('tab-url').classList.remove('tab-active', 'border-blue-600', 'text-blue-600');
+      document.getElementById('tab-url').classList.add('text-gray-500', 'border-transparent');
+      document.getElementById('tab-text').classList.remove('tab-active', 'border-blue-600', 'text-blue-600');
+      document.getElementById('tab-text').classList.add('text-gray-500', 'border-transparent');
+      document.getElementById('tab-manual').classList.remove('tab-active', 'border-blue-600', 'text-blue-600');
+      document.getElementById('tab-manual').classList.add('text-gray-500', 'border-transparent');
+
+      // Show selected panel
+      document.getElementById('panel-' + tabName).classList.remove('hidden');
+
+      // Add active class to selected tab
+      const activeTab = document.getElementById('tab-' + tabName);
+      activeTab.classList.remove('text-gray-500', 'border-transparent');
+      activeTab.classList.add('tab-active', 'border-blue-600', 'text-blue-600');
+
+      // Update ARIA
+      document.getElementById('tab-url').setAttribute('aria-selected', tabName === 'url');
+      document.getElementById('tab-text').setAttribute('aria-selected', tabName === 'text');
+      document.getElementById('tab-manual').setAttribute('aria-selected', tabName === 'manual');
+    }
+
+    // URL parsing
+    function parseURL() {
+      const url = document.getElementById('property-url').value;
+      if (!url.trim()) {
+        alert('Por favor ingresa una URL');
+        return;
+      }
+
+      // Simulate API call
+      setTimeout(() => {
+        // Show preview
+        document.getElementById('url-preview').classList.remove('hidden');
+        alert('Datos extraídos de la URL!\n\nPrecio: €385,000\nSuperficie: 120 m²\nHabitaciones: 3\n\nClick en "Aplicar a la Calculadora"');
+      }, 1000);
+    }
+
+    function applyURLData() {
+      // Apply extracted data to form
+      document.getElementById('purchase-price').value = 385000;
+      document.getElementById('surface').value = 120;
+      document.getElementById('location').value = 'C/ Velázquez 42, Salamanca, Madrid';
+
+      // Switch to manual tab to show filled data
+      switchTab('manual');
+
+      // Recalculate
+      calculateROI();
+
+      alert('Datos aplicados correctamente! Revisa y ajusta si es necesario.');
+    }
+
+    // Text extraction
+    async function pasteFromClipboard() {
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById('property-text').value = text;
+      } catch (error) {
+        alert('No se pudo acceder al portapapeles. Por favor, pega manualmente con Ctrl+V o Cmd+V');
+      }
+    }
+
+    function clearText() {
+      document.getElementById('property-text').value = '';
+      document.getElementById('text-preview').classList.add('hidden');
+    }
+
+    function extractFromText() {
+      const text = document.getElementById('property-text').value;
+      if (!text.trim()) {
+        alert('Por favor pega el texto del anuncio');
+        return;
+      }
+
+      // Simulate extraction
+      setTimeout(() => {
+        document.getElementById('text-preview').classList.remove('hidden');
+      }, 500);
+    }
+
+    function applyTextData() {
+      // Apply extracted data from text
+      document.getElementById('purchase-price').value = 385000;
+      document.getElementById('surface').value = 120;
+      document.getElementById('location').value = 'C/ Velázquez 42, Salamanca, Madrid';
+
+      // Switch to manual tab
+      switchTab('manual');
+
+      // Recalculate
+      calculateROI();
+
+      alert('Datos aplicados correctamente!');
+    }
+
+    // Calcular al cargar
+    calculateROI();
+  </script>
+
+</body>
+</html>

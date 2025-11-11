@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Flipper Pro - Precios de Referencia</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --primary-500: #3b82f6;
+      --primary-600: #2563eb;
+      --success-500: #10b981;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f9fafb;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      transition: all 0.3s ease;
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+    }
+
+    .select-field:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .price-badge {
+      background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+      border: 2px solid #3b82f6;
+    }
+
+    .price-badge-success {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      border: 2px solid #10b981;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-lg font-bold text-gray-900">House Flipper Pro</h1>
+            <p class="text-xs text-gray-500">Precios de Referencia</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="window.location.href='calculator-complete.html'" class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
+            🧮 Calculadora
+          </button>
+          <button onclick="window.location.href='feed-pricing-data.html'" class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-lg">
+            📥 Alimentar Datos
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">Precios de Referencia por Barrio</h2>
+      <p class="text-gray-600">Consulta precios medios de propiedades reformadas y sin reformar</p>
+    </div>
+
+    <!-- ÁREA 1: Consultar Precios de Referencia -->
+    <div class="card p-6 mb-8">
+      <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+        </svg>
+        Consultar Precios de Referencia
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <!-- Ciudad -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Ciudad</label>
+          <select id="city-select" class="select-field w-full px-4 py-3 border border-gray-300 rounded-lg" onchange="updateNeighborhoods()">
+            <option value="madrid">Madrid</option>
+          </select>
+          <p class="text-xs text-gray-500 mt-1">Más ciudades próximamente</p>
+        </div>
+
+        <!-- Barrio/Distrito -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Barrio / Distrito</label>
+          <select id="neighborhood-select" class="select-field w-full px-4 py-3 border border-gray-300 rounded-lg" onchange="updatePrices()">
+            <option value="">Selecciona un barrio...</option>
+            <option value="barrio-salamanca" data-reformed="5500" data-unreformed="3800">Barrio de Salamanca (2.246 propiedades)</option>
+            <option value="centro" data-reformed="5200" data-unreformed="3600">Centro (2.012 propiedades)</option>
+            <option value="chamberi" data-reformed="4900" data-unreformed="3400">Chamberí (1.034 propiedades)</option>
+            <option value="carabanchel" data-reformed="3200" data-unreformed="2400">Carabanchel (815 propiedades)</option>
+            <option value="tetuan" data-reformed="3400" data-unreformed="2600">Tetuán (765 propiedades)</option>
+            <option value="ciudad-lineal" data-reformed="3100" data-unreformed="2300">Ciudad Lineal (669 propiedades)</option>
+            <option value="puente-vallecas" data-reformed="2900" data-unreformed="2200">Puente de Vallecas (658 propiedades)</option>
+            <option value="goya" data-reformed="5400" data-unreformed="3700">Goya, Barrio de Salamanca (657 propiedades)</option>
+            <option value="chamartin" data-reformed="4800" data-unreformed="3500">Chamartín (647 propiedades)</option>
+            <option value="retiro" data-reformed="5100" data-unreformed="3600">Retiro (641 propiedades)</option>
+            <option value="moncloa" data-reformed="4200" data-unreformed="3100">Moncloa (615 propiedades)</option>
+            <option value="fuencarral" data-reformed="3600" data-unreformed="2700">Fuencarral (525 propiedades)</option>
+            <option value="arganzuela" data-reformed="3800" data-unreformed="2800">Arganzuela (521 propiedades)</option>
+            <option value="san-blas" data-reformed="3000" data-unreformed="2300">San Blas (505 propiedades)</option>
+            <option value="lavapies" data-reformed="4100" data-unreformed="3000">Lavapiés-Embajadores, Centro (502 propiedades)</option>
+            <option value="latina" data-reformed="3100" data-unreformed="2400">Latina (501 propiedades)</option>
+            <option value="hortaleza" data-reformed="3500" data-unreformed="2600">Hortaleza (476 propiedades)</option>
+            <option value="recoletos" data-reformed="5700" data-unreformed="4000">Recoletos, Barrio de Salamanca (475 propiedades)</option>
+            <option value="malasana" data-reformed="4800" data-unreformed="3400">Malasaña-Universidad, Centro (470 propiedades)</option>
+            <option value="usera" data-reformed="2800" data-unreformed="2100">Usera (431 propiedades)</option>
+            <option value="villaverde" data-reformed="2600" data-unreformed="2000">Villaverde (411 propiedades)</option>
+            <option value="lista" data-reformed="5300" data-unreformed="3700">Lista, Barrio de Salamanca (389 propiedades)</option>
+            <option value="castellana" data-reformed="5600" data-unreformed="3900">Castellana, Barrio de Salamanca (375 propiedades)</option>
+            <option value="vicalvaro" data-reformed="2500" data-unreformed="1900">Vicálvaro (333 propiedades)</option>
+            <option value="villa-vallecas" data-reformed="2400" data-unreformed="1850">Villa de Vallecas (323 propiedades)</option>
+            <option value="almagro" data-reformed="4900" data-unreformed="3500">Almagro, Chamberí (295 propiedades)</option>
+            <option value="chueca" data-reformed="5000" data-unreformed="3500">Chueca-Justicia, Centro (294 propiedades)</option>
+            <option value="palacio" data-reformed="4700" data-unreformed="3300">Palacio, Centro (283 propiedades)</option>
+            <option value="trafalgar" data-reformed="4800" data-unreformed="3400">Trafalgar, Chamberí (248 propiedades)</option>
+            <option value="huertas" data-reformed="4900" data-unreformed="3400">Huertas-Cortes, Centro (246 propiedades)</option>
+            <option value="ibiza" data-reformed="5000" data-unreformed="3500">Ibiza, Retiro (226 propiedades)</option>
+            <option value="guindalera" data-reformed="4500" data-unreformed="3200">Guindalera, Barrio de Salamanca (217 propiedades)</option>
+            <option value="sol" data-reformed="5100" data-unreformed="3600">Sol, Centro (217 propiedades)</option>
+            <option value="san-diego" data-reformed="2900" data-unreformed="2200">San Diego, Puente de Vallecas (212 propiedades)</option>
+            <option value="villaverde-alto" data-reformed="2600" data-unreformed="2000">Villaverde Alto, Villaverde (191 propiedades)</option>
+            <option value="arguelles" data-reformed="4300" data-unreformed="3100">Argüelles, Moncloa (189 propiedades)</option>
+            <option value="cuatro-caminos" data-reformed="3500" data-unreformed="2600">Cuatro Caminos, Tetuán (186 propiedades)</option>
+            <option value="valdeacederas" data-reformed="3300" data-unreformed="2500">Valdeacederas, Tetuán (177 propiedades)</option>
+            <option value="moratalaz" data-reformed="3000" data-unreformed="2300">Moratalaz (173 propiedades)</option>
+            <option value="vista-alegre" data-reformed="3100" data-unreformed="2400">Vista Alegre, Carabanchel (168 propiedades)</option>
+            <option value="el-viso" data-reformed="5800" data-unreformed="4100">El Viso, Chamartín (163 propiedades)</option>
+            <option value="pueblo-nuevo" data-reformed="3100" data-unreformed="2300">Pueblo Nuevo, Ciudad Lineal (163 propiedades)</option>
+            <option value="nuevos-ministerios" data-reformed="4600" data-unreformed="3300">Nuevos Ministerios-Ríos Rosas, Chamberí (158 propiedades)</option>
+            <option value="palos-frontera" data-reformed="3700" data-unreformed="2800">Palos de la Frontera, Arganzuela (149 propiedades)</option>
+            <option value="penagrande" data-reformed="3400" data-unreformed="2600">Peñagrande, Fuencarral (144 propiedades)</option>
+            <option value="simancas" data-reformed="2900" data-unreformed="2200">Simancas, San Blas (143 propiedades)</option>
+            <option value="puerta-bonita" data-reformed="3100" data-unreformed="2400">Puerta Bonita, Carabanchel (140 propiedades)</option>
+            <option value="bellas-vistas" data-reformed="3300" data-unreformed="2500">Bellas Vistas, Tetuán (134 propiedades)</option>
+            <option value="fuente-berro" data-reformed="5200" data-unreformed="3700">Fuente del Berro, Barrio de Salamanca (133 propiedades)</option>
+            <option value="numancia" data-reformed="2900" data-unreformed="2200">Numancia, Puente de Vallecas (133 propiedades)</option>
+            <option value="san-isidro" data-reformed="3100" data-unreformed="2400">San Isidro, Carabanchel (131 propiedades)</option>
+            <option value="prosperidad" data-reformed="4400" data-unreformed="3200">Prosperidad, Chamartín (128 propiedades)</option>
+            <option value="pacifico" data-reformed="4700" data-unreformed="3400">Pacífico, Retiro (126 propiedades)</option>
+            <option value="puerta-angel" data-reformed="3200" data-unreformed="2400">Puerta del Ángel, Latina (123 propiedades)</option>
+            <option value="arapiles" data-reformed="4700" data-unreformed="3400">Arapiles, Chamberí (122 propiedades)</option>
+            <option value="berrocales" data-reformed="2400" data-unreformed="1850">Los Berrocales, Vicálvaro (119 propiedades)</option>
+            <option value="jeronimos" data-reformed="5900" data-unreformed="4200">Jerónimos, Retiro (118 propiedades)</option>
+            <option value="gaztambide" data-reformed="4600" data-unreformed="3300">Gaztambide, Chamberí (117 propiedades)</option>
+            <option value="cuzco" data-reformed="3400" data-unreformed="2600">Cuzco-Castillejos, Tetuán (116 propiedades)</option>
+            <option value="aluche" data-reformed="3100" data-unreformed="2400">Aluche, Latina (115 propiedades)</option>
+            <option value="aravaca" data-reformed="4500" data-unreformed="3300">Aravaca, Moncloa (114 propiedades)</option>
+            <option value="bernabeu" data-reformed="5000" data-unreformed="3600">Bernabéu-Hispanoamérica, Chamartín (114 propiedades)</option>
+            <option value="ensanche-vallecas" data-reformed="2700" data-unreformed="2050">Ensanche de Vallecas - La Gavia (114 propiedades)</option>
+            <option value="buena-vista" data-reformed="3100" data-unreformed="2400">Buena Vista, Carabanchel (113 propiedades)</option>
+            <option value="casco-vallecas" data-reformed="2600" data-unreformed="2000">Casco Histórico de Vallecas (113 propiedades)</option>
+            <option value="barajas" data-reformed="3200" data-unreformed="2450">Barajas (109 propiedades)</option>
+            <option value="nueva-espana" data-reformed="4900" data-unreformed="3500">Nueva España, Chamartín (108 propiedades)</option>
+            <option value="ventas" data-reformed="3200" data-unreformed="2400">Ventas, Ciudad Lineal (100 propiedades)</option>
+            <option value="pinar-rey" data-reformed="3300" data-unreformed="2500">Pinar del Rey, Hortaleza (99 propiedades)</option>
+          </select>
+          <p class="text-xs text-gray-500 mt-1">169 barrios disponibles</p>
+        </div>
+      </div>
+
+      <!-- Precios Medios -->
+      <div id="price-results" class="hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Reformado -->
+          <div class="price-badge-success p-6 rounded-xl">
+            <div class="flex items-center gap-2 mb-2">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-sm font-medium text-gray-700">REFORMADO</span>
+            </div>
+            <p id="reformed-price" class="text-4xl font-bold text-green-600 mb-2">€5,500</p>
+            <p class="text-sm text-gray-600">Precio medio por m²</p>
+          </div>
+
+          <!-- Sin Reformar -->
+          <div class="price-badge p-6 rounded-xl">
+            <div class="flex items-center gap-2 mb-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span class="text-sm font-medium text-gray-700">SIN REFORMAR</span>
+            </div>
+            <p id="unreformed-price" class="text-4xl font-bold text-blue-600 mb-2">€3,800</p>
+            <p class="text-sm text-gray-600">Precio medio por m²</p>
+          </div>
+        </div>
+
+        <!-- Diferencia y Potencial -->
+        <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-yellow-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+            <div class="flex-1">
+              <p class="font-semibold text-yellow-900">Potencial de Revalorización</p>
+              <p id="price-difference" class="text-2xl font-bold text-yellow-700 mt-1">+€1,700/m²</p>
+              <p id="percentage-gain" class="text-sm text-yellow-700 mt-1">+44.7% de revalorización tras reforma</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ajustes Premium -->
+        <div class="mt-8 p-6 bg-purple-50 border-2 border-purple-200 rounded-xl">
+          <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+            Ajustes Premium
+          </h4>
+          <p class="text-sm text-gray-600 mb-4">Selecciona características adicionales para ajustar el precio de referencia</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Factores POSITIVOS -->
+            <div class="space-y-3">
+              <p class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-2">⬆️ Incrementan el precio</p>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-green-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="8" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Plaza de Garaje</span>
+                  <p class="text-xs text-gray-600">+8% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-green-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="6" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Trastero</span>
+                  <p class="text-xs text-gray-600">+6% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-green-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="10" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Orientación Sur</span>
+                  <p class="text-xs text-gray-600">+10% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-green-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="7" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Piso Alto (5ª+)</span>
+                  <p class="text-xs text-gray-600">+7% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-green-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="15" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Ático</span>
+                  <p class="text-xs text-gray-600">+15% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-green-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="12" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Terraza Grande (>20m²)</span>
+                  <p class="text-xs text-gray-600">+12% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-green-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="5" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Ascensor</span>
+                  <p class="text-xs text-gray-600">+5% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-green-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="8" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Portero Físico</span>
+                  <p class="text-xs text-gray-600">+8% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-green-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="10" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Piscina Comunitaria</span>
+                  <p class="text-xs text-gray-600">+10% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-green-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="9" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Aire Acondicionado</span>
+                  <p class="text-xs text-gray-600">+9% sobre precio base</p>
+                </div>
+              </label>
+            </div>
+
+            <!-- Factores NEGATIVOS -->
+            <div class="space-y-3">
+              <p class="text-xs font-semibold text-red-700 uppercase tracking-wide mb-2">⬇️ Reducen el precio</p>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-red-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="-12" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Piso Interior</span>
+                  <p class="text-xs text-gray-600">-12% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-red-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="-8" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Piso Bajo (1ª-2ª)</span>
+                  <p class="text-xs text-gray-600">-8% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-red-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="-15" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Sin Ascensor (3ª+)</span>
+                  <p class="text-xs text-gray-600">-15% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-red-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="-10" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Orientación Norte</span>
+                  <p class="text-xs text-gray-600">-10% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-red-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="-7" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Vistas a Patio Interior</span>
+                  <p class="text-xs text-gray-600">-7% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-red-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="-20" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Necesita Reforma Integral</span>
+                  <p class="text-xs text-gray-600">-20% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-red-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="-5" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Ruido Exterior Alto</span>
+                  <p class="text-xs text-gray-600">-5% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-red-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="-6" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Edificio Antiguo (pre-1950)</span>
+                  <p class="text-xs text-gray-600">-6% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-red-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="-8" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Sin Calefacción Central</span>
+                  <p class="text-xs text-gray-600">-8% sobre precio base</p>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3 bg-white rounded-lg hover:bg-red-50 cursor-pointer transition-colors border border-gray-200">
+                <input type="checkbox" class="premium-factor mt-1 w-4 h-4 rounded" data-adjustment="-4" onchange="updateAdjustedPrice()">
+                <div class="flex-1">
+                  <span class="font-medium text-gray-900">Baño sin Ventilación</span>
+                  <p class="text-xs text-gray-600">-4% sobre precio base</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Resumen de Ajuste -->
+          <div id="adjustment-summary" class="hidden mt-6 p-4 bg-white border-2 border-purple-300 rounded-lg">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-700">Ajuste Total Aplicado:</p>
+                <p id="total-adjustment" class="text-2xl font-bold text-purple-600">+0%</p>
+              </div>
+              <div class="text-right">
+                <p class="text-sm font-medium text-gray-700">Precio Ajustado:</p>
+                <div class="flex gap-4">
+                  <div>
+                    <p class="text-xs text-gray-600">Reformado</p>
+                    <p id="adjusted-reformed-price" class="text-xl font-bold text-green-600">€5,500</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-600">Sin reformar</p>
+                    <p id="adjusted-unreformed-price" class="text-xl font-bold text-blue-600">€3,800</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón Usar en Calculadora -->
+        <div class="mt-6">
+          <button onclick="applyToCalculator()" class="btn-gradient w-full px-6 py-3 text-white font-semibold rounded-lg">
+            Usar estos precios en la Calculadora
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+  </main>
+
+  <script>
+    // Datos de barrios (solo algunos ejemplos, puedes añadir todos los 169)
+    const neighborhoodsData = {
+      'madrid': {
+        'barrio-salamanca': { reformed: 5500, unreformed: 3800 },
+        'centro': { reformed: 5200, unreformed: 3600 },
+        'chamberi': { reformed: 4900, unreformed: 3400 },
+        'carabanchel': { reformed: 3200, unreformed: 2400 },
+        'tetuan': { reformed: 3400, unreformed: 2600 },
+        'ciudad-lineal': { reformed: 3100, unreformed: 2300 },
+        'puente-vallecas': { reformed: 2900, unreformed: 2200 },
+        'goya': { reformed: 5400, unreformed: 3700 },
+        'chamartin': { reformed: 4800, unreformed: 3500 },
+        'retiro': { reformed: 5100, unreformed: 3600 },
+        'guindalera': { reformed: 4500, unreformed: 3200 },
+        'prosperidad': { reformed: 4400, unreformed: 3200 },
+        'pacifico': { reformed: 4700, unreformed: 3400 },
+      }
+    };
+
+    function updateNeighborhoods() {
+      const city = document.getElementById('city-select').value;
+      // En el futuro, aquí cargaríamos barrios de otras ciudades
+      console.log('Ciudad seleccionada:', city);
+    }
+
+    // Variables globales para precios base
+    let baseReformedPrice = 0;
+    let baseUnreformedPrice = 0;
+
+    function updatePrices() {
+      const select = document.getElementById('neighborhood-select');
+      const selectedOption = select.options[select.selectedIndex];
+
+      if (!selectedOption.value) {
+        document.getElementById('price-results').classList.add('hidden');
+        return;
+      }
+
+      baseReformedPrice = parseFloat(selectedOption.dataset.reformed);
+      baseUnreformedPrice = parseFloat(selectedOption.dataset.unreformed);
+
+      // Actualizar precios base
+      document.getElementById('reformed-price').textContent = '€' + baseReformedPrice.toLocaleString('es-ES');
+      document.getElementById('unreformed-price').textContent = '€' + baseUnreformedPrice.toLocaleString('es-ES');
+
+      // Calcular diferencia
+      const difference = baseReformedPrice - baseUnreformedPrice;
+      const percentage = ((difference / baseUnreformedPrice) * 100).toFixed(1);
+
+      document.getElementById('price-difference').textContent = '+€' + difference.toLocaleString('es-ES') + '/m²';
+      document.getElementById('percentage-gain').textContent = '+' + percentage + '% de revalorización tras reforma';
+
+      // Resetear ajustes premium
+      resetPremiumFactors();
+
+      // Mostrar resultados
+      document.getElementById('price-results').classList.remove('hidden');
+    }
+
+    function resetPremiumFactors() {
+      // Desmarcar todos los checkboxes
+      document.querySelectorAll('.premium-factor').forEach(checkbox => {
+        checkbox.checked = false;
+      });
+
+      // Ocultar resumen de ajustes
+      document.getElementById('adjustment-summary').classList.add('hidden');
+    }
+
+    function updateAdjustedPrice() {
+      if (baseReformedPrice === 0 || baseUnreformedPrice === 0) return;
+
+      // Calcular ajuste total
+      let totalAdjustment = 0;
+      document.querySelectorAll('.premium-factor:checked').forEach(checkbox => {
+        totalAdjustment += parseFloat(checkbox.dataset.adjustment);
+      });
+
+      // Aplicar ajuste a ambos precios
+      const adjustmentMultiplier = 1 + (totalAdjustment / 100);
+      const adjustedReformed = Math.round(baseReformedPrice * adjustmentMultiplier);
+      const adjustedUnreformed = Math.round(baseUnreformedPrice * adjustmentMultiplier);
+
+      // Actualizar UI
+      const sign = totalAdjustment >= 0 ? '+' : '';
+      document.getElementById('total-adjustment').textContent = sign + totalAdjustment.toFixed(1) + '%';
+      document.getElementById('total-adjustment').className = totalAdjustment >= 0 ?
+        'text-2xl font-bold text-green-600' :
+        'text-2xl font-bold text-red-600';
+
+      document.getElementById('adjusted-reformed-price').textContent = '€' + adjustedReformed.toLocaleString('es-ES');
+      document.getElementById('adjusted-unreformed-price').textContent = '€' + adjustedUnreformed.toLocaleString('es-ES');
+
+      // Mostrar/ocultar resumen
+      if (totalAdjustment !== 0) {
+        document.getElementById('adjustment-summary').classList.remove('hidden');
+      } else {
+        document.getElementById('adjustment-summary').classList.add('hidden');
+      }
+    }
+
+    function applyToCalculator() {
+      const neighborhood = document.getElementById('neighborhood-select').value;
+      if (!neighborhood) {
+        alert('Por favor selecciona un barrio primero');
+        return;
+      }
+
+      // Obtener precios ajustados o base
+      let reformedPrice, unreformedPrice;
+
+      // Calcular ajuste total
+      let totalAdjustment = 0;
+      document.querySelectorAll('.premium-factor:checked').forEach(checkbox => {
+        totalAdjustment += parseFloat(checkbox.dataset.adjustment);
+      });
+
+      if (totalAdjustment !== 0) {
+        // Usar precios ajustados
+        const adjustmentMultiplier = 1 + (totalAdjustment / 100);
+        reformedPrice = Math.round(baseReformedPrice * adjustmentMultiplier);
+        unreformedPrice = Math.round(baseUnreformedPrice * adjustmentMultiplier);
+      } else {
+        // Usar precios base
+        reformedPrice = baseReformedPrice;
+        unreformedPrice = baseUnreformedPrice;
+      }
+
+      // Redirigir a calculadora con parámetros
+      window.location.href = `calculator-complete.html?reformed=${reformedPrice}&unreformed=${unreformedPrice}&neighborhood=${encodeURIComponent(neighborhood)}`;
+    }
+  </script>
+
+</body>
+</html>
