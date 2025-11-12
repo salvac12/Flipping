@@ -2,16 +2,16 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { signOut } from 'next-auth/react';
+// import { signOut } from 'next-auth/react'; // Comentado - sin autenticación
 import {
   Calculator,
   Search,
-  User,
-  LogOut,
+  // User,
+  // LogOut,
   Home,
   Download
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+// import { Button } from '@/components/ui/button'; // Comentado - sin botones de usuario
 
 export function MainNav() {
   const pathname = usePathname();
@@ -74,7 +74,7 @@ export function MainNav() {
             })}
           </nav>
 
-          {/* Acciones de usuario */}
+          {/* Acciones de usuario - Ocultas temporalmente (sin autenticación)
           <div className="flex items-center gap-2">
             <Button
               variant="ghost"
@@ -96,6 +96,7 @@ export function MainNav() {
               <span className="hidden sm:inline">Cerrar Sesión</span>
             </Button>
           </div>
+          */}
         </div>
       </div>
     </header>
